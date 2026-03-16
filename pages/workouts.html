@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workouts — Eliza Skander</title>
+  <meta name="description" content="Free workout routines from Eliza Skander — full body, strength, cardio, kettlebell, abs and more." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .filter-bar {
+      padding: 32px 48px;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .filter-label { font-size: 11px; color: var(--muted2); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 4px; }
+    .filter-btn {
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 50px; border: 0.5px solid rgba(200,169,110,0.25);
+      background: transparent; color: var(--muted); cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(200,169,110,0.1); color: var(--gold);
+      border-color: rgba(200,169,110,0.5);
+    }
+
+    .workouts-grid {
+      padding: 48px 48px 80px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .workout-card {
+      background: var(--dark3);
+      border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+      cursor: pointer;
+      transition: border-color .25s, transform .25s;
+    }
+    .workout-card:hover { border-color: rgba(200,169,110,0.3); transform: translateY(-4px); }
+    .workout-card[data-hidden] { display: none; }
+
+    .workout-thumb {
+      height: 160px;
+      background: var(--dark4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; position: relative;
+    }
+    .workout-difficulty {
+      position: absolute; top: 12px; right: 12px;
+      font-size: 9px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 50px;
+    }
+    .diff-beginner { background: rgba(30,180,100,0.15); color: #4ecb8c; }
+    .diff-intermediate { background: rgba(200,169,110,0.15); color: var(--gold); }
+    .diff-advanced { background: rgba(220,80,60,0.15); color: #e06050; }
+
+    .workout-body { padding: 20px 22px 24px; }
+    .workout-body h3 { font-family: var(--serif); font-size: 18px; margin-bottom: 8px; }
+    .workout-body p { font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
+    .workout-meta {
+      display: flex; gap: 16px; align-items: center;
+      padding-top: 14px; border-top: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .workout-tag { font-size: 10px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+    .workout-duration { font-size: 11px; color: var(--muted2); margin-left: auto; }
+
+    @media (max-width: 900px) {
+      .filter-bar { padding: 24px; }
+      .workouts-grid { padding: 32px 24px 56px; grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 560px) {
+      .workouts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Move your body</span>
+  <h1>Workouts that <em>work</em></h1>
+  <p>Routines for every level — from quick abs circuits to heavy full-body sessions. All tested by Eliza.</p>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="full-body">Full Body</button>
+  <button class="filter-btn" data-filter="strength">Strength</button>
+  <button class="filter-btn" data-filter="abs">Abs</button>
+  <button class="filter-btn" data-filter="lower">Lower Body</button>
+  <button class="filter-btn" data-filter="cardio">Cardio</button>
+  <button class="filter-btn" data-filter="kettlebell">Kettlebell</button>
+</div>
+
+<div class="workouts-grid">
+
+  <div class="workout-card reveal" data-category="full-body">
+    <div class="workout-thumb">💪
+      <span class="workout-difficulty diff-advanced">Advanced</span>
+    </div>
+    <div class="workout-body">
+      <h3>Extreme Full Body</h3>
+      <p>A high-intensity full body session that hits every muscle group. Expect sweat.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Full Body</span>
+        <span class="workout-duration">45 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d1" data-category="strength">
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+      <iframe
+        src="https://www.youtube.com/embed/1PRtokygU-E"
+        title="Shoulders & Abs Workout — Eliza Skander"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+      </iframe>
+    </div>
+    <div class="workout-body">
+      <h3>Shoulders &amp; Abs</h3>
+      <p>Sculpt strong shoulders and a tight core with this targeted superset circuit.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Strength</span>
+        <span class="workout-duration">35 min</span>
+        <span class="workout-difficulty diff-intermediate" style="position:relative;top:auto;right:auto;">Intermediate</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d2" data-category="lower">
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+      <iframe
+        src="https://www.youtube.com/embed/mIwd9ENpKEM"
+        title="Legs & Butt Workout — Eliza Skander"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+      </iframe>
+    </div>
+    <div class="workout-body">
+      <h3>Legs &amp; Butt</h3>
+      <p>Glute activation, squats, and lunges in a sequence that builds and burns.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Lower Body</span>
+        <span class="workout-duration">40 min</span>
+        <span class="workout-difficulty diff-intermediate" style="position:relative;top:auto;right:auto;">Intermediate</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d3" data-category="abs">
+    <div class="workout-thumb">🔥
+      <span class="workout-difficulty diff-advanced">Advanced</span>
+    </div>
+    <div class="workout-body">
+      <h3>Shredded Abs</h3>
+      <p>No equipment needed. Pure core work designed to challenge and define.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Abs</span>
+        <span class="workout-duration">25 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal" data-category="abs">
+    <div class="workout-thumb">⚡
+      <span class="workout-difficulty diff-beginner">Beginner</span>
+    </div>
+    <div class="workout-body">
+      <h3>Abs Exercises</h3>
+      <p>A beginner-friendly abs routine to build core strength from the ground up.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Abs</span>
+        <span class="workout-duration">20 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d1" data-category="abs">
+    <div class="workout-thumb">🧘
+      <span class="workout-difficulty diff-intermediate">Intermediate</span>
+    </div>
+    <div class="workout-body">
+      <h3>Abs Extra</h3>
+      <p>Add-on core work to bolt onto any session for that extra burn.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Abs</span>
+        <span class="workout-duration">15 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d2" data-category="full-body">
+    <div class="workout-thumb">🎯
+      <span class="workout-difficulty diff-intermediate">Intermediate</span>
+    </div>
+    <div class="workout-body">
+      <h3>Spiderman Press-Ups</h3>
+      <p>A deceptively tough bodyweight move that targets chest, core and hip flexors simultaneously.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Full Body</span>
+        <span class="workout-duration">15 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d3" data-category="kettlebell">
+    <div style="overflow:hidden;position:relative;background:var(--dark4);">
+      <img src="../images/workout-kettlebell-swing.jpg" alt="Kettlebell Workout" style="width:100%;height:220px;object-fit:contain;display:block;">
+      <span class="workout-difficulty diff-intermediate" style="position:absolute;top:12px;right:12px;">Intermediate</span>
+    </div>
+    <div class="workout-body">
+      <h3>Kettlebell Workout</h3>
+      <p>Swings, Russian twists, squat press and renegade rows — kettlebell training for full body strength and conditioning.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Kettlebell</span>
+        <span class="workout-duration">40 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal" data-category="cardio">
+    <div style="overflow:hidden;position:relative;background:var(--dark4);">
+      <img src="../images/workout-russian-twist.jpg" alt="Core and Cardio" style="width:100%;height:220px;object-fit:contain;display:block;">
+      <span class="workout-difficulty diff-intermediate" style="position:absolute;top:12px;right:12px;">Intermediate</span>
+    </div>
+    <div class="workout-body">
+      <h3>Core &amp; Cardio</h3>
+      <p>Blend core stability with cardio bursts for a workout that burns and tones.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Cardio</span>
+        <span class="workout-duration">35 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d1" data-category="strength">
+    <div class="workout-thumb" style="padding:0;overflow:hidden;position:relative;">
+      <img src="../images/workout-renegade-row.jpg" alt="Heavy Back Workout" style="width:100%;height:160px;object-fit:cover;object-position:center;display:block;">
+      <span class="workout-difficulty diff-advanced">Advanced</span>
+    </div>
+    <div class="workout-body">
+      <h3>Heavy Back Workout</h3>
+      <p>Deadlifts, rows, and pull work for a strong, defined back.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Strength</span>
+        <span class="workout-duration">50 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d2" data-category="full-body">
+    <div class="workout-thumb">🚶
+      <span class="workout-difficulty diff-beginner">Beginner</span>
+    </div>
+    <div class="workout-body">
+      <h3>Walking Plank</h3>
+      <p>One move, full body engagement. A deceptively effective exercise for all levels.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Full Body</span>
+        <span class="workout-duration">10 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal reveal-d3" data-category="lower abs">
+    <div class="workout-thumb">🍑
+      <span class="workout-difficulty diff-intermediate">Intermediate</span>
+    </div>
+    <div class="workout-body">
+      <h3>Lower Abs &amp; Butt</h3>
+      <p>Target the lower abs and glutes together in this focused circuit session.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Lower Body</span>
+        <span class="workout-duration">30 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="workout-card reveal" data-category="full-body" style="grid-column: span 3;">
+    <div style="position:relative;padding-bottom:45%;height:0;overflow:hidden;">
+      <iframe
+        src="https://www.youtube.com/embed/gcmwmKKKTqc"
+        title="New Year Training — Eliza Skander"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+      </iframe>
+    </div>
+    <div class="workout-body">
+      <h3>New Year Training</h3>
+      <p>Kick off the new year right. A full-body challenge to reset and energise — follow along with Eliza.</p>
+      <div class="workout-meta">
+        <span class="workout-tag">Full Body</span>
+        <span class="workout-duration">45 min</span>
+        <span class="workout-difficulty diff-advanced" style="position:relative;top:auto;right:auto;">Advanced</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  // Filter functionality
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.workout-card');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => {
+        const cat = c.dataset.category || '';
+        const show = f === 'all' || cat.includes(f);
+        c.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

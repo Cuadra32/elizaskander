@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness Tips &amp; Blog — Eliza Skander Geneva</title>
+  <meta name="description" content="Fitness tips, nutrition advice and Geneva training guides from Eliza Skander — personal trainer and nutrition coach based in Geneva since 2013." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .blog-grid {
+      padding: 56px 48px 80px;
+      display: grid; grid-template-columns: 2fr 1fr; gap: 48px;
+      align-items: start;
+    }
+    .blog-posts { display: flex; flex-direction: column; gap: 0; }
+    .blog-post {
+      padding: 40px 0; border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .blog-post:first-child { padding-top: 0; }
+    .post-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+    .post-category {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); padding: 4px 11px; border-radius: 50px;
+      border: 0.5px solid rgba(200,169,110,0.35);
+    }
+    .post-date { font-size: 12px; color: var(--muted2); }
+    .post-read { font-size: 12px; color: var(--muted2); }
+    .blog-post h2 {
+      font-family: var(--serif); font-size: 24px; line-height: 1.2;
+      margin-bottom: 12px; color: var(--text);
+      transition: color .2s; cursor: pointer;
+    }
+    .blog-post h2:hover { color: var(--gold); }
+    .blog-post p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+    .post-body { font-size: 14px; color: var(--muted); line-height: 1.8; }
+    .post-body h3 { font-family: var(--serif); font-size: 18px; color: var(--text); margin: 24px 0 10px; }
+    .post-body strong { color: var(--text); font-weight: 500; }
+    .post-body ul { list-style: none; padding: 0; margin: 12px 0; }
+    .post-body ul li { padding: 5px 0 5px 18px; position: relative; }
+    .post-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+    .read-more {
+      font-size: 12px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+      background: none; border: none; padding: 0;
+      transition: letter-spacing .2s;
+    }
+    .read-more:hover { letter-spacing: 0.14em; }
+    .post-full { display: none; }
+    .post-full.open { display: block; }
+
+    /* SIDEBAR */
+    .blog-sidebar { position: sticky; top: 88px; }
+    .sidebar-section {
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+    }
+    .sidebar-title {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+      padding-bottom: 10px; border-bottom: 0.5px solid rgba(200,169,110,0.15);
+    }
+    .sidebar-link {
+      display: block; font-size: 13px; color: var(--muted);
+      padding: 8px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04);
+      transition: color .2s; cursor: pointer;
+    }
+    .sidebar-link:last-child { border-bottom: none; }
+    .sidebar-link:hover { color: var(--gold); }
+    .sidebar-tip {
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      padding: 10px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    }
+    .sidebar-tip:last-child { border-bottom: none; }
+    .sidebar-tip strong { color: var(--gold); font-weight: 500; display: block; margin-bottom: 3px; }
+
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: 1fr; padding: 40px 24px 56px; }
+      .blog-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Tips &amp; advice</span>
+  <h1>Fitness &amp; nutrition <em>blog</em></h1>
+  <p>Practical advice from Eliza — based on over 12 years of training clients in Geneva.</p>
+</div>
+
+<div class="blog-grid">
+  <div class="blog-posts">
+
+    <!-- POST 1 -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Geneva Training</span>
+        <span class="post-date">March 2026</span>
+        <span class="post-read">5 min read</span>
+      </div>
+      <h2>The best outdoor workout spots in Geneva</h2>
+      <p>Geneva is one of the most beautiful cities in Europe for outdoor training — if you know where to go. After 12 years running, training and coaching here, these are Eliza's favourite spots.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>Lac Léman (Lake Geneva) — the classic route</h3>
+          <p>The lake path is Geneva's most iconic running route. The full loop around the lake is about 8km from the city centre and offers flat, scenic terrain that's suitable for all levels. Early morning before the tourists arrive is magical — the water is still and Mont Blanc is visible on clear days. The path between the Jet d'Eau and Parc Mon Repos is particularly beautiful.</p>
+          <h3>Parc des Bastions</h3>
+          <p>Centrally located and great for bodyweight circuits. The park has open grass areas and shaded paths. It's a favourite for lunch-hour sessions — quick to reach from most Geneva offices and calm enough to focus. The outdoor chess boards are also a welcome distraction between sets.</p>
+          <h3>Bois de la Bâtie</h3>
+          <p>For those who want hills. This wooded park on the edge of the city offers natural trail running and more challenging terrain than the flat lake paths. The inclines make it excellent for building power and cardiovascular fitness. Less crowded than the lakeside and genuinely beautiful in autumn.</p>
+          <h3>Parc La Grange</h3>
+          <p>A large, elegant park with long flat pathways, rose gardens and open lawns. Perfect for interval training — the main path offers a natural 400m loop. The park is well maintained year-round and the flat ground makes it ideal for HIIT circuits with minimal equipment.</p>
+          <h3>Eliza's tip</h3>
+          <p><strong>The best time to train outdoors in Geneva is early morning from April to October.</strong> Summers can get hot by midday. In winter, the fog (la bise) can be bitter — dress in layers and consider the indoor workouts on this site instead.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Nutrition</span>
+        <span class="post-date">February 2026</span>
+        <span class="post-read">4 min read</span>
+      </div>
+      <h2>Why protein is the most important macronutrient for fat loss</h2>
+      <p>If you're trying to lose fat while keeping muscle, one thing matters more than anything else in your diet — and most people don't eat nearly enough of it.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>What protein actually does</h3>
+          <p>Protein isn't just for bodybuilders. When you're in a calorie deficit (which is required for fat loss), your body needs protein to preserve muscle tissue. Without sufficient protein, you'll lose both fat and muscle — which means you end up smaller but still soft, not lean.</p>
+          <p><strong>Protein also has the highest thermic effect of any macronutrient</strong> — your body burns roughly 25–30% of protein calories just digesting it. Fat and carbohydrates burn 3–8% and 6–8% respectively. This is a meaningful advantage when trying to lose weight.</p>
+          <h3>How much do you actually need?</h3>
+          <p>For active individuals training 3+ times per week, aim for <strong>1.6–2.2g of protein per kg of bodyweight</strong> per day. For a 65kg woman training regularly, that's roughly 104–143g of protein daily. Most people eating a standard diet get far less than this.</p>
+          <h3>Best sources of protein</h3>
+          <ul>
+            <li>Chicken breast (31g per 100g)</li>
+            <li>Salmon (25g per 100g) — also high in omega 3</li>
+            <li>Greek yoghurt (10g per 100g) — great as a base for breakfast</li>
+            <li>Eggs (6g per egg) — one of the most complete protein sources</li>
+            <li>Chickpeas (19g per 100g cooked) — excellent plant-based option</li>
+            <li>Cottage cheese (11g per 100g) — high protein, low calorie</li>
+          </ul>
+          <h3>Protein timing</h3>
+          <p>Spreading protein evenly across 3–4 meals is more effective than eating it all in one sitting. Your body can only use roughly 30–40g of protein per meal for muscle synthesis — the rest is used for energy. This is why Eliza's recipes always include a protein source at every meal.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+    <!-- POST 3 -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Training</span>
+        <span class="post-date">January 2026</span>
+        <span class="post-read">4 min read</span>
+      </div>
+      <h2>Why most people don't see results from the gym — and how to fix it</h2>
+      <p>After 12 years training clients, the same pattern comes up again and again. People who train hard and eat reasonably well but never seem to change. Here's what's usually going wrong.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>Problem 1: No progressive overload</h3>
+          <p>The most common reason people plateau. If you're doing the same weights, same reps, same exercises every week — your body has adapted and is no longer being challenged. <strong>Progressive overload means consistently increasing the demand on your muscles</strong> — adding a little more weight, doing one more rep, or reducing rest time. Without this, you maintain but never improve.</p>
+          <h3>Problem 2: Cardio as a primary fat loss tool</h3>
+          <p>An hour on the treadmill burns roughly 400–500 calories. One slice of cake puts those back. Cardio has benefits — cardiovascular health, stress relief, endurance — but it's not an efficient fat loss strategy on its own. <strong>Strength training builds muscle, and muscle increases your resting metabolic rate</strong>, meaning you burn more calories all day, not just during exercise.</p>
+          <h3>Problem 3: Inconsistency</h3>
+          <p>Training hard for two weeks and then missing three is worse than training moderately every week without fail. Consistency beats intensity. <strong>Three 45-minute sessions per week, every week, for six months will transform your body.</strong> Six intense weeks followed by a break won't.</p>
+          <h3>Problem 4: Nutrition undoing the training</h3>
+          <p>You cannot out-train a bad diet. This isn't about perfection — it's about awareness. Most people dramatically underestimate how many calories they consume and overestimate how many they burn. Tracking your food for even two weeks is revealing.</p>
+          <h3>The fix</h3>
+          <p>Work with someone who will build a structured programme with progressive overload built in, who tracks your progress objectively, and who addresses both training and nutrition. That's exactly what Eliza does.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+    <!-- POST 4 -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Nutrition</span>
+        <span class="post-date">December 2025</span>
+        <span class="post-read">3 min read</span>
+      </div>
+      <h2>Healthy restaurants in Geneva — Eliza's guide</h2>
+      <p>Eating well in a city famous for fondue and raclette is absolutely possible. These are Eliza's genuinely recommended spots for healthy, quality food in Geneva.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>For supplements &amp; protein snacks</h3>
+          <p><strong>Mels Fit Store</strong> (Rue de Lyon 10) — Geneva's best sports nutrition shop. Eliza's go-to for protein powder, healthy snacks, supplements and training gear. Excellent range, knowledgeable staff and the best prices in the city. Also available online at melsfit.ch with free delivery over 100 CHF. Open Mon–Fri 10h–19h, Saturday 10h–18h.</p>
+          <h3>For fresh salads and bowls</h3>
+          <p><strong>Helvti Bowl</strong> (multiple locations) — Geneva's best bowl restaurant. Customisable bases with excellent protein options. Fast, affordable and genuinely nutritious. The perfect post-training lunch.</p>
+          <p><strong>Manora</strong> (Rue de Rive) — self-service restaurant with a huge salad bar and hot dishes. Easy to eat well here without overthinking it. Very Geneva — popular with office workers at lunch.</p>
+          <h3>For quality protein</h3>
+          <p><strong>Holy Cow!</strong> (multiple locations) — better burger options than you'd expect, including chicken and plant-based. Good protein-to-calorie ratio if you skip the fries.</p>
+          <p><strong>La Cantine des Philosophes</strong> (Carouge) — excellent daily-changing menu with quality meat and fish. The kind of place where you know the ingredients are good.</p>
+          <h3>For breakfast</h3>
+          <p><strong>Bread &amp; Roses</strong> (Rue de Rive) — beautiful bakery with genuinely good coffee and healthy breakfast options. The egg dishes are particularly good.</p>
+          <h3>For juice and smoothies</h3>
+          <p><strong>Jack's Smoothies</strong> (Plainpalais market area) — fresh, seasonal, no added sugar. A good post-workout option when you don't want a full meal.</p>
+          <h3>Eliza's general rule</h3>
+          <p>In any restaurant: <strong>choose a protein, add vegetables, and think about sauces</strong>. Most meals can be made healthier by asking for dressings on the side and swapping fries for salad. You don't have to be difficult — just slightly more conscious.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+    <!-- POST 5 -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Lifestyle</span>
+        <span class="post-date">November 2025</span>
+        <span class="post-read">3 min read</span>
+      </div>
+      <h2>How to stay fit as an expat in Geneva</h2>
+      <p>Geneva has one of the highest concentrations of expats in Europe. Long working hours, frequent travel, and a social scene built around restaurants and wine can make staying fit genuinely challenging. Here's what actually works.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>Build a routine around the city, not against it</h3>
+          <p>Geneva's size is an advantage. You can run from your apartment to the lake and back in 30 minutes. The tram network means you can be at a gym anywhere in the city within 20 minutes. The city is small enough that there's no excuse of location — the barrier is usually time and habit, not geography.</p>
+          <h3>Use the travel to your advantage</h3>
+          <p>Most international hotels have gyms. If you're travelling regularly, <strong>a 30-minute bodyweight routine that requires no equipment</strong> is worth learning. The workouts on this site can all be done in a hotel room. Consistency through travel is what separates people who maintain results from those who restart every time they return.</p>
+          <h3>Find a training partner or coach</h3>
+          <p>Accountability is the single biggest predictor of consistency. Whether that's a friend, a running group, or a personal trainer — having someone expecting you makes cancelling significantly harder. Geneva has a strong expat community, and fitness is a natural social connector.</p>
+          <h3>Don't let social eating derail everything</h3>
+          <p>Geneva's restaurant culture is rich and unavoidable. The approach that works is <strong>80/20 — eat well 80% of the time and don't stress the 20%</strong>. Enjoy the fondue. Just don't eat it every day. The guilt spiral from occasional indulgence does more damage than the food itself.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+    <!-- POST 6 — SEO: personal trainer geneva -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Personal Training</span>
+        <span class="post-date">October 2025</span>
+        <span class="post-read">4 min read</span>
+      </div>
+      <h2>How to choose a personal trainer in Geneva</h2>
+      <p>Geneva has many personal trainers. The quality varies enormously. Here's what to look for — and what to avoid — when choosing someone to invest your time and money with.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>Check their qualifications</h3>
+          <p>In Switzerland, the personal training industry is not tightly regulated — anyone can call themselves a personal trainer. Look for internationally recognised qualifications. <strong>CYQ Level 3</strong> (UK) and <strong>NASM</strong> (USA) are the gold standard. Ask to see the certificate. A qualified trainer will never hesitate to show you.</p>
+          <p>Eliza holds a CYQ Level 3 Personal Training qualification alongside a TCMA Nutrition Diploma and a Pre &amp; Post Natal fitness certificate. These are not weekend courses — they require substantial study and practical assessment.</p>
+          <h3>Do they specialise in what you need?</h3>
+          <p>A trainer who works with professional athletes may not be the right fit for post-natal recovery. A trainer who specialises in weight loss may not understand competition prep. Ask about their experience with clients in your specific situation. Ask to see results or speak with a previous client.</p>
+          <h3>Do they ask about you before selling sessions?</h3>
+          <p>A good trainer asks more questions than they answer in an initial conversation. What are your goals? What's your injury history? What have you tried before? What are your time constraints? <strong>A trainer who jumps straight to packages and prices without understanding your situation is a red flag.</strong></p>
+          <h3>Language matters in Geneva</h3>
+          <p>Geneva's expat community means you may want a trainer who can work in your language. Having to translate technical instructions during a session reduces both safety and effectiveness. Eliza trains clients in English, French, Polish and Russian — choose someone you can communicate with naturally.</p>
+          <h3>Personality fit</h3>
+          <p>You will spend a lot of time with this person in a physical and often emotionally demanding context. You need to be able to trust them, be honest with them about how you're feeling, and actually want to turn up. A first session should feel like a conversation, not a sales pitch.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+    <!-- POST 7 — SEO: nutrition coach geneva -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Nutrition</span>
+        <span class="post-date">September 2025</span>
+        <span class="post-read">4 min read</span>
+      </div>
+      <h2>Do you need a nutrition coach in Geneva?</h2>
+      <p>Geneva has one of the highest costs of living in the world — and one of the most food-focused cultures in Europe. Here's when a nutrition coach genuinely helps, and when it doesn't.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>When nutrition coaching makes a real difference</h3>
+          <p><strong>When you're training hard but not seeing results.</strong> Training without the right nutrition is like driving with the handbrake on. If you're consistent in the gym but not changing, food is almost certainly the issue. A nutrition coach helps identify where the problem is — usually not what you think.</p>
+          <p><strong>When you're overwhelmed by conflicting information.</strong> The nutrition space is full of noise — keto, intermittent fasting, clean eating, macro counting. Most of it is overly complicated. A qualified coach cuts through it and builds something practical that fits your life in Geneva.</p>
+          <p><strong>When you're going through a life change.</strong> Pregnancy, post-natal recovery, starting a new demanding job, an injury — life changes affect your nutrition needs significantly. A coach adapts your plan to where you actually are, not where you were six months ago.</p>
+          <h3>What a nutrition coach does NOT do</h3>
+          <p>A nutrition coach is not a dietitian and cannot treat medical conditions. For diagnosed eating disorders, diabetes management or specific clinical conditions, a registered dietitian is the correct professional. Eliza holds a TCMA Nutrition Diploma and works with healthy individuals on performance and body composition goals.</p>
+          <h3>What to expect from nutrition coaching with Eliza</h3>
+          <p>A personalised plan based on your goals, your schedule, your food preferences and what's actually available in Geneva. No extreme restriction. No foods banned. No calorie obsession. A sustainable approach that you can maintain long-term — which is the only approach that actually works.</p>
+          <p>Online nutrition coaching is available worldwide, not just in Geneva — contact Eliza via the <a href="contact.html">contact page</a>.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+    <!-- POST 8 — SEO: pre-natal fitness geneva -->
+    <div class="blog-post">
+      <div class="post-meta">
+        <span class="post-category">Pre &amp; Post Natal</span>
+        <span class="post-date">August 2025</span>
+        <span class="post-read">4 min read</span>
+      </div>
+      <h2>Pre-natal fitness in Geneva — what you need to know</h2>
+      <p>Exercising during pregnancy in Geneva is more accessible than many women realise. Here's a practical guide — what's safe, what to avoid, and how to find the right support.</p>
+      <div class="post-full">
+        <div class="post-body">
+          <h3>Is it safe to exercise during pregnancy in Geneva?</h3>
+          <p>Yes — with appropriate guidance and medical clearance. The Swiss Society of Obstetrics and Gynaecology recommends moderate exercise throughout a healthy pregnancy. The key word is <em>appropriate</em>. Exercise that was suitable before pregnancy may need significant modification, and that's where a certified pre-natal fitness coach is essential.</p>
+          <h3>What changes as pregnancy progresses</h3>
+          <p>First trimester: fatigue and nausea are common. Exercise intensity may naturally reduce. Avoid anything that raises core temperature excessively (hot yoga, saunas). Strength training at moderate intensity is generally safe.</p>
+          <p>Second trimester: often the most comfortable period for exercise. The growing bump requires modifications — lying flat on your back should be avoided from around 20 weeks as it can compress the vena cava. All exercises are modified accordingly.</p>
+          <p>Third trimester: intensity continues to reduce. Focus shifts to pelvic floor, breathing, mobility and preparing the body for labour. Low-impact options — swimming, walking, prenatal yoga — come to the fore.</p>
+          <h3>Why work with a certified pre-natal trainer</h3>
+          <p>Not every personal trainer is qualified to work with pregnant clients. <strong>Eliza holds a specific Pre &amp; Post Natal fitness certification</strong> and has worked with many pregnant and postnatal clients in Geneva. She knows which exercises are safe, which need modification, and which should be avoided entirely at each stage.</p>
+          <h3>Getting started in Geneva</h3>
+          <p>Always get clearance from your gynaecologist or midwife first. Then contact a certified pre-natal trainer. The earlier you start, the better — establishing good habits and maintaining strength in the first trimester makes the whole pregnancy significantly more manageable.</p>
+          <p>Eliza offers pre-natal fitness sessions in Geneva and is available for a free initial consultation. <a href="contact.html">Book via the contact page</a>.</p>
+        </div>
+      </div>
+      <button class="read-more" onclick="togglePost(this)">Read full article →</button>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="blog-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Quick tips</div>
+      <div class="sidebar-tip"><strong>Drink water first</strong>Often what feels like hunger is dehydration. Drink a glass of water and wait 10 minutes before eating.</div>
+      <div class="sidebar-tip"><strong>Sleep is training</strong>Muscle is built during sleep, not during exercise. 7–9 hours isn't optional if you want results.</div>
+      <div class="sidebar-tip"><strong>Prep on Sunday</strong>30 minutes of food prep on Sunday — batch cook a protein, wash salad ingredients — removes all the weekday decisions.</div>
+      <div class="sidebar-tip"><strong>Walk more</strong>10,000 steps a day burns an extra 300–500 calories and requires zero gym time. Geneva is a walking city — use it.</div>
+      <div class="sidebar-tip"><strong>Train before excuses appear</strong>Morning training has a higher completion rate than evening training. The day can't get in the way if you train before it starts.</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">Explore the site</div>
+      <a class="sidebar-link" href="workouts.html">Workout library →</a>
+      <a class="sidebar-link" href="recipes.html">Guilt-free recipes →</a>
+      <a class="sidebar-link" href="prenatal.html">Pre &amp; Post Natal fitness →</a>
+      <a class="sidebar-link" href="faq.html">FAQ →</a>
+      <a class="sidebar-link" href="contact.html">Book a session →</a>
+    </div>
+
+    <div class="sidebar-section" style="background:rgba(200,169,110,0.06);border-color:rgba(200,169,110,0.2);">
+      <div class="sidebar-title">Train with Eliza</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px;">1:1 personal training in Geneva. CYQ Level 3 qualified. Sessions in English, French, Polish or Russian.</p>
+      <a href="contact.html" class="btn btn-primary" style="width:100%;text-align:center;justify-content:center;">Book a session</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+function togglePost(btn) {
+  const post = btn.previousElementSibling;
+  const isOpen = post.classList.contains('open');
+  post.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? 'Read full article →' : 'Close ↑';
+}
+</script>
+</body>
+</html>

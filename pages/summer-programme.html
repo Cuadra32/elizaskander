@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summer Programme 2026 — Get Beach Ready in Geneva — Eliza Skander</title>
+  <meta name="description" content="Eliza Skander's 8-week Summer Programme — get beach ready before July. Personal training and nutrition coaching in Geneva. Limited places available." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .summer-hero {
+      background: linear-gradient(135deg, #1a1a18 0%, #1e2018 50%, #1a1a14 100%);
+      padding: 80px 48px; text-align: center;
+      border-bottom: 0.5px solid rgba(200,169,110,0.15);
+      position: relative; overflow: hidden;
+    }
+    .summer-hero::before {
+      content: '☀️'; font-size: 200px; position: absolute;
+      top: -40px; right: -20px; opacity: 0.06; line-height: 1;
+    }
+    .summer-hero .season-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 16px; }
+    .summer-hero h1 { font-family: var(--serif); font-size: 52px; color: var(--text); line-height: 1.05; margin-bottom: 20px; }
+    .summer-hero h1 em { font-style: italic; color: var(--gold); }
+    .summer-hero p { font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 560px; margin: 0 auto 32px; }
+    .countdown-bar { display: flex; justify-content: center; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+    .countdown-item { text-align: center; }
+    .countdown-num { font-family: var(--serif); font-size: 36px; color: var(--gold); line-height: 1; }
+    .countdown-label { font-size: 10px; color: var(--muted2); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+    .urgency { display: inline-block; background: rgba(220,80,60,0.15); border: 0.5px solid rgba(220,80,60,0.3); border-radius: 50px; padding: 6px 16px; font-size: 12px; color: #e06050; font-weight: 500; margin-bottom: 32px; }
+
+    .programme-details { padding: 64px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-bottom: 0.5px solid rgba(200,169,110,0.1); }
+    .programme-details h2 { font-family: var(--serif); font-size: 28px; margin-bottom: 20px; }
+    .programme-details h2 em { font-style: italic; color: var(--gold); }
+    .week-list { list-style: none; padding: 0; }
+    .week-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 0.5px solid rgba(255,255,255,0.05); }
+    .week-num { font-family: var(--serif); font-size: 18px; color: rgba(200,169,110,0.3); flex-shrink: 0; width: 40px; }
+    .week-content h4 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .week-content p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    .includes-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .include-item { background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
+    .include-item::before { content: '✓'; color: var(--gold); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+    .include-item span { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    .pricing { padding: 64px 48px; border-bottom: 0.5px solid rgba(200,169,110,0.1); }
+    .pricing h2 { font-family: var(--serif); font-size: 28px; margin-bottom: 8px; }
+    .pricing h2 em { font-style: italic; color: var(--gold); }
+    .pricing > p { font-size: 14px; color: var(--muted); margin-bottom: 36px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .pricing-card { background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 28px 24px; transition: border-color .25s; }
+    .pricing-card.featured { border-color: rgba(200,169,110,0.4); background: rgba(200,169,110,0.04); }
+    .pricing-card .plan-name { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .pricing-card .plan-price { font-family: var(--serif); font-size: 36px; color: var(--text); margin-bottom: 4px; }
+    .pricing-card .plan-period { font-size: 12px; color: var(--muted2); margin-bottom: 20px; }
+    .pricing-card ul { list-style: none; padding: 0; margin-bottom: 24px; }
+    .pricing-card ul li { font-size: 13px; color: var(--muted); padding: 6px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04); display: flex; gap: 8px; align-items: flex-start; }
+    .pricing-card ul li::before { content: '✓'; color: var(--gold); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
+    .popular-badge { display: inline-block; font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(200,169,110,0.15); color: var(--gold); padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; }
+
+    @media (max-width: 900px) {
+      .summer-hero { padding: 56px 24px; }
+      .summer-hero h1 { font-size: 36px; }
+      .programme-details { grid-template-columns: 1fr; padding: 48px 24px; }
+      .pricing { padding: 48px 24px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .includes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book Now</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="summer-hero">
+  <span class="season-tag">Limited places · Summer 2026</span>
+  <h1>Get <em>beach ready</em><br>before July</h1>
+  <p>Eliza's 8-week Summer Programme — structured training, personalised nutrition, and the accountability to actually follow through. Designed specifically for Geneva's summer season.</p>
+  <div class="urgency">⚡ Only 6 places remaining for the June start</div>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="contact.html" class="btn btn-primary">Reserve your place →</a>
+    <a href="#programme" class="btn btn-outline">See what's included</a>
+  </div>
+</div>
+
+<!-- PROGRAMME -->
+<div class="programme-details" id="programme">
+  <div>
+    <h2>The 8-week <em>plan</em></h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:28px;">A structured progression that builds week by week — not a crash programme, but a real transformation.</p>
+    <ul class="week-list">
+      <li class="week-item"><div class="week-num">1–2</div><div class="week-content"><h4>Foundation</h4><p>Assess starting point, establish movement patterns, set up nutrition baseline. Moderate intensity.</p></div></li>
+      <li class="week-item"><div class="week-num">3–4</div><div class="week-content"><h4>Build</h4><p>Increase training volume. Introduce HIIT elements. Nutrition dialled in and tracking habits formed.</p></div></li>
+      <li class="week-item"><div class="week-num">5–6</div><div class="week-content"><h4>Push</h4><p>Peak training intensity. Metabolic conditioning. Nutrition refined around energy demands.</p></div></li>
+      <li class="week-item"><div class="week-num">7–8</div><div class="week-content"><h4>Refine &amp; reveal</h4><p>Targeted work on specific areas. Nutrition periodisation for maximum definition. Final push.</p></div></li>
+    </ul>
+  </div>
+  <div>
+    <h2>What's <em>included</em></h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px;">Everything you need — nothing you don't.</p>
+    <div class="includes-grid">
+      <div class="include-item"><span>3× weekly PT sessions (24 total)</span></div>
+      <div class="include-item"><span>Personalised nutrition plan</span></div>
+      <div class="include-item"><span>Weekly check-in and adjustment</span></div>
+      <div class="include-item"><span>Guilt-free recipe guide</span></div>
+      <div class="include-item"><span>WhatsApp support between sessions</span></div>
+      <div class="include-item"><span>Before &amp; after progress photos</span></div>
+      <div class="include-item"><span>Supplement recommendations</span></div>
+      <div class="include-item"><span>Sessions in EN / FR / PL / RU</span></div>
+    </div>
+    <div style="margin-top:24px;background:rgba(200,169,110,0.06);border:0.5px solid rgba(200,169,110,0.2);border-radius:var(--radius-sm);padding:16px 18px;">
+      <p style="font-size:13px;color:var(--muted);margin:0;line-height:1.65;">📍 Sessions at the gym, Rue du Grand-Pré 58, Geneva — or outdoors along Lac Léman when weather allows.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div style="margin:64px 48px;background:rgba(200,169,110,0.06);border:0.5px solid rgba(200,169,110,0.25);border-radius:var(--radius);padding:48px;text-align:center;">
+  <h2 style="font-family:var(--serif);font-size:32px;margin-bottom:12px;">Ready to start your <em>summer transformation?</em></h2>
+  <p style="font-size:15px;color:var(--muted);max-width:480px;margin:0 auto 28px;line-height:1.75;">Send Eliza a message today. Places fill quickly — she only takes a small number of clients at a time to ensure every client gets her full attention.</p>
+  <a href="contact.html" class="btn btn-primary" style="font-size:15px;padding:15px 36px;">Reserve your place →</a>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

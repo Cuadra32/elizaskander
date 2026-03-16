@@ -1,0 +1,148 @@
+/* ── RECIPE PAGE STYLES ───────────────────────────────── */
+.recipe-hero {
+  position: relative; height: 420px; overflow: hidden;
+}
+.recipe-hero-img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  display: block; filter: brightness(0.55);
+}
+.recipe-hero-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 48px;
+}
+.recipe-back {
+  position: absolute; top: 24px; left: 48px;
+  font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7);
+  letter-spacing: 0.06em; text-decoration: none;
+  transition: color .2s;
+}
+.recipe-back:hover { color: var(--gold); }
+.recipe-cat-badge {
+  display: inline-block; font-size: 9px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); padding: 4px 12px; border-radius: 50px;
+  border: 0.5px solid rgba(200,169,110,0.5);
+  margin-bottom: 12px; width: fit-content;
+}
+.recipe-hero-overlay h1 {
+  font-family: var(--serif); font-size: 42px; color: #fff;
+  margin-bottom: 12px; line-height: 1.1;
+}
+.recipe-intro {
+  font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.8);
+  max-width: 600px; line-height: 1.7; margin-bottom: 20px;
+}
+.recipe-meta-bar {
+  display: flex; gap: 20px; flex-wrap: wrap;
+}
+.recipe-meta-bar span {
+  font-size: 12px; color: rgba(255,255,255,0.65);
+  font-weight: 400; letter-spacing: 0.04em;
+}
+
+.recipe-content {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; max-width: 1100px; margin: 0 auto;
+  padding: 56px 48px;
+}
+.recipe-col { padding: 0 32px; }
+.recipe-col:first-child {
+  padding-left: 0;
+  border-right: 0.5px solid rgba(200,169,110,0.1);
+  padding-right: 48px;
+}
+.recipe-col:last-child { padding-left: 48px; padding-right: 0; }
+
+.recipe-section h2 {
+  font-family: var(--serif); font-size: 22px;
+  color: var(--text); margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid rgba(200,169,110,0.2);
+}
+.ingredient-list {
+  list-style: none; padding: 0;
+}
+.ingredient-list li {
+  font-size: 14px; font-weight: 300; color: var(--muted);
+  line-height: 1.6; padding: 10px 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.ingredient-list li::before {
+  content: ''; display: block; flex-shrink: 0;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); margin-top: 7px;
+}
+.method-list {
+  list-style: none; padding: 0; counter-reset: steps;
+}
+.method-list li {
+  font-size: 14px; font-weight: 300; color: var(--muted);
+  line-height: 1.75; padding: 12px 0 12px 44px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  position: relative; counter-increment: steps;
+}
+.method-list li::before {
+  content: counter(steps);
+  position: absolute; left: 0; top: 12px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(200,169,110,0.1);
+  border: 0.5px solid rgba(200,169,110,0.3);
+  color: var(--gold); font-size: 11px; font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Health benefits section */
+.benefits-section {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 48px 56px;
+}
+.benefits-section h2 {
+  font-family: var(--serif); font-size: 22px;
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 0.5px solid rgba(200,169,110,0.2);
+}
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.benefit-item {
+  background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-sm); padding: 14px 16px;
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.benefit-item::before {
+  content: '✓'; color: var(--gold); font-size: 13px;
+  font-weight: 500; flex-shrink: 0;
+}
+
+/* Note box */
+.recipe-note {
+  max-width: 1100px; margin: 0 auto 56px;
+  padding: 0 48px;
+}
+.recipe-note-inner {
+  background: rgba(200,169,110,0.06);
+  border: 0.5px solid rgba(200,169,110,0.2);
+  border-radius: var(--radius); padding: 20px 24px;
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+}
+.recipe-note-inner strong { color: var(--gold); font-weight: 500; }
+
+.recipe-nav-footer {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 48px 56px;
+}
+
+@media (max-width: 768px) {
+  .recipe-hero { height: 360px; }
+  .recipe-hero-overlay { padding: 24px; }
+  .recipe-hero-overlay h1 { font-size: 28px; }
+  .recipe-back { left: 24px; top: 16px; }
+  .recipe-content { grid-template-columns: 1fr; padding: 32px 24px; }
+  .recipe-col:first-child { border-right: none; border-bottom: 0.5px solid rgba(200,169,110,0.1); padding: 0 0 32px; }
+  .recipe-col:last-child { padding: 32px 0 0; }
+  .benefits-section, .recipe-note, .recipe-nav-footer { padding-left: 24px; padding-right: 24px; }
+}

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliza Skander — Personal Trainer & Nutrition Coach, Geneva</title>
+  <meta name="description" content="Personal training and nutrition coaching in Geneva since 2013. Eliza Skander — CYQ Level 3, TCMA Nutrition Diploma, UKBFF 2012 champion. Speaks English, French, Polish and Russian." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+      max-height: 820px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 60px 56px 60px 48px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow-line {
+      width: 32px; height: 1px; background: var(--gold);
+    }
+    .hero-eyebrow span {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .hero-title {
+      font-size: 58px; line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-bio {
+      font-size: 15px; font-weight: 300; color: var(--muted);
+      line-height: 1.75; max-width: 400px; margin-bottom: 36px;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-right {
+      position: relative; background: var(--dark3);
+      overflow: hidden; max-height: 820px;
+    }
+    .hero-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block; max-height: 820px;
+    }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%; min-height: 560px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: var(--dark3);
+      border-left: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .hero-photo-placeholder .initials {
+      font-family: var(--serif); font-size: 120px;
+      color: rgba(200,169,110,0.08); line-height: 1;
+      margin-bottom: 12px;
+    }
+    .hero-photo-placeholder .hint {
+      font-size: 12px; color: var(--muted2);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      background: rgba(22,22,20,0.88);
+      backdrop-filter: blur(8px);
+      border-top: 0.5px solid rgba(200,169,110,0.14);
+    }
+    .hero-stat {
+      padding: 18px 16px; text-align: center;
+      border-right: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: var(--serif); font-size: 24px; color: var(--gold);
+      line-height: 1; margin-bottom: 4px;
+    }
+    .hero-stat-label {
+      font-size: 10px; color: var(--muted); letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── ABOUT STRIP ──────────────────────────────────────── */
+    .about-strip {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .about-left {
+      padding: 72px 48px; border-right: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .about-right {
+      padding: 72px 48px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-right p {
+      font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .about-right p:last-of-type { margin-bottom: 28px; }
+
+    /* ── SERVICES ─────────────────────────────────────────── */
+    .services { padding: 80px 48px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+      margin-top: 48px;
+    }
+    .service-card {
+      background: var(--dark3);
+      border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 36px 28px;
+      transition: border-color .25s, transform .25s;
+    }
+    .service-card:hover {
+      border-color: rgba(200,169,110,0.3); transform: translateY(-4px);
+    }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(200,169,110,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-family: var(--serif); font-size: 20px; margin-bottom: 10px;
+    }
+    .service-card p { font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+    .service-link {
+      font-size: 12px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap .2s;
+    }
+    .service-link:hover { gap: 10px; }
+
+    /* ── CONTENT ROWS ─────────────────────────────────────── */
+    .content-section { padding: 0 48px 80px; }
+    .content-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 32px;
+      padding-top: 80px;
+      border-top: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .content-header h2 {
+      font-family: var(--serif); font-size: 28px;
+    }
+    .see-all {
+      font-size: 11px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap .2s;
+    }
+    .see-all:hover { gap: 10px; }
+    .cards-row {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    .mini-card {
+      background: var(--dark3);
+      border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+      cursor: pointer;
+      transition: border-color .25s, transform .25s;
+    }
+    .mini-card:hover { border-color: rgba(200,169,110,0.28); transform: translateY(-3px); }
+    .mini-card-thumb {
+      height: 130px;
+      background: var(--dark4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+    .mini-card-body { padding: 16px; }
+    .mini-card-body h4 {
+      font-family: var(--serif); font-size: 15px; font-weight: 600;
+      margin-bottom: 4px; line-height: 1.3;
+    }
+    .mini-card-tag {
+      font-size: 10px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* ── CTA BANNER ───────────────────────────────────────── */
+    .cta-banner {
+      margin: 0 48px 80px;
+      background: rgba(200,169,110,0.06);
+      border: 0.5px solid rgba(200,169,110,0.22);
+      border-radius: var(--radius);
+      padding: 56px 48px;
+      display: grid; grid-template-columns: 1fr auto; gap: 48px;
+      align-items: center;
+    }
+    .cta-banner h2 { font-size: 34px; margin-bottom: 12px; }
+    .cta-banner h2 em { font-style: italic; color: var(--gold); }
+    .cta-banner p { font-size: 15px; font-weight: 300; line-height: 1.75; max-width: 480px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .cta-email { font-size: 12px; color: var(--muted2); }
+    .cta-email a { color: var(--gold); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 360px; }
+      .hero-left { padding: 56px 24px; }
+      .hero-title { font-size: 40px; }
+      .about-strip { grid-template-columns: 1fr; }
+      .about-left, .about-right { padding: 48px 24px; }
+      .about-left { border-right: none; border-bottom: 0.5px solid rgba(200,169,110,0.1); }
+      .services { padding: 56px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .content-section { padding: 0 24px 56px; }
+      .content-header { padding-top: 56px; }
+      .cards-row { grid-template-columns: repeat(2,1fr); }
+      .cta-banner { margin: 0 24px 56px; padding: 36px 28px; grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 32px; }
+      .cards-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── REVEAL ANIMATION ─────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .1s; }
+    .reveal-d2 { transition-delay: .2s; }
+    .reveal-d3 { transition-delay: .3s; }
+    .reveal-d4 { transition-delay: .4s; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────────────────────────── -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="pages/workouts.html">Workouts</a></li>
+    <li><a href="pages/recipes.html">Recipes</a></li>
+    <li><a href="pages/transformations.html">Transformations</a></li>
+    <li><a href="pages/shop.html">Shop</a></li>
+    <li><a href="pages/blog.html">Blog</a></li>
+    <li><a href="fr/">🇫🇷</a></li><li><a href="pl/">🇵🇱</a></li><li><a href="ru/">🇷🇺</a></li>
+    <li><a href="pages/contact.html">Contact</a></li>
+  </ul>
+  <a href="pages/contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── SUMMER PROGRAMME BANNER ──────────────────────────────── -->
+<a href="pages/summer-programme.html" style="display:block;background:rgba(200,169,110,0.1);border-bottom:0.5px solid rgba(200,169,110,0.2);padding:12px 48px;text-align:center;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(200,169,110,0.15)'" onmouseout="this.style.background='rgba(200,169,110,0.1)'">
+  <span style="font-size:12px;font-weight:500;color:var(--gold);letter-spacing:0.04em;">☀️ &nbsp;Summer Programme 2026 — Limited places. &nbsp;<span style="text-decoration:underline;">Book now →</span></span>
+</a>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">
+      <span class="hero-eyebrow-line"></span>
+      <span>Personal Trainer · Geneva since 2013</span>
+    </div>
+    <div class="fade-up fade-up-d1" style="margin-bottom:16px;">
+      <div style="font-family:var(--serif);font-size:52px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-0.01em;">Eliza Skander</div>
+    </div>
+    <h1 class="hero-title fade-up fade-up-d2" style="font-size:32px;margin-bottom:20px;">
+      Train smarter,<br>eat <em>better</em>,<br>live stronger.
+    </h1>
+    <p class="hero-bio fade-up fade-up-d2">
+      Based in Geneva since 2013. Qualified personal trainer and nutrition coach
+      helping clients of all levels build strength, lose fat, and feel their best —
+      in English, French, Polish or Russian.
+    </p>
+    <div class="hero-badges fade-up fade-up-d3">
+      <span class="badge">CYQ Level 3 PT</span>
+      <span class="badge">TCMA Nutrition Diploma</span>
+      <span class="badge">Pre &amp; Post Natal</span>
+      <span class="badge">UKBFF 2012 Champion</span>
+    </div>
+    <div class="hero-btns fade-up fade-up-d4">
+      <a href="pages/contact.html" class="btn btn-primary">Book Personal Training</a>
+      <a href="pages/workouts.html" class="btn btn-outline">Explore Workouts</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-photo" src="images/eliza-hero.jpg" alt="Eliza Skander, Personal Trainer Geneva" />
+    <div style="position:absolute;bottom:90px;left:-60px;width:120px;height:160px;border-radius:var(--radius);overflow:hidden;border:3px solid var(--dark);box-shadow:0 8px 32px rgba(0,0,0,0.4);display:none;" class="hero-accent-photo">
+      <img src="images/eliza-deadlift.jpg" alt="Eliza training" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">12+</div>
+        <div class="hero-stat-label">Years in Geneva</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Languages</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Qualifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ABOUT ────────────────────────────────────────────────── -->
+<section class="about-strip">
+  <div class="about-left reveal">
+    <span class="section-tag">My story</span>
+    <h2 class="section-title">Fitness from the<br><em>inside out</em></h2>
+    <div style="margin-top:28px;border-radius:var(--radius);overflow:hidden;">
+      <img src="images/eliza-lunge.jpg" alt="Eliza Skander training in Geneva park" style="width:100%;height:260px;object-fit:cover;object-position:center top;display:block;">
+    </div>
+  </div>
+  <div class="about-right reveal reveal-d1">
+    <p>
+      Hi, I'm Eliza. I arrived in Geneva in 2013 and have been training clients here ever since.
+      Before that, I toured Europe for 11 years as a professional dancer — which gave me a deep
+      understanding of movement, body mechanics, and the discipline it takes to perform at your best.
+    </p>
+    <p>
+      I hold a <strong style="color:var(--text);font-weight:500;">CYQ Level 3 Personal Training</strong> qualification,
+      a <strong style="color:var(--text);font-weight:500;">Nutrition Diploma from TCMA</strong>,
+      and a <strong style="color:var(--text);font-weight:500;">Pre &amp; Post Natal</strong> fitness certificate —
+      so whether you're training for performance, a life event, or recovery after pregnancy,
+      I have the background to support you properly.
+    </p>
+    <p>
+      I work with clients in English, French, Polish and Russian — so language is never a barrier.
+    </p>
+    <a href="pages/contact.html" class="btn btn-gold-outline">Work with me →</a>
+  </div>
+</section>
+
+<!-- ── SERVICES ─────────────────────────────────────────────── -->
+<section class="services">
+  <div class="reveal">
+    <span class="section-tag">What I offer</span>
+    <h2 class="section-title">How I can help</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-d1">
+      <div style="height:180px;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;margin:-36px -28px 20px;">
+        <img src="pages/../images/pt-coaching1.jpg" alt="Personal Training with Eliza" style="width:100%;height:180px;object-fit:cover;object-position:center top;display:block;">
+      </div>
+      <div class="service-icon">🏋️</div>
+      <h3>Personal Training</h3>
+      <p>One-on-one sessions in Geneva tailored to your goals — fat loss, strength, or athletic performance. CYQ Level 3 qualified. Available in English, French, Polish or Russian.</p>
+      <a href="pages/contact.html" class="service-link">Book a session →</a>
+    </div>
+    <div class="service-card reveal reveal-d2">
+      <div class="service-icon">🥗</div>
+      <h3>Nutrition Coaching</h3>
+      <p>TCMA Diploma-qualified nutrition plans and guilt-free recipes that fit real life. Learn to eat well without restriction, using food as fuel — not the enemy.</p>
+      <a href="pages/recipes.html" class="service-link">See recipes →</a>
+    </div>
+    <div class="service-card reveal reveal-d3">
+      <div class="service-icon">🤰</div>
+      <h3>Pre &amp; Post Natal</h3>
+      <p>Certified pre and post natal fitness coaching — safe, effective training adapted to every stage of pregnancy and recovery after birth. You're in expert hands.</p>
+      <a href="pages/contact.html" class="service-link">Find out more →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORKOUTS PREVIEW ──────────────────────────────────────── -->
+<section class="content-section">
+  <div class="content-header reveal">
+    <h2>Featured Workouts</h2>
+    <a href="pages/workouts.html" class="see-all">View all →</a>
+  </div>
+  <div class="cards-row">
+    <a href="pages/workouts.html" class="mini-card reveal reveal-d1">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/workout-squat-press.jpg" alt="Shoulders and Abs" style="width:100%;height:130px;object-fit:cover;object-position:top;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Shoulders &amp; Abs</h4>
+        <span class="mini-card-tag">Strength</span>
+      </div>
+    </a>
+    <a href="pages/workouts.html" class="mini-card reveal reveal-d2">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/workout-kettlebell-swing.jpg" alt="Kettlebell Workout" style="width:100%;height:130px;object-fit:cover;object-position:top;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Kettlebell Workout</h4>
+        <span class="mini-card-tag">Kettlebell</span>
+      </div>
+    </a>
+    <a href="pages/workouts.html" class="mini-card reveal reveal-d3">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/workout-russian-twist.jpg" alt="Core and Cardio" style="width:100%;height:130px;object-fit:cover;object-position:top;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Core &amp; Cardio</h4>
+        <span class="mini-card-tag">Cardio</span>
+      </div>
+    </a>
+    <a href="pages/workouts.html" class="mini-card reveal reveal-d4">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/workout-renegade-row.jpg" alt="Heavy Back Workout" style="width:100%;height:130px;object-fit:cover;object-position:center;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Heavy Back Workout</h4>
+        <span class="mini-card-tag">Strength</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ── RECIPES PREVIEW ───────────────────────────────────────── -->
+<section class="content-section">
+  <div class="content-header reveal">
+    <h2>Guilt-Free Recipes</h2>
+    <a href="pages/recipes.html" class="see-all">View all →</a>
+  </div>
+  <div class="cards-row">
+    <a href="pages/recipes.html" class="mini-card reveal reveal-d1">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/recipe-muffins.jpg" alt="Blueberry Muffins" style="width:100%;height:130px;object-fit:cover;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Blueberry Protein Muffins</h4>
+        <span class="mini-card-tag">Snack</span>
+      </div>
+    </a>
+    <a href="pages/recipes.html" class="mini-card reveal reveal-d2">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/recipe-cookies.jpg" alt="Protein Cookies" style="width:100%;height:130px;object-fit:cover;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Protein Cookies</h4>
+        <span class="mini-card-tag">Snack</span>
+      </div>
+    </a>
+    <a href="pages/recipes.html" class="mini-card reveal reveal-d3">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/recipe-breakfast.jpg" alt="Healthy Breakfast" style="width:100%;height:130px;object-fit:cover;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Healthy Breakfast Bowl</h4>
+        <span class="mini-card-tag">Breakfast</span>
+      </div>
+    </a>
+    <a href="pages/recipes.html" class="mini-card reveal reveal-d4">
+      <div class="mini-card-thumb" style="padding:0;overflow:hidden;"><img src="images/recipe-bbq-skewers.jpg" alt="BBQ Skewers" style="width:100%;height:130px;object-fit:cover;display:block;"></div>
+      <div class="mini-card-body">
+        <h4>Summer BBQ Skewers</h4>
+        <span class="mini-card-tag">Summer</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────────────────── -->
+<section style="padding:80px 48px;border-top:0.5px solid rgba(200,169,110,0.1);">
+  <div class="reveal" style="margin-bottom:16px;">
+    <span class="section-tag">What clients say</span>
+    <h2 class="section-title">Real results, real <em>people</em></h2>
+  </div>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:40px;">⭐⭐⭐⭐⭐ &nbsp;100% recommended · <a href="https://www.facebook.com/elizaskander/reviews" target="_blank" rel="noopener" style="color:var(--gold);">See all reviews on Facebook</a></p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <div class="reveal" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Eliza changed my life! After pregnancy I thought I couldn&#39;t get back into my shape. After a couple of months we could start working out in a gym. We always can not only get back but get even better than before pregnancy. Incredible results! Hard training and all her nutrition tips did a fantastic job on my body. I strongly recommend her!</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">LP</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Lara P.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐ · Post-natal transformation</div></div></div>
+    </div>
+    <div class="reveal reveal-d1" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Eliza has an incredible aptitude for understanding her clients. She has the expertise to not only help the client achieve the desired results but also to maintain them. Her knowledge of training techniques and nutrition makes her exceptional.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">NL</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Natasha Lawrence</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal reveal-d2" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Eliza is a great trainer. Working out with her is fun and very effective. She pushes you and motivates you to work harder and smarter. I have back problems and Eliza made sure to find exercises that were safe. I went from not being able to run to entering and finishing a 10k. I have kept running consistently over 15k a week.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">DO</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Diana O.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐ · Running &amp; strength</div></div></div>
+    </div>
+    <div class="reveal" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Eliza is a wonderful trainer. She listens to your needs, objectives, and designs a training session perfectly adjusted to you. Workouts with her are great, never boring, she is very knowledgeable. She kept me motivated and pushed me just the right amount. Beyond being a great trainer, she is also a wonderful person. I 100% loved each session.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">JF</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Joanna F.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal reveal-d1" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Working with Eliza was a wonderful experience! She linked very successfully my programme with my diet, coaching me on nutrition from the very beginning with immediate results in just 2 weeks. She was very careful showing me how to best use gym equipment. My hour at the gym is now very value adding.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">NT</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Nikos T.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐ · Strength &amp; nutrition</div></div></div>
+    </div>
+    <div class="reveal reveal-d2" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Eliza is amazing. I moved away from Geneva so had to give up my training, which still makes me sad. She&#39;s a wonderful trainer — really knows her stuff, and is also a lovely person to spend time with.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">CW</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Claire W.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">I really enjoyed workouts with Eliza. She is very friendly, fun and motivating but pushing you hard at the same time. I learned many new exercises and the concept of circuit and interval training. She takes well into account any health issues and physical limitations. I also appreciated her flexibility with my work schedule.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">HL</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Hene L.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal reveal-d1" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Working with Eliza was very productive and enjoyable. She gave me a customized exercise plan suitable to my physical stamina. My sessions were very personalized — she explained each move and posture. She made sessions fun while pushing my boundaries. I would highly recommend Eliza to anyone.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">VS</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Vintee S.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal reveal-d2" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">She is really an amazing person first of all. Very patient and makes all my sessions so much fun. Now I look forward to going to the gym. She understands my strengths and limitations and gives great advice on nutrition too.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">SG</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Subashika G.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Eliza was extremely prepared and hardworking. She greatly helped me to shape up. Great process and great result.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">TL</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Thomas L.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal reveal-d1" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">I never worked out in the past or played much sport, so I really had to learn the basics. Eliza was great — encouraging when I was unsure of myself, and pushed me when I needed to do more. I&#39;d highly recommend sessions with her!</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">BM</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Batsi M.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐ · Complete beginner</div></div></div>
+    </div>
+    <div class="reveal reveal-d2" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Thank you for answering all of my questions and demonstrating all of the moves for me. My body is already starting to feel stronger. Thanks for keeping me motivated.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">JM</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Jarle M.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">It was an utmost pleasure to meet you and have you as my coach while making the first steps in fitness. Your guidance was absolutely indispensable, and I&#39;m looking forward to meeting you again!</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">LY</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Lilit Y.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal reveal-d1" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Awesome! Gets you working hard with visible results with creative, interesting ideas.</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">RE</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Rebecca E.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal reveal-d2" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Your training was very appropriate and your tips were great!</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">SK</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Sanili K.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+    <div class="reveal" style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:26px 22px;">
+      <div style="font-size:20px;color:var(--gold);margin-bottom:12px;font-family:var(--serif);">"</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;">Great working out with you! Many thanks for the continuous motivation and positive energy!</p>
+      <div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:rgba(200,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;">AC</div><div><div style="font-size:13px;font-weight:500;color:var(--text);">Andreea C.</div><div style="font-size:10px;color:var(--muted2);">⭐⭐⭐⭐⭐</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MORE FROM ELIZA ─────────────────────────────────────────── -->
+<section style="padding:0 48px 80px;border-top:0.5px solid rgba(200,169,110,0.1);">
+  <div class="reveal" style="margin-bottom:32px;padding-top:56px;">
+    <span class="section-tag">Explore more</span>
+    <h2 class="section-title">More from <em>Eliza</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <a href="pages/blog.html" class="card reveal reveal-d1" style="padding:28px 24px;text-decoration:none;display:block;">
+      <div style="font-size:28px;margin-bottom:14px;">✍️</div>
+      <h3 style="font-family:var(--serif);font-size:18px;margin-bottom:8px;color:var(--text);">Fitness Blog</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;">Geneva training spots, nutrition science, and practical tips from 12 years of coaching.</p>
+      <span style="font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;">Read articles →</span>
+    </a>
+    <a href="pages/prenatal.html" class="card reveal reveal-d2" style="padding:28px 24px;text-decoration:none;display:block;">
+      <div style="font-size:28px;margin-bottom:14px;">🤰</div>
+      <h3 style="font-family:var(--serif);font-size:18px;margin-bottom:8px;color:var(--text);">Pre &amp; Post Natal</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;">Certified pre and post natal fitness coaching. Safe, effective, and adapted to every stage.</p>
+      <span style="font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;">Find out more →</span>
+    </a>
+    <a href="pages/faq.html" class="card reveal reveal-d3" style="padding:28px 24px;text-decoration:none;display:block;">
+      <div style="font-size:28px;margin-bottom:14px;">❓</div>
+      <h3 style="font-family:var(--serif);font-size:18px;margin-bottom:8px;color:var(--text);">FAQ</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;">Everything you need to know before your first session — sessions, languages, pre/post natal and more.</p>
+      <span style="font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;">Read FAQ →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── INSTAGRAM ────────────────────────────────────────────── -->
+<section style="padding:0 48px 80px;border-top:0.5px solid rgba(200,169,110,0.1);">
+  <div class="reveal" style="padding-top:56px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div>
+      <span class="section-tag">Follow along</span>
+      <h2 class="section-title">Instagram <em>@elizaskander</em></h2>
+    </div>
+    <a href="https://www.instagram.com/elizaskander" target="_blank" rel="noopener" class="btn btn-gold-outline">Follow on Instagram →</a>
+  </div>
+  <div style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:40px;text-align:center;">
+    <div style="font-size:36px;margin-bottom:16px;">📸</div>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto 20px;">Follow Eliza on Instagram for daily workout tips, recipe ideas, training videos and behind-the-scenes from Geneva.</p>
+    <a href="https://www.instagram.com/elizaskander" target="_blank" rel="noopener" class="btn btn-primary">@elizaskander →</a>
+    <p style="font-size:11px;color:var(--muted2);margin-top:16px;">To embed your Instagram feed live, connect your Instagram account via <a href="https://www.elfsight.com/instagram-feed-widget/" target="_blank" rel="noopener" style="color:var(--gold);">Elfsight</a> (free plan available) and paste the embed code here.</p>
+  </div>
+</section>
+
+<!-- ── ELIZA RECOMMENDS ────────────────────────────────────────── -->
+<section style="padding:0 48px 80px;border-top:0.5px solid rgba(200,169,110,0.1);">
+  <div class="reveal" style="margin-bottom:32px;padding-top:56px;">
+    <span class="section-tag">Eliza recommends</span>
+    <h2 class="section-title">The best place to buy <em>supplements</em> in Geneva</h2>
+  </div>
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+    <div style="background:var(--dark3);border:0.5px solid rgba(200,169,110,0.2);border-radius:var(--radius);padding:32px 28px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <div style="width:52px;height:52px;border-radius:12px;background:rgba(200,169,110,0.1);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">💪</div>
+        <div>
+          <h3 style="font-family:var(--serif);font-size:22px;color:var(--text);margin-bottom:2px;">Mels Fit Store</h3>
+          <p style="font-size:12px;color:var(--gold);margin:0;">Geneva's best sports nutrition &amp; supplements shop</p>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;">Eliza's recommended shop for protein snacks, sports supplements and fitness gear in Geneva. Excellent range of brands including Optimum Nutrition, Reflex Nutrition, Quest and many more — with expert staff who actually know what they're talking about.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+        <div style="background:var(--dark4);border-radius:var(--radius-sm);padding:12px 14px;">
+          <div style="font-size:10px;font-weight:500;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Address</div>
+          <div style="font-size:13px;color:var(--muted);">Rue de Lyon 10<br>1201 Genève</div>
+        </div>
+        <div style="background:var(--dark4);border-radius:var(--radius-sm);padding:12px 14px;">
+          <div style="font-size:10px;font-weight:500;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Opening hours</div>
+          <div style="font-size:13px;color:var(--muted);">Mon–Fri: 10h–19h<br>Saturday: 10h–18h</div>
+        </div>
+        <div style="background:var(--dark4);border-radius:var(--radius-sm);padding:12px 14px;">
+          <div style="font-size:10px;font-weight:500;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Also online</div>
+          <div style="font-size:13px;color:var(--muted);">Free delivery over 100 CHF</div>
+        </div>
+        <div style="background:var(--dark4);border-radius:var(--radius-sm);padding:12px 14px;">
+          <div style="font-size:10px;font-weight:500;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Loyalty</div>
+          <div style="font-size:13px;color:var(--muted);">7% cashback on every purchase</div>
+        </div>
+      </div>
+      <a href="https://melsfit.ch/en" target="_blank" rel="noopener" class="btn btn-primary">Visit Mels Fit →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:22px 22px;">
+        <h4 style="font-family:var(--serif);font-size:16px;margin-bottom:8px;color:var(--text);">🥛 Protein &amp; supplements</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;">Wide range of protein powders, BCAAs, creatine, pre-workouts and recovery supplements. Brands include Optimum Nutrition, Reflex, Muscletech, Rule 1 and their own Melsfit Performance range.</p>
+      </div>
+      <div style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:22px 22px;">
+        <h4 style="font-family:var(--serif);font-size:16px;margin-bottom:8px;color:var(--text);">🍫 Healthy snacks</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;">Protein bars, healthy cookies, Quest snacks and a great range of guilt-free treats — exactly the kind of thing Eliza features in her recipes. Perfect for post-training or on-the-go nutrition.</p>
+      </div>
+      <div style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);padding:22px 22px;">
+        <h4 style="font-family:var(--serif);font-size:16px;margin-bottom:8px;color:var(--text);">👟 Gear &amp; equipment</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.65;">Training gear, resistance bands, foam rollers, weightlifting shoes and sportswear from Reebok, Under Armour and more. Best prices for sports equipment in Geneva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GENEVA MAP ──────────────────────────────────────────────── -->
+<section style="padding:0 48px 80px;">
+  <div class="reveal" style="margin-bottom:24px;">
+    <span class="section-tag">Find us</span>
+    <h2 class="section-title">Based in <em>Geneva</em></h2>
+    <p style="font-size:14px;color:var(--muted);margin-top:8px;">Rue du Grand-Pré 58, 1202 Genève · Also training outdoors around Lac Léman</p>
+  </div>
+  <div style="border-radius:var(--radius);overflow:hidden;border:0.5px solid rgba(200,169,110,0.15);">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.8!2d6.1420!3d46.2080!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c64b9e7c3d4a3%3A0xcf5a6b2a3b9d8e1f!2sRue+du+Grand-Pr%C3%A9+58%2C+1202+Gen%C3%A8ve!5e0!3m2!1sen!2sch!4v1234567890"
+      width="100%" height="360" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ────────────────────────────────────────────── -->
+<div class="cta-banner reveal">
+  <div>
+    <h2>Ready to train with <em>Eliza</em> in Geneva?</h2>
+    <p>Book a personal training session or drop a message with your goals.
+       Online nutrition coaching is available worldwide.</p>
+  </div>
+  <div class="cta-actions">
+    <a href="pages/contact.html" class="btn btn-primary">Book a Session</a>
+    <span class="cta-email">or email <a href="mailto:elizaskander@yahoo.com">elizaskander@yahoo.com</a></span>
+  </div>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="pages/workouts.html">Workouts</a></li>
+    <li><a href="pages/recipes.html">Recipes</a></li>
+    <li><a href="pages/transformations.html">Transformations</a></li>
+    <li><a href="pages/shop.html">Shop</a></li>
+    <li><a href="pages/prenatal.html">Pre &amp; Post Natal</a></li>
+    <li><a href="pages/blog.html">Blog</a></li>
+    <li><a href="pages/faq.html">FAQ</a></li>
+    <li><a href="pages/summer-programme.html">Summer Programme</a></li>
+    <li><a href="fr/">Français</a></li>
+    <li><a href="pages/privacy.html">Privacy</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva, Switzerland</span>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

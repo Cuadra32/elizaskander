@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipes — Eliza Skander</title>
+  <meta name="description" content="Guilt-free recipes by Eliza Skander — healthy breakfasts, protein snacks, summer dishes and more. All photos taken just before eating." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .filter-bar {
+      padding: 32px 48px;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .filter-label { font-size: 11px; color: var(--muted2); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 4px; }
+    .filter-btn {
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 50px; border: 0.5px solid rgba(200,169,110,0.25);
+      background: transparent; color: var(--muted); cursor: pointer; transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(200,169,110,0.1); color: var(--gold); border-color: rgba(200,169,110,0.5);
+    }
+
+    .recipes-grid {
+      padding: 48px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      align-items: start;
+    }
+    a.recipe-card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      text-decoration: none;
+      background: var(--dark3);
+      border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      overflow: hidden;
+      break-inside: avoid;
+      margin-bottom: 0;
+      transition: border-color .25s, transform .25s;
+    }
+    a.recipe-card:hover { border-color: rgba(200,169,110,0.35); transform: translateY(-4px); }
+    .recipe-thumb {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .recipe-thumb img {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform .4s ease;
+    }
+    a.recipe-card:hover .recipe-thumb img { transform: scale(1.03); }
+    .recipe-view {
+      display: inline-block; margin-top: 14px;
+      font-size: 11px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a.recipe-card:hover .recipe-thumb img { transform: scale(1.03); }
+    .recipe-type {
+      position: absolute; top: 12px; left: 12px;
+      font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 50px;
+      background: rgba(18,18,16,0.85); color: var(--gold);
+      border: 0.5px solid rgba(200,169,110,0.4);
+    }
+    .recipe-body {
+      padding: 20px 22px 22px;
+      flex: 1;
+      display: flex; flex-direction: column;
+    }
+    .recipe-body h3 {
+      font-family: var(--serif); font-size: 19px;
+      color: var(--text); margin-bottom: 8px; line-height: 1.25;
+    }
+    .recipe-body p {
+      font-size: 13px; line-height: 1.65;
+      color: var(--muted); margin-bottom: 14px; flex: 1;
+    }
+    .recipe-meta {
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+      padding-top: 12px; border-top: 0.5px solid rgba(255,255,255,0.06);
+      margin-top: auto;
+    }
+    .recipe-stat { font-size: 11px; color: var(--muted2); }
+    .recipe-stat span { color: var(--gold); font-weight: 500; }
+
+    /* Video section */
+    .video-section {
+      padding: 0 48px 80px;
+      border-top: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .video-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 56px 0 32px;
+    }
+    .video-header h2 { font-family: var(--serif); font-size: 28px; }
+    .video-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .video-card {
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color .25s, transform .25s;
+    }
+    .video-card:hover { border-color: rgba(200,169,110,0.3); transform: translateY(-3px); }
+    .video-thumb {
+      height: 110px; background: var(--dark4);
+      display: flex; align-items: center; justify-content: center; font-size: 32px;
+      position: relative;
+    }
+    .play-icon {
+      position: absolute;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(200,169,110,0.85);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; padding-left: 3px;
+    }
+    .video-body { padding: 14px; }
+    .video-body h4 { font-family: var(--serif); font-size: 14px; margin-bottom: 4px; line-height: 1.3; }
+    .video-tag { font-size: 10px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    @media (max-width: 900px) {
+      .filter-bar { padding: 24px; }
+      .recipes-grid { padding: 24px; column-count: 1; }
+      .video-section { padding: 0 24px 56px; }
+      .video-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 560px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Eat well, feel great</span>
+  <h1>Guilt-free <em>recipes</em></h1>
+  <p>Healthy food that doesn't taste healthy. All photos taken just before eating — nothing is staged.</p>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="breakfast">Breakfast</button>
+  <button class="filter-btn" data-filter="snack">Snacks</button>
+  <button class="filter-btn" data-filter="summer">Summer</button>
+  <button class="filter-btn" data-filter="superfood">Superfoods</button>
+</div>
+
+<div class="recipes-grid">
+
+  <a href="recipes/blueberry-muffins.html" class="recipe-card reveal" data-category="snack">
+    <div class="recipe-thumb"><img src="../images/recipe-muffins.jpg" alt="Blueberry Protein Muffins"><span class="recipe-type">Snack</span></div>
+    <div class="recipe-body">
+      <h3>Blueberry Protein Muffins</h3>
+      <p>Light, fluffy muffins packed with blueberries and protein. Perfect pre or post workout.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Prep: <span>15 min</span></span>
+        <span class="recipe-stat">Cals: <span>~180</span></span>
+        <span class="recipe-stat">High protein</span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+  <a href="recipes/protein-cookies.html" class="recipe-card reveal reveal-d1" data-category="snack">
+    <div class="recipe-thumb"><img src="../images/recipe-cookies.jpg" alt="Protein Cookies"><span class="recipe-type">Snack</span></div>
+    <div class="recipe-body">
+      <h3>Protein Cookies</h3>
+      <p>Crispy on the outside, chewy inside. No refined sugar, full of goodness.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Prep: <span>20 min</span></span>
+        <span class="recipe-stat">Cals: <span>~140</span></span>
+        <span class="recipe-stat">High protein</span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+  <a href="recipes/crunchy-crackers.html" class="recipe-card reveal reveal-d2" data-category="snack">
+    <div class="recipe-thumb"><img src="../images/recipe-crackers.jpg" alt="Crunchy Crackers"><span class="recipe-type">Snack</span></div>
+    <div class="recipe-body">
+      <h3>Crunchy Crackers</h3>
+      <p>Homemade crackers with seeds and spices. Great with hummus or on their own.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Prep: <span>25 min</span></span>
+        <span class="recipe-stat">Vegan</span>
+        <span class="recipe-stat">Gluten-free option</span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+  <a href="recipes/natural-superfoods.html" class="recipe-card reveal reveal-d3" data-category="superfood">
+    <div class="recipe-thumb"><img src="../images/recipe-summer-ingredients.jpg" alt="Natural Superfoods"><span class="recipe-type">Superfoods</span></div>
+    <div class="recipe-body">
+      <h3>Natural Superfoods</h3>
+      <p>Polish sauerkraut salad — a natural probiotic Eliza grew up with in Poland.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Anti-inflammatory</span>
+        <span class="recipe-stat">Energy-boosting</span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+  <a href="recipes/healthy-breakfast.html" class="recipe-card reveal" data-category="breakfast">
+    <div class="recipe-thumb"><img src="../images/recipe-breakfast.jpg" alt="Healthy Breakfast Bowl"><span class="recipe-type">Breakfast</span></div>
+    <div class="recipe-body">
+      <h3>Healthy Breakfast Bowl</h3>
+      <p>Balanced macros, beautiful colours. The bowl that powers Eliza's morning workouts.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Prep: <span>10 min</span></span>
+        <span class="recipe-stat">Cals: <span>~350</span></span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+  <a href="recipes/summer-recipes.html" class="recipe-card reveal reveal-d1" data-category="summer">
+    <div class="recipe-thumb"><img src="../images/recipe-salmon.jpg" alt="Summer Salmon Recipe"><span class="recipe-type">Summer</span></div>
+    <div class="recipe-body">
+      <h3>Summer Recipes</h3>
+      <p>Asian-inspired salmon with fennel salad — light, fresh and full of flavour.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Seasonal</span>
+        <span class="recipe-stat">High protein</span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+  <a href="recipes/bbq-skewers.html" class="recipe-card reveal reveal-d2" data-category="summer">
+    <div class="recipe-thumb"><img src="../images/recipe-bbq-skewers.jpg" alt="Summer BBQ Skewers"><span class="recipe-type">Summer</span></div>
+    <div class="recipe-body">
+      <h3>Summer BBQ Skewers</h3>
+      <p>Marinated chicken skewers — as healthy as they are crowd-pleasing.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Prep: <span>30 min</span></span>
+        <span class="recipe-stat">High protein</span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+  <a href="recipes/summer-recipes-2.html" class="recipe-card reveal reveal-d3" data-category="summer">
+    <div class="recipe-thumb"><img src="../images/recipe-summer2.jpg" alt="Cauliflower Tabbouleh"><span class="recipe-type">Summer</span></div>
+    <div class="recipe-body">
+      <h3>Summer Recipes No. 2</h3>
+      <p>Cauliflower tabbouleh with carrot, herbs and red onion — grain-free and delicious.</p>
+      <div class="recipe-meta">
+        <span class="recipe-stat">Seasonal</span>
+        <span class="recipe-stat">Grain-free</span>
+      </div>
+      <span class="recipe-view">View recipe →</span>
+    </div>
+  </a>
+
+</div>
+
+<!-- VIDEO RECIPES -->
+<div class="video-section">
+  <div class="video-header reveal">
+    <h2>Video Recipes</h2>
+  </div>
+  <div class="video-grid">
+    <div class="video-card reveal" style="grid-column: span 2;">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;">
+        <iframe
+          src="https://www.youtube.com/embed/McIVVJW8nHs"
+          title="Protein Egg Bread Part 1 — Eliza Skander"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+        </iframe>
+      </div>
+      <div class="video-body">
+        <h4>Protein Egg Bread — Part 1</h4>
+        <span class="video-tag">Breakfast · Video Recipe</span>
+      </div>
+    </div>
+    <div class="video-card reveal reveal-d1" style="grid-column: span 2;">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;">
+        <iframe
+          src="https://www.youtube.com/embed/dLK8iZ_gdvg"
+          title="Protein Egg Bread Part 2 — Eliza Skander"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+        </iframe>
+      </div>
+      <div class="video-body">
+        <h4>Protein Egg Bread — Part 2</h4>
+        <span class="video-tag">Breakfast · Video Recipe</span>
+      </div>
+    </div>
+    <div class="video-card reveal reveal-d2" style="grid-column: span 2;">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;">
+        <iframe
+          src="https://www.youtube.com/embed/o2w4pv3voEs"
+          title="Brunch Preparation — Eliza Skander"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+        </iframe>
+      </div>
+      <div class="video-body">
+        <h4>Brunch Preparation</h4>
+        <span class="video-tag">Brunch · Video Recipe</span>
+      </div>
+    </div>
+    <div class="video-card reveal reveal-d3" style="grid-column: span 2;">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;">
+        <iframe
+          src="https://www.youtube.com/embed/Ndfaql5J6Qo"
+          title="Sunday Brunch — Eliza Skander"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+        </iframe>
+      </div>
+      <div class="video-body">
+        <h4>Sunday Brunch</h4>
+        <span class="video-tag">Brunch · Video Recipe</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  const btns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.recipe-card');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => {
+        const cat = c.dataset.category || '';
+        c.style.display = (f === 'all' || cat.includes(f)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

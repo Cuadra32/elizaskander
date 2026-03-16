@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transformations — Eliza Skander</title>
+  <meta name="description" content="Real body transformation results from Eliza Skander's personal training and nutrition coaching clients." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .categories {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .category-block {
+      padding: 48px;
+      border-right: 0.5px solid rgba(200,169,110,0.1);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .category-block:last-child { border-right: none; }
+    .category-block:hover { background: rgba(200,169,110,0.04); }
+    .category-block.active { background: rgba(200,169,110,0.06); }
+    .category-icon { font-size: 32px; margin-bottom: 12px; }
+    .category-block h3 { font-family: var(--serif); font-size: 20px; margin-bottom: 6px; }
+    .category-block p { font-size: 13px; line-height: 1.6; }
+
+    .transforms-grid {
+      padding: 56px 48px 80px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .transform-card {
+      background: var(--dark3);
+      border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color .25s, transform .25s;
+    }
+    .transform-card:hover { border-color: rgba(200,169,110,0.3); transform: translateY(-4px); }
+    .transform-photos {
+      display: grid; grid-template-columns: 1fr 1fr;
+      height: 200px; position: relative;
+    }
+    .before-photo, .after-photo {
+      background: var(--dark4);
+      display: flex; align-items: center; justify-content: center; font-size: 40px;
+    }
+    .after-photo { background: var(--dark2); }
+    .photo-label {
+      position: absolute; bottom: 8px;
+      font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 4px; background: rgba(22,22,20,0.8);
+    }
+    .before-label { left: 8px; color: var(--muted); }
+    .after-label { right: 8px; color: var(--gold); }
+    .arrow-divider {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(200,169,110,0.9);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: var(--dark); z-index: 1;
+    }
+    .transform-body { padding: 20px 22px 24px; }
+    .transform-body h3 { font-family: var(--serif); font-size: 18px; margin-bottom: 8px; }
+    .transform-body p { font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
+    .transform-stats {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      padding-top: 14px; border-top: 0.5px solid rgba(255,255,255,0.06);
+    }
+    .transform-stat { font-size: 11px; color: var(--muted2); }
+    .transform-stat span { color: var(--gold); font-weight: 500; }
+
+    .cta-strip {
+      margin: 0 48px 80px;
+      background: rgba(200,169,110,0.06);
+      border: 0.5px solid rgba(200,169,110,0.2);
+      border-radius: var(--radius);
+      padding: 48px; text-align: center;
+    }
+    .cta-strip h2 { font-size: 32px; margin-bottom: 12px; }
+    .cta-strip h2 em { font-style: italic; color: var(--gold); }
+    .cta-strip p { font-size: 15px; max-width: 460px; margin: 0 auto 28px; }
+
+    @media (max-width: 900px) {
+      .categories { grid-template-columns: 1fr; }
+      .category-block { border-right: none; border-bottom: 0.5px solid rgba(200,169,110,0.1); padding: 32px 24px; }
+      .transforms-grid { padding: 32px 24px 56px; grid-template-columns: 1fr; }
+      .cta-strip { margin: 0 24px 56px; padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Real results</span>
+  <h1>Body <em>transformations</em></h1>
+  <p>Real clients, real results. These are the people who put in the work — and what's possible when you do.</p>
+</div>
+
+<div class="categories">
+  <div class="category-block reveal">
+    <div class="category-icon">🏆</div>
+    <h3>Professional Sports</h3>
+    <p>Athletes who trained with Eliza to reach peak competitive condition.</p>
+  </div>
+  <div class="category-block reveal reveal-d1">
+    <div class="category-icon">👩</div>
+    <h3>Women's Transformation</h3>
+    <p>Body composition changes, strength gains, and confidence built from the ground up.</p>
+  </div>
+  <div class="category-block reveal reveal-d2">
+    <div class="category-icon">👨</div>
+    <h3>Men's Transformation</h3>
+    <p>Fat loss, muscle building, and complete lifestyle overhauls.</p>
+  </div>
+</div>
+
+<div class="transforms-grid">
+
+  <!-- MEN -->
+  <div class="transform-card reveal" style="grid-column: span 3;">
+    <div class="transform-body" style="padding-bottom:0;">
+      <h3 style="font-family:var(--serif);font-size:22px;color:var(--text);margin-bottom:4px;">Men's Recomposition</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:0;">From casual fitness to a completely transformed physique. Lean muscle built, body fat lost, confidence gained.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:0;margin-top:16px;min-height:300px;">
+      <div style="position:relative;overflow:hidden;background:var(--dark4);">
+        <img src="../images/transform-men1.jpg" alt="Men's body transformation" style="width:100%;height:100%;object-fit:contain;display:block;">
+        <span class="photo-label after-label" style="position:absolute;bottom:8px;right:8px;">After</span>
+      </div>
+      <div style="position:relative;">
+        <iframe src="https://www.youtube.com/embed/ZX9319nu-uA" title="Men's Transformation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- WOMEN -->
+  <div class="transform-card reveal reveal-d1" style="grid-column: span 3;">
+    <div class="transform-body" style="padding-bottom:0;">
+      <h3 style="font-family:var(--serif);font-size:22px;color:var(--text);margin-bottom:4px;">Women's Transformation</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:0;">A remarkable total body change — stronger, leaner and more athletic through consistent training and smart nutrition.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;gap:0;margin-top:16px;min-height:320px;">
+      <div style="position:relative;overflow:hidden;background:var(--dark4);">
+        <img src="../images/transform-women-before.jpg" alt="Women transformation before" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+        <span class="photo-label before-label" style="position:absolute;bottom:8px;left:8px;">Before</span>
+      </div>
+      <div style="position:relative;overflow:hidden;background:var(--dark4);">
+        <img src="../images/transform-women-after.jpg" alt="Women transformation after" style="width:100%;height:100%;object-fit:contain;display:block;">
+        <span class="photo-label after-label" style="position:absolute;bottom:8px;right:8px;">After</span>
+      </div>
+      <div style="position:relative;">
+        <iframe src="https://www.youtube.com/embed/vRYwH9rMdhA" title="Women's Transformation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTH -->
+  <div class="transform-card reveal reveal-d2">
+    <div class="transform-body" style="padding-bottom:0;">
+      <h3 style="font-family:var(--serif);font-size:22px;color:var(--text);margin-bottom:4px;">Youth Weight Loss</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:0;">A life-changing result — significant weight lost, confidence completely transformed.</p>
+    </div>
+    <div style="margin-top:16px;position:relative;overflow:hidden;">
+      <img src="../images/transform-young.jpg" alt="Youth weight loss transformation" style="width:100%;height:280px;object-fit:contain;background:var(--dark4);display:block;">
+      <span class="photo-label before-label" style="position:absolute;bottom:8px;left:8px;">Before</span>
+      <span class="photo-label after-label" style="position:absolute;bottom:8px;right:8px;">After</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROFESSIONAL SPORTS VIDEO -->
+<div style="padding: 0 48px 56px;">
+  <div style="padding: 56px 0 28px; border-top: 0.5px solid rgba(200,169,110,0.1);">
+    <span class="section-tag">Professional Sports</span>
+    <h2 style="font-family:var(--serif);font-size:28px;margin-top:6px;">Eliza in action</h2>
+  </div>
+  <div style="background:var(--dark3);border:0.5px solid rgba(255,255,255,0.06);border-radius:var(--radius);overflow:hidden;max-width:800px;">
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+      <iframe
+        src="https://www.youtube.com/embed/rqfpZY7bneM"
+        title="Professional Sports — Eliza Skander"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;">
+      </iframe>
+    </div>
+    <div style="padding:20px 24px;">
+      <h3 style="font-family:var(--serif);font-size:18px;margin-bottom:6px;">Professional Sports Training</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;">Eliza working with professional sports clients — specialist training programmes built around peak athletic performance.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="cta-strip reveal">
+  <h2>Could this be <em>your</em> transformation?</h2>
+  <p>Every journey starts with a conversation. Tell Eliza your goals and she'll tell you what's possible.</p>
+  <a href="contact.html" class="btn btn-primary">Start your journey</a>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

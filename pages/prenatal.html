@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre &amp; Post Natal Fitness Geneva — Eliza Skander</title>
+  <meta name="description" content="Certified pre and post natal fitness coaching in Geneva with Eliza Skander. Safe exercise during pregnancy and postnatal recovery programmes." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .prenatal-hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--dark2);
+      border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .prenatal-hero-left { padding: 72px 48px; }
+    .prenatal-hero-left h1 { font-size: 42px; margin-bottom: 16px; line-height: 1.1; }
+    .prenatal-hero-left h1 em { font-style: italic; color: var(--gold); }
+    .prenatal-hero-left p { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 420px; margin-bottom: 28px; }
+    .prenatal-hero-right {
+      padding: 72px 48px;
+      background: rgba(200,169,110,0.04);
+      border-left: 0.5px solid rgba(200,169,110,0.1);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .cert-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(200,169,110,0.08); border: 0.5px solid rgba(200,169,110,0.25);
+      border-radius: var(--radius); padding: 14px 20px; margin-bottom: 12px;
+    }
+    .cert-badge-icon { font-size: 22px; }
+    .cert-badge-text h4 { font-family: var(--serif); font-size: 15px; margin-bottom: 2px; }
+    .cert-badge-text p { font-size: 12px; color: var(--muted); margin: 0; }
+
+    .trimesters {
+      padding: 72px 48px;
+      border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .trimesters h2 { font-family: var(--serif); font-size: 30px; margin-bottom: 8px; }
+    .trimesters h2 em { font-style: italic; color: var(--gold); }
+    .trimesters > p { font-size: 15px; color: var(--muted); margin-bottom: 40px; }
+    .trimester-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .trimester-card {
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 28px 24px;
+      transition: border-color .25s;
+    }
+    .trimester-card:hover { border-color: rgba(200,169,110,0.3); }
+    .trimester-num {
+      font-family: var(--serif); font-size: 48px; color: rgba(200,169,110,0.2);
+      line-height: 1; margin-bottom: 8px;
+    }
+    .trimester-card h3 { font-family: var(--serif); font-size: 18px; margin-bottom: 12px; color: var(--gold); }
+    .trimester-card p { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+    .exercise-list { list-style: none; padding: 0; }
+    .exercise-list li {
+      font-size: 13px; color: var(--muted); padding: 6px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.04);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .exercise-list li::before { content: '✓'; color: var(--gold); font-size: 11px; flex-shrink: 0; }
+    .avoid-list li::before { content: '✗'; color: #e06050; }
+
+    .postnatal { padding: 72px 48px; background: var(--dark2); border-bottom: 0.5px solid rgba(200,169,110,0.1); }
+    .postnatal h2 { font-family: var(--serif); font-size: 30px; margin-bottom: 8px; }
+    .postnatal h2 em { font-style: italic; color: var(--gold); }
+    .postnatal > p { font-size: 15px; color: var(--muted); margin-bottom: 40px; }
+    .postnatal-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .postnatal-card {
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 28px 24px;
+    }
+    .postnatal-card h3 { font-family: var(--serif); font-size: 18px; margin-bottom: 8px; color: var(--text); }
+    .postnatal-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .timeline-badge {
+      display: inline-block; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+      padding: 3px 10px; border-radius: 50px;
+      border: 0.5px solid rgba(200,169,110,0.35); margin-bottom: 10px;
+    }
+
+    .benefits-strip { padding: 72px 48px; border-bottom: 0.5px solid rgba(200,169,110,0.1); }
+    .benefits-strip h2 { font-family: var(--serif); font-size: 30px; margin-bottom: 40px; }
+    .benefits-strip h2 em { font-style: italic; color: var(--gold); }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .benefit-card {
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-sm); padding: 20px;
+    }
+    .benefit-icon { font-size: 24px; margin-bottom: 10px; }
+    .benefit-card h4 { font-family: var(--serif); font-size: 15px; margin-bottom: 6px; }
+    .benefit-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .prenatal-hero { grid-template-columns: 1fr; }
+      .prenatal-hero-right { border-left: none; border-top: 0.5px solid rgba(200,169,110,0.1); padding: 40px 24px; }
+      .prenatal-hero-left { padding: 48px 24px; }
+      .trimesters, .postnatal, .benefits-strip { padding: 48px 24px; }
+      .trimester-grid { grid-template-columns: 1fr; }
+      .postnatal-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="prenatal-hero">
+  <div class="prenatal-hero-left">
+    <span class="section-tag">Certified coaching</span>
+    <h1>Pre &amp; Post Natal<br><em>Fitness</em></h1>
+    <p>Your body is doing something extraordinary. The right exercise — guided by someone certified to work with you — keeps you strong, reduces discomfort, and sets you up for a faster recovery after birth.</p>
+    <a href="contact.html" class="btn btn-primary">Book a consultation</a>
+  </div>
+  <div class="prenatal-hero-right">
+    <p style="font-size:12px;color:var(--muted2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Qualifications</p>
+    <div class="cert-badge">
+      <div class="cert-badge-icon">🤰</div>
+      <div class="cert-badge-text">
+        <h4>Pre &amp; Post Natal Fitness</h4>
+        <p>Certified specialist qualification</p>
+      </div>
+    </div>
+    <div class="cert-badge">
+      <div class="cert-badge-icon">🏋️</div>
+      <div class="cert-badge-text">
+        <h4>CYQ Level 3 Personal Training</h4>
+        <p>Nationally recognised PT qualification</p>
+      </div>
+    </div>
+    <div class="cert-badge">
+      <div class="cert-badge-icon">🥗</div>
+      <div class="cert-badge-text">
+        <h4>TCMA Nutrition Diploma</h4>
+        <p>Specialist nutrition coaching</p>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:16px;background:rgba(200,169,110,0.06);border-radius:var(--radius-sm);border:0.5px solid rgba(200,169,110,0.2);">
+      <p style="font-size:13px;color:var(--muted);margin:0;line-height:1.65;">Sessions available in Geneva · English, French, Polish &amp; Russian</p>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="benefits-strip">
+  <h2>Why exercise during <em>pregnancy?</em></h2>
+  <div class="benefits-grid">
+    <div class="benefit-card"><div class="benefit-icon">💪</div><h4>Maintains strength</h4><p>Keeps muscles strong to support your changing body and carry the extra weight comfortably.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">😴</div><h4>Improves sleep</h4><p>Regular moderate exercise is proven to improve sleep quality during pregnancy.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🧠</div><h4>Reduces anxiety</h4><p>Exercise releases endorphins that help manage the emotional challenges of pregnancy.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🔙</div><h4>Reduces back pain</h4><p>Targeted core and back strengthening significantly reduces the back pain common in pregnancy.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">🏃</div><h4>Faster recovery</h4><p>Women who exercise during pregnancy typically experience faster postnatal recovery.</p></div>
+    <div class="benefit-card"><div class="benefit-icon">❤️</div><h4>Better birth outcomes</h4><p>Research shows regular exercise is associated with shorter labour and lower C-section rates.</p></div>
+  </div>
+</div>
+
+<!-- TRIMESTERS -->
+<div class="trimesters">
+  <h2>Exercise by <em>trimester</em></h2>
+  <p>Every trimester requires a different approach. Eliza adjusts your programme as your pregnancy progresses.</p>
+  <div class="trimester-grid">
+
+    <div class="trimester-card">
+      <div class="trimester-num">1</div>
+      <h3>First Trimester</h3>
+      <p>Weeks 1–12. Energy levels vary and nausea may be present. Focus on maintaining existing fitness and building good habits.</p>
+      <ul class="exercise-list">
+        <li>Strength training (moderate intensity)</li>
+        <li>Walking and light jogging</li>
+        <li>Swimming</li>
+        <li>Yoga and pilates</li>
+        <li>Core stabilisation exercises</li>
+      </ul>
+    </div>
+
+    <div class="trimester-card">
+      <div class="trimester-num">2</div>
+      <h3>Second Trimester</h3>
+      <p>Weeks 13–26. Often the most comfortable trimester. Modify as bump grows — avoid lying flat on your back.</p>
+      <ul class="exercise-list">
+        <li>Modified strength training</li>
+        <li>Brisk walking</li>
+        <li>Swimming and aqua aerobics</li>
+        <li>Stationary cycling</li>
+        <li>Pelvic floor exercises (essential)</li>
+      </ul>
+    </div>
+
+    <div class="trimester-card">
+      <div class="trimester-num">3</div>
+      <h3>Third Trimester</h3>
+      <p>Weeks 27–40. Intensity reduces. Focus on mobility, breathing, pelvic floor, and preparing the body for labour.</p>
+      <ul class="exercise-list">
+        <li>Gentle walking</li>
+        <li>Swimming</li>
+        <li>Prenatal yoga</li>
+        <li>Pelvic floor and breathing work</li>
+        <li>Light resistance bands</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- POSTNATAL -->
+<div class="postnatal">
+  <h2>Postnatal <em>recovery</em></h2>
+  <p>Recovery is individual. Eliza builds your programme around where you actually are — never rushing the process.</p>
+  <div class="postnatal-grid">
+
+    <div class="postnatal-card">
+      <span class="timeline-badge">0–6 weeks</span>
+      <h3>Early Recovery</h3>
+      <p>Gentle movement only. Short walks, breathing exercises and very light pelvic floor activation. No structured exercise until medical clearance. Eliza can guide you on what is and isn't appropriate during this window.</p>
+    </div>
+
+    <div class="postnatal-card">
+      <span class="timeline-badge">6–12 weeks</span>
+      <h3>Return to Movement</h3>
+      <p>Following 6-week check (or 8–12 weeks post C-section), structured exercise can begin. Focus on core rehabilitation, pelvic floor strengthening, and rebuilding basic strength. Diastasis recti assessment included.</p>
+    </div>
+
+    <div class="postnatal-card">
+      <span class="timeline-badge">3–6 months</span>
+      <h3>Rebuilding Strength</h3>
+      <p>Progressive return to full training. Strength work intensifies, cardio builds back up, and body composition goals can be addressed. Nutrition coaching is particularly valuable during this phase, especially if breastfeeding.</p>
+    </div>
+
+    <div class="postnatal-card">
+      <span class="timeline-badge">6+ months</span>
+      <h3>Full Programme</h3>
+      <p>Return to full training with goals — whether that's weight loss, athletic performance, or simply feeling like yourself again. Many of Eliza's most dramatic transformation results have been postnatal clients.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div style="margin:0 48px 80px;background:rgba(200,169,110,0.06);border:0.5px solid rgba(200,169,110,0.2);border-radius:var(--radius);padding:48px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;">
+  <div>
+    <h2 style="font-family:var(--serif);font-size:28px;margin-bottom:10px;">Ready to start? <em>Let's talk.</em></h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:480px;">Whether you're newly pregnant, in your third trimester, or recovering after birth — the best time to start is now. Book a free consultation with Eliza to discuss your situation and goals.</p>
+  </div>
+  <a href="contact.html" class="btn btn-primary">Book a consultation</a>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
