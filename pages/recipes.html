@@ -162,7 +162,7 @@
 </div>
 
 <!-- FREE EBOOK DOWNLOAD BANNER -->
-<div style="margin:0;padding:32px 48px;background:linear-gradient(135deg,rgba(200,169,110,0.08),rgba(200,169,110,0.03));border-bottom:0.5px solid rgba(200,169,110,0.2);display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;">
+<div style="margin:0;padding:32px 48px;background:linear-gradient(135deg,rgba(200,169,110,0.08),rgba(200,169,110,0.03));border-bottom:0.5px solid rgba(200,169,110,0.2);display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;opacity:1;transform:none;">
   <div style="font-size:48px;line-height:1;">📖</div>
   <div>
     <h3 style="font-family:var(--serif);font-size:20px;color:var(--text);margin-bottom:4px;">Download the free recipe ebook</h3>
@@ -387,7 +387,7 @@
       const f = btn.dataset.filter;
       cards.forEach(c => {
         const cat = c.dataset.category || '';
-        c.style.display = (f === 'all' || cat.includes(f)) ? '' : 'none';
+        c.style.display = (f === 'all' || cat.includes(f)) ? 'flex' : 'none';
       });
     });
   });
