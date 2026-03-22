@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Downloads — Eliza Skander Recipes, Meal Plans & Workout Programmes</title>
+  <meta name="description" content="Downloadable recipes, meal plans and workout programmes from Eliza Skander. Guilt-free recipe ebook, seasonal meal plans, 8-week training programmes — Geneva personal trainer." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .downloads-grid { padding: 56px 48px 80px; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+
+    .download-card {
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .25s, border-color .25s;
+    }
+    .download-card:hover { transform: translateY(-5px); border-color: rgba(200,169,110,0.3); }
+    .download-card.featured { border-color: rgba(200,169,110,0.4); }
+
+    .download-thumb {
+      height: 160px; display: flex; align-items: center; justify-content: center;
+      font-size: 64px; position: relative;
+    }
+    .download-thumb.gold-bg  { background: linear-gradient(135deg,rgba(200,169,110,0.15),rgba(200,169,110,0.05)); }
+    .download-thumb.sage-bg  { background: linear-gradient(135deg,rgba(74,124,89,0.15),rgba(74,124,89,0.05)); }
+    .download-thumb.blue-bg  { background: linear-gradient(135deg,rgba(46,95,163,0.15),rgba(46,95,163,0.05)); }
+    .download-thumb.terra-bg { background: linear-gradient(135deg,rgba(196,96,74,0.15),rgba(196,96,74,0.05)); }
+
+    .free-pill {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(74,124,89,0.9); color: #fff;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 4px 10px; border-radius: 50px; text-transform: uppercase;
+    }
+    .price-pill {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(200,169,110,0.9); color: #161614;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 50px;
+    }
+    .soon-pill {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,255,255,0.1); color: var(--muted2);
+      font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 4px 10px; border-radius: 50px; text-transform: uppercase;
+    }
+
+    .download-body { padding: 24px 22px; flex: 1; display: flex; flex-direction: column; }
+    .download-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .download-body h3 { font-family: var(--serif); font-size: 20px; color: var(--text); margin-bottom: 8px; line-height: 1.2; }
+    .download-body p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; flex: 1; }
+    .download-includes { list-style: none; padding: 0; margin-bottom: 20px; }
+    .download-includes li { font-size: 12px; color: var(--muted); padding: 5px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04); display: flex; gap: 8px; }
+    .download-includes li::before { content: '✓'; color: var(--gold); flex-shrink: 0; font-size: 10px; margin-top: 1px; }
+
+    .btn-download { width: 100%; text-align: center; justify-content: center; padding: 12px; border-radius: var(--radius-sm); }
+    .btn-free { background: rgba(74,124,89,0.15); color: #5fa876; border: 0.5px solid rgba(74,124,89,0.3); }
+    .btn-free:hover { background: rgba(74,124,89,0.25); }
+    .btn-coming { background: rgba(255,255,255,0.05); color: var(--muted2); border: 0.5px solid rgba(255,255,255,0.08); cursor: default; }
+
+    .gumroad-note {
+      margin: 0 48px 24px;
+      background: rgba(200,169,110,0.06); border: 0.5px solid rgba(200,169,110,0.2);
+      border-radius: var(--radius-sm); padding: 16px 20px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .gumroad-note p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.65; }
+    .gumroad-note strong { color: var(--text); }
+
+    .coming-banner {
+      margin: 0 48px 56px;
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); padding: 32px 36px;
+      display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+    }
+    .coming-banner h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 8px; }
+    .coming-banner p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    @media (max-width: 900px) {
+      .downloads-grid { grid-template-columns: 1fr; padding: 40px 24px; }
+      .gumroad-note, .coming-banner { margin-left: 24px; margin-right: 24px; }
+      .coming-banner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Digital downloads</span>
+  <h1>Recipes, meal plans &amp; <em>programmes</em></h1>
+  <p>Everything Eliza has created — downloadable, printable and yours to keep. From a free recipe ebook to full training and nutrition programmes.</p>
+</div>
+
+<div class="downloads-grid">
+
+  <!-- FREE EBOOK -->
+  <div class="download-card featured reveal">
+    <div class="download-thumb gold-bg">
+      📖
+      <span class="free-pill">Free</span>
+    </div>
+    <div class="download-body">
+      <div class="download-tag">Recipe Ebook</div>
+      <h3>Guilt-Free Recipes</h3>
+      <p>All 8 of Eliza's signature recipes in one beautifully designed PDF. Print it, save it, use it every week.</p>
+      <ul class="download-includes">
+        <li>8 complete recipes with photos</li>
+        <li>Macros for every recipe</li>
+        <li>Eliza's personal tips on each</li>
+        <li>Breakfast, snacks, mains & salads</li>
+        <li>Printable A4 format</li>
+      </ul>
+      <a href="../eliza-guilt-free-recipes.pdf" download="Eliza-Skander-Guilt-Free-Recipes.pdf" class="btn btn-primary btn-download">⬇ Download free</a>
+    </div>
+  </div>
+
+  <!-- SUMMER MEAL PLAN -->
+  <div class="download-card reveal reveal-d1">
+    <div class="download-thumb sage-bg">
+      ☀️
+      <span class="price-pill">CHF 12</span>
+    </div>
+    <div class="download-body">
+      <div class="download-tag">Meal Plan</div>
+      <h3>Summer Lean Plan</h3>
+      <p>A full 4-week summer nutrition plan — light, fresh and designed for fat loss without feeling restricted. Perfect for Geneva summers.</p>
+      <ul class="download-includes">
+        <li>4-week meal plan with daily menus</li>
+        <li>Shopping list for each week</li>
+        <li>20+ seasonal recipes included</li>
+        <li>Macros and calorie targets</li>
+        <li>Suitable for all activity levels</li>
+      </ul>
+      <a href="https://elizaskander.gumroad.com/l/zxzbnk" target="_blank" rel="noopener" class="btn btn-primary btn-download">Buy for CHF 12 →</a>
+    </div>
+  </div>
+
+  <!-- POST-NATAL NUTRITION PLAN -->
+  <div class="download-card reveal reveal-d2">
+    <div class="download-thumb terra-bg">
+      🤰
+      <span class="price-pill">CHF 12</span>
+    </div>
+    <div class="download-body">
+      <div class="download-tag">Meal Plan</div>
+      <h3>Post-Natal Nutrition Plan</h3>
+      <p>A 4-week nutrition plan designed specifically for new mothers — supporting recovery, energy and breastfeeding while rebuilding body composition.</p>
+      <ul class="download-includes">
+        <li>4-week post-natal meal plan</li>
+        <li>Breastfeeding-friendly nutrition</li>
+        <li>High protein, easy-to-prepare recipes</li>
+        <li>Calorie and macro guidance</li>
+        <li>Guidance on gradual reintroduction of exercise</li>
+      </ul>
+      <a href="https://elizaskander.gumroad.com/l/zctifv" target="_blank" rel="noopener" class="btn btn-primary btn-download">Buy for CHF 12 →</a>
+    </div>
+  </div>
+
+  <!-- 8-WEEK TRAINING PROGRAMME -->
+  <div class="download-card reveal">
+    <div class="download-thumb blue-bg">
+      🏋️
+      <span class="price-pill">CHF 25</span>
+    </div>
+    <div class="download-body">
+      <div class="download-tag">Workout Programme</div>
+      <h3>8-Week Strength Programme</h3>
+      <p>A complete 8-week progressive strength training programme. Designed for the gym, with full exercise descriptions, sets, reps and progression guidelines.</p>
+      <ul class="download-includes">
+        <li>3 sessions per week (24 total)</li>
+        <li>Progressive overload built in week by week</li>
+        <li>Full exercise descriptions with form tips</li>
+        <li>Suitable for intermediate level</li>
+        <li>Printable workout log sheets</li>
+      </ul>
+      <a href="https://elizaskander.gumroad.com/l/oaxtcp" target="_blank" rel="noopener" class="btn btn-primary btn-download">Buy for CHF 25 →</a>
+    </div>
+  </div>
+
+  <!-- WINTER BULK PLAN -->
+  <div class="download-card reveal reveal-d1">
+    <div class="download-thumb gold-bg">
+      ❄️
+      <span class="price-pill">CHF 12</span>
+    </div>
+    <div class="download-body">
+      <div class="download-tag">Meal Plan</div>
+      <h3>Winter Bulk Plan</h3>
+      <p>A 4-week winter nutrition plan for building lean muscle — higher calorie, higher protein, warming recipes designed for cold Geneva winters.</p>
+      <ul class="download-includes">
+        <li>4-week meal plan with daily menus</li>
+        <li>Optimised for muscle building</li>
+        <li>Hearty, warming recipes</li>
+        <li>Calorie surplus guidance</li>
+        <li>Shopping lists included</li>
+      </ul>
+      <a href="https://elizaskander.gumroad.com/l/pcxzr" target="_blank" rel="noopener" class="btn btn-primary btn-download">Buy for CHF 12 →</a>
+    </div>
+  </div>
+
+  <!-- SUMMER TRAINING -->
+  <div class="download-card reveal reveal-d2">
+    <div class="download-thumb sage-bg">
+      🏃
+      <span class="price-pill">CHF 25</span>
+    </div>
+    <div class="download-body">
+      <div class="download-tag">Workout Programme</div>
+      <h3>8-Week Summer Body Programme</h3>
+      <p>The summer training programme — combining strength work with metabolic conditioning for maximum fat loss and definition. Designed to get you ready for July.</p>
+      <ul class="download-includes">
+        <li>8 weeks of structured training</li>
+        <li>Gym and outdoor sessions included</li>
+        <li>HIIT and strength combined</li>
+        <li>Progression week by week</li>
+        <li>Pairs perfectly with the Summer Lean Plan</li>
+      </ul>
+      <a href="https://elizaskander.gumroad.com/l/jjnhwk" target="_blank" rel="noopener" class="btn btn-primary btn-download">Buy for CHF 25 →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- PAYMENT NOTE -->
+<div class="gumroad-note">
+  <span style="font-size:20px;flex-shrink:0;">💳</span>
+  <p><strong>How to purchase:</strong> Click the download button on any paid product. To receive your PDF, please complete payment via bank transfer or Twint to Eliza at <a href="mailto:elizaskander@yahoo.com" style="color:var(--gold);">elizaskander@yahoo.com</a> — reference your name and the product. Your download link will be sent within 24 hours. Questions? <a href="contact.html" style="color:var(--gold);">Contact Eliza</a>.</p>
+</div>
+
+<!-- BUNDLE / CUSTOM COACHING -->
+<div class="coming-banner reveal">
+  <div>
+    <h3>Want something <em>personalised?</em></h3>
+    <p>A generic meal plan is a starting point. A plan written specifically for your body, goals, schedule and food preferences is transformative. Eliza offers personalised 4-week nutrition coaching packages — everything custom, nothing off-the-shelf.</p>
+  </div>
+  <a href="contact.html" class="btn btn-primary" style="white-space:nowrap;">Find out more →</a>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Recipes</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
