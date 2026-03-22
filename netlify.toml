@@ -16,11 +16,12 @@
   status = 200
   conditions = {method = ["POST"]}
 
-# Pretty 404
+# 404 fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 404
+  status = 200
+  force = false
 
 # Security & performance headers
 [[headers]]
