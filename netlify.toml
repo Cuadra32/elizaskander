@@ -16,11 +16,11 @@
   status = 200
   conditions = {method = ["POST"]}
 
-# 404 fallback
+# 404 fallback - only for truly missing pages
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 404
   force = false
 
 # Security & performance headers
