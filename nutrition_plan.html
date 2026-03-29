@@ -59,35 +59,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .okbox .osub{font-size:13px;color:#15803d;margin-top:4px;line-height:1.5}
 @media(max-width:420px){.g2{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,1fr)}.eq-grid{grid-template-columns:1fr}}
 </style>
-<style id="gate-css">
-#access-gate{position:fixed;inset:0;background:#f0f4f0;display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
-.gate-card{background:white;border-radius:14px;border:1.5px solid #e0e0e0;padding:36px 32px;width:100%;max-width:380px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,.08)}
-.gate-logo{width:48px;height:48px;background:#2E7D32;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px}
-.gate-title{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
-.gate-sub{font-size:13px;color:#888;margin-bottom:24px;line-height:1.5}
-.gate-input{width:100%;padding:12px 14px;font-size:16px;font-family:inherit;border:1.5px solid #ddd;border-radius:8px;outline:none;text-align:center;letter-spacing:.08em;background:#f8f8f8;margin-bottom:10px;box-sizing:border-box}
-.gate-input:focus{border-color:#2E7D32;background:white}
-.gate-input.err{border-color:#ef4444;background:#fef2f2;animation:shake .3s}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-.gate-btn{width:100%;padding:13px;font-family:inherit;font-size:15px;font-weight:700;color:white;background:#2E7D32;border:none;border-radius:8px;cursor:pointer;margin-bottom:8px}
-.gate-btn:active{background:#1b5e20}
-.gate-err{font-size:12px;color:#ef4444;min-height:18px;margin-bottom:4px}
-.gate-contact{font-size:11px;color:#aaa;margin-top:12px}
-.gate-contact a{color:#2E7D32;text-decoration:none}
-</style>
+
 </head>
 <body>
-<div id="access-gate">
-  <div class="gate-card">
-    <div class="gate-logo">&#x1F957;</div>
-    <div class="gate-title">Eliza Skander</div>
-    <div class="gate-sub">Nutrition &amp; Performance Coach<br>Enter your access code to continue</div>
-    <input id="gate-input" class="gate-input" type="text" placeholder="ACCESS CODE" autocomplete="off" autocapitalize="characters" spellcheck="false">
-    <div class="gate-err" id="gate-err"></div>
-    <button class="gate-btn" onclick="checkCode()">Enter</button>
-    <div class="gate-contact">No code? <a href="/cdn-cgi/l/email-protection#5e3b3237243f2d353f303a3b2c1e273f363131703d3133">Contact Eliza</a></div>
-  </div>
-</div>
+
 <div class="wrap">
   <div class="hdr">
     <div>
@@ -229,63 +204,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ACCESS GATE
-// Codes stored as SHA-256 hashes - cannot be read from source.
-// To generate a hash for a new code, run in terminal:
-//   python3 -c "import hashlib; print(hashlib.sha256('YOURCODE'.encode()).hexdigest())"
-// Then paste the hash string into the VALID_HASHES array below.
-var VALID_HASHES = [
-  "83a53b8c355d04e0b50cef48da77cb1412269c09a3d1c0de591d105b9482315c",
-  "7b50407dc3e7fa7f06c05aafe4eeebf858bba2d146354f7dfa2103bc61783108",
-  "08d2e7a970838988e3a0cb375adfaf16240b405748541d2593f16cfccadc6217",
-  "4d8835aaa801651540c15233fad7b466165cfbff76b5e1fe4371b2cb651a5d9e",
-  "64fd2b6c2fa0d10cee55bcb9eba12194746cddac1028fc15f5f76f1f81f212bd",
-  "6da4a06e303fd6c547b6903d45b12df749324277207c6026d333f59ad51b8651",
-  "f647b0550f00232535cec9ab9ec4e26812da59fb0567fcaeac872496e980e681",
-  "d579bdb1a4b47dac7951768479a1f57b0996e492887c00c8edcb79feaff6a1b7",
-  "2fe58d4c5e770480dd38276e261be8304baf7277bc87670a236d7efba302165c",
-  "7164f6a0482e92898a1e20f9498ec84937f88070afa317f356a6e274855442cd",
-  "194fdd0b98beb045013d9c0d0c3fdefd823ea6436b5b39e8927da5212277cc37",
-  "5b39359bf52ba38d1924b267a0591d9f73d99ff8438550e29b5aa5a870610eff",
-  "1a03bff801855991c973c3ef3f42d43c02ba04f09c26b235660b9ed93ced0217",
-  "e8eb5e590b8220aa61c87bb53c130a7073633ff3d4fb7f7b8c45661cdb5e0c77",
-  "6cca3743a4e976c2a5fcd2a2dc10457373c2c68becefbb06fe4dc4c6e4b4c528",
-  "789d13b3f556b980b16dd373b6189aadd1a63fad1f732d5e1c066bea81fa5399",
-  "bbaf94ef58d4415843795dcc35d84a13dfe25af0ba874408e03026dc7d129069",
-  "454fe93ae2b438a598764e61fb683569447d3e4b2b1113d1f609a07432ee7be4",
-  "cc0c0a5c83be0c095284ae33f6b349a545263131c9cae8127fc8765c51182737",
-  "22d3524c6ff0d072ccbf8c5869b5abfae0950d6861f15d6027ceb544d48fc977"
-];
-
-async function hashCode(str) {
-  var enc = new TextEncoder().encode(str);
-  var buf = await crypto.subtle.digest("SHA-256", enc);
-  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,"0"); }).join("");
-}
-
-async function checkCode() {
-  var raw = (document.getElementById("gate-input").value || "").trim().toUpperCase();
-  var inp = document.getElementById("gate-input");
-  var err = document.getElementById("gate-err");
-  if (!raw) { err.textContent = "Please enter your access code."; return; }
-  var h = await hashCode(raw);
-  if (VALID_HASHES.indexOf(h) !== -1) {
-    var gate = document.getElementById("access-gate");
-    var css = document.getElementById("gate-css");
-    if (gate) gate.remove();
-    if (css) css.remove();
-  } else {
-    inp.classList.add("err");
-    err.textContent = "Invalid code. Contact elizaskander@yahoo.com";
-    setTimeout(function(){ inp.classList.remove("err"); }, 400);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  var inp = document.getElementById("gate-input");
-  if (inp) inp.addEventListener("keydown", function(e){ if (e.key === "Enter") checkCode(); });
-});
-// END ACCESS GATE
 
 var UI = 'en', trainOpen = false;
 
