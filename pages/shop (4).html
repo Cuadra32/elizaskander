@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliza's Recommended Products — Natural Supplements Geneva</title>
+  <meta name="description" content="Natural supplements, protein snacks and fitness products personally used and recommended by Eliza Skander. Available in Geneva at Mels Fit and online." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .shop-intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 0.5px solid rgba(200,169,110,0.1);
+    }
+    .shop-intro-left { padding: 72px 48px; }
+    .shop-intro-left h1 { font-size: 42px; margin-bottom: 16px; }
+    .shop-intro-left h1 em { font-style: italic; color: var(--gold); }
+    .shop-intro-left p { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 420px; margin-bottom: 24px; }
+    .shop-intro-right {
+      padding: 72px 48px; background: rgba(200,169,110,0.04);
+      border-left: 0.5px solid rgba(200,169,110,0.1);
+      display: flex; flex-direction: column; justify-content: center; gap: 14px;
+    }
+    .trust-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .trust-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .trust-item h4 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+    .trust-item p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+    .shop-section { padding: 64px 48px; border-bottom: 0.5px solid rgba(200,169,110,0.1); }
+    .shop-section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; }
+    .shop-section-header h2 { font-family: var(--serif); font-size: 26px; }
+    .shop-section-header h2 em { font-style: italic; color: var(--gold); }
+    .shop-section-header p { font-size: 13px; color: var(--muted); }
+
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .product-card {
+      background: var(--dark3); border: 0.5px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color .25s, transform .25s;
+      display: flex; flex-direction: column;
+    }
+    .product-card:hover { border-color: rgba(200,169,110,0.3); transform: translateY(-3px); }
+    .product-emoji {
+      height: 120px; background: var(--dark4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px;
+    }
+    .product-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .product-tag {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .product-body h3 { font-family: var(--serif); font-size: 17px; margin-bottom: 8px; color: var(--text); }
+    .product-body p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 16px; flex: 1; }
+    .product-eliza { font-size: 12px; color: var(--muted2); font-style: italic; margin-bottom: 16px; padding-top: 12px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+    .product-eliza strong { color: var(--gold); font-style: normal; font-weight: 500; }
+    .product-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 500; color: var(--gold);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: gap .2s;
+      margin-top: auto;
+    }
+    .product-link:hover { gap: 10px; }
+
+    /* Mels Fit feature */
+    .melsfit-banner {
+      margin: 64px 48px;
+      background: rgba(200,169,110,0.06);
+      border: 0.5px solid rgba(200,169,110,0.25);
+      border-radius: var(--radius);
+      padding: 40px 48px;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 40px; align-items: center;
+    }
+    .melsfit-banner h3 { font-family: var(--serif); font-size: 24px; margin-bottom: 10px; }
+    .melsfit-banner h3 em { font-style: italic; color: var(--gold); }
+    .melsfit-banner p { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 520px; }
+    .melsfit-details { display: flex; gap: 28px; margin-top: 16px; flex-wrap: wrap; }
+    .melsfit-detail { font-size: 12px; color: var(--muted2); }
+    .melsfit-detail span { color: var(--gold); font-weight: 500; display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+
+    .disclaimer {
+      padding: 0 48px 64px;
+      font-size: 12px; color: var(--muted2); line-height: 1.6;
+      max-width: 800px;
+    }
+
+    @media (max-width: 900px) {
+      .shop-intro { grid-template-columns: 1fr; }
+      .shop-intro-right { border-left: none; border-top: 0.5px solid rgba(200,169,110,0.1); padding: 40px 24px; }
+      .shop-intro-left { padding: 48px 24px; }
+      .shop-intro-left h1 { font-size: 32px; }
+      .shop-section { padding: 48px 24px; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .melsfit-banner { margin: 0 24px 48px; padding: 28px 24px; grid-template-columns: 1fr; }
+      .disclaimer { padding: 0 24px 48px; }
+    }
+    @media (max-width: 560px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Eliza Skander</a>
+  <ul class="nav-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Healthy Food &amp; Recipes</a></li>
+    <li><a href="transformations.html">Transformations</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="../fr/">🇫🇷</a></li><li><a href="../pl/">🇵🇱</a></li><li><a href="../ru/">🇷🇺</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book a Session</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="shop-intro">
+  <div class="shop-intro-left">
+    <span class="section-tag">Products Eliza uses daily</span>
+    <h1>Natural products,<br><em>real results</em></h1>
+    <p>These are the supplements, protein products and natural foods that Eliza actually uses herself — nothing is here for any other reason. No fads, no gimmicks. Just what works.</p>
+    <a href="https://melsfit.ch/en" target="_blank" rel="noopener" class="btn btn-primary">Shop at Mels Fit Geneva →</a>
+    <a href="https://www.amazon.co.uk/?tag=elizaskander-21" target="_blank" rel="noopener sponsored" class="btn btn-gold-outline" style="margin-top:10px;">Shop on Amazon →</a>
+  </div>
+  <div class="shop-intro-right">
+    <div class="trust-item">
+      <div class="trust-icon">✅</div>
+      <div><h4>Personally tested</h4><p>Every product here is something Eliza has used herself, not paid to promote.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🌿</div>
+      <div><h4>Natural first</h4><p>Preference for natural, whole-food based products wherever possible.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🏪</div>
+      <div><h4>Available in Geneva</h4><p>Most products are stocked at Mels Fit Store, Rue de Lyon 10, Geneva.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">💻</div>
+      <div><h4>Also online</h4><p>All products available online. Mels Fit delivers next working day in Switzerland.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- NUTRITION PLAN TOOL -->
+<div class="shop-section">
+  <div class="shop-section-header">
+    <div>
+      <span class="section-tag">Digital tool</span>
+      <h2>Personalised <em>nutrition plan</em></h2>
+      <p style="margin-top:6px;">Generate a fully personalised nutrition and training plan in seconds. Save as PDF.</p>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-emoji">📋</div>
+      <div class="product-body">
+        <div class="product-tag">Digital · Instant access</div>
+        <h3>Personalised Nutrition &amp; Training Plan</h3>
+        <p>Enter your details and generate a complete, print-ready plan in seconds. Macro targets, 7-day meal plan, protein sources, supplement guide and optional full training programme.</p>
+        <div class="product-eliza">
+          <strong>Available in:</strong> English · Français · Polski<br>
+          <strong>Goals:</strong> Fat loss · Muscle gain · Recomposition · Maintain · Improve fitness · Power &amp; agility<br>
+          <strong>Diet:</strong> Omnivore · Vegetarian · Pescatarian · No fish
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;margin-top:4px;">
+          <span style="font-size:20px;font-weight:700;color:var(--gold);">CHF 30</span>
+          <span style="font-size:12px;color:var(--muted);">One-time · Instant delivery</span>
+        </div>
+        <a href="https://buy.stripe.com/5kQ4gr9lzdk6aHR95O0VO00" target="_blank" rel="noopener"
+           style="display:block;background:var(--gold);color:#000;text-align:center;padding:13px 20px;border-radius:var(--radius-sm);text-decoration:none;font-weight:600;font-size:13px;letter-spacing:0.04em;margin-bottom:8px;">
+          Buy — CHF 30 →
+        </a>
+        <p style="font-size:11px;color:var(--muted2);text-align:center;margin:0;">Access code sent by email immediately after payment</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END NUTRITION PLAN TOOL -->
+
+<!-- PROTEIN -->
+<div class="shop-section">
+  <div class="shop-section-header">
+    <div>
+      <span class="section-tag">Protein</span>
+      <h2>Protein <em>supplements</em></h2>
+      <p style="margin-top:6px;">The foundation of any training nutrition plan. Eliza uses these daily.</p>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-emoji">🥛</div>
+      <div class="product-body">
+        <div class="product-tag">Whey Protein</div>
+        <h3>Optimum Nutrition Gold Standard Whey</h3>
+        <p>The gold standard for a reason. Clean macros, great mixability, wide range of flavours. High in leucine which is critical for muscle protein synthesis.</p>
+        <div class="product-eliza"><strong>Eliza uses:</strong> Vanilla flavour post-workout mixed with almond milk. Also adds to muffin and cookie recipes.</div>
+        <a href="https://www.amazon.co.uk/s?k=optimum+nutrition+gold+standard+whey&tag=elizaskander-21" target="_blank" rel="noopener sponsored" class="product-link">Buy on Amazon →</a>
+        <a href="https://melsfit.ch/en/collections/proteins" target="_blank" rel="noopener" class="product-link" style="margin-top:4px;">Find at Mels Fit →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d1">
+      <div class="product-emoji">🌱</div>
+      <div class="product-body">
+        <div class="product-tag">Plant Protein</div>
+        <h3>Sunwarrior Warrior Blend</h3>
+        <p>Best plant-based protein powder on the market. Pea, hemp and goji blend giving a complete amino acid profile. No chalky texture, no bloating.</p>
+        <div class="product-eliza"><strong>Eliza recommends for:</strong> Clients who are dairy-free, vegan, or who experience digestive issues with whey.</div>
+        <a href="https://www.amazon.co.uk/s?k=sunwarrior+warrior+blend&tag=elizaskander-21" target="_blank" rel="noopener sponsored" class="product-link">Buy on Amazon →</a>
+        <a href="https://melsfit.ch/en/collections/vegan-protein-powder" target="_blank" rel="noopener" class="product-link" style="margin-top:4px;">Find at Mels Fit →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d2">
+      <div class="product-emoji">🍳</div>
+      <div class="product-body">
+        <div class="product-tag">Whole Food Protein</div>
+        <h3>Cottage Cheese &amp; Greek Yoghurt</h3>
+        <p>Eliza's preferred everyday protein sources over supplements when possible. High in casein — slow-digesting protein ideal before bed for overnight muscle recovery.</p>
+        <div class="product-eliza"><strong>Eliza's tip:</strong> 200g Greek yoghurt at breakfast gives 20g of protein. Cheaper and more nutritious than most protein bars.</div>
+        <a href="recipes/healthy-breakfast.html" class="product-link">See breakfast recipe →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NATURAL SUPERFOODS -->
+<div class="shop-section">
+  <div class="shop-section-header">
+    <div>
+      <span class="section-tag">Natural superfoods</span>
+      <h2>Daily <em>superfoods</em></h2>
+      <p style="margin-top:6px;">Natural foods Eliza incorporates every day — inexpensive, powerful and backed by science.</p>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-emoji">🫙</div>
+      <div class="product-body">
+        <div class="product-tag">Natural Probiotic</div>
+        <h3>Organic Sauerkraut</h3>
+        <p>Eliza grew up eating fermented sauerkraut in Poland. A natural probiotic that supports gut health, immune function, circulation and heart health — at a fraction of the cost of supplements.</p>
+        <div class="product-eliza"><strong>Where to buy:</strong> Most Geneva supermarkets and organic shops. Make sure it's raw/unpasteurised for maximum probiotic benefit.</div>
+        <a href="recipes/natural-superfoods.html" class="product-link">See Eliza's recipe →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d1">
+      <div class="product-emoji">🌿</div>
+      <div class="product-body">
+        <div class="product-tag">Natural Sweetener</div>
+        <h3>Stevia</h3>
+        <p>Eliza uses stevia in virtually all her recipes instead of sugar. Zero calories, completely natural, derived from a plant. Does not spike blood sugar — important for fat loss and energy stability.</p>
+        <div class="product-eliza"><strong>Eliza uses:</strong> In all baked recipes, yoghurt, smoothies and dressings. Look for pure stevia without fillers.</div>
+        <a href="https://melsfit.ch/en/collections/all" target="_blank" rel="noopener" class="product-link">Find at Mels Fit →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d2">
+      <div class="product-emoji">🥥</div>
+      <div class="product-body">
+        <div class="product-tag">Healthy Fat</div>
+        <h3>Coconut Oil &amp; Coconut Products</h3>
+        <p>MCTs (medium chain triglycerides) in coconut products are metabolised differently to other fats — used directly for energy rather than stored. Eliza uses coconut oil, flakes and milk regularly.</p>
+        <div class="product-eliza"><strong>Eliza uses:</strong> Coconut oil for cooking, coconut flakes on breakfast, coconut milk in smoothies and sauces.</div>
+        <a href="recipes/healthy-breakfast.html" class="product-link">See breakfast recipe →</a>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-emoji">🫐</div>
+      <div class="product-body">
+        <div class="product-tag">Antioxidants</div>
+        <h3>Chia Seeds &amp; Mixed Berries</h3>
+        <p>Chia seeds are one of the most nutrient-dense foods available — rich in omega 3, fibre, calcium and antioxidants. Berries provide vitamin C, support collagen production and are anti-inflammatory.</p>
+        <div class="product-eliza"><strong>Eliza uses:</strong> Chia seeds daily on yoghurt or in smoothies. Frozen berries are just as nutritious as fresh and cheaper year-round.</div>
+        <a href="recipes/healthy-breakfast.html" class="product-link">See breakfast recipe →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d1">
+      <div class="product-emoji">🌰</div>
+      <div class="product-body">
+        <div class="product-tag">Healthy Fats &amp; Protein</div>
+        <h3>Mixed Nuts &amp; Almond Flour</h3>
+        <p>Almonds, walnuts and mixed nuts are central to Eliza's recipes — used in muffins, cookies and crackers. Excellent source of vitamin E, magnesium, healthy fats and plant protein.</p>
+        <div class="product-eliza"><strong>Eliza uses:</strong> Almond flour as the base for most of her baked recipes as a grain-free, high-protein alternative to wheat flour.</div>
+        <a href="recipes/blueberry-muffins.html" class="product-link">See muffin recipe →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d2">
+      <div class="product-emoji">🫚</div>
+      <div class="product-body">
+        <div class="product-tag">Anti-inflammatory Oil</div>
+        <h3>Hemp Oil &amp; Flaxseed Oil</h3>
+        <p>Rich in omega 3 and omega 6 fatty acids in the ideal ratio. Anti-inflammatory, supports heart health and joint function. Particularly valuable for athletes in heavy training.</p>
+        <div class="product-eliza"><strong>Where to buy:</strong> Planète Bio (France border) and organic health food shops in Geneva. Also available online.</div>
+        <a href="recipes/summer-recipes.html" class="product-link">See summer recipe →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPPLEMENTS -->
+<div class="shop-section">
+  <div class="shop-section-header">
+    <div>
+      <span class="section-tag">Supplements</span>
+      <h2>Training <em>supplements</em></h2>
+      <p style="margin-top:6px;">Used selectively — supplements support training, they don't replace good food and sleep.</p>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-emoji">💊</div>
+      <div class="product-body">
+        <div class="product-tag">Recovery</div>
+        <h3>BCAAs (Branched Chain Amino Acids)</h3>
+        <p>Leucine, isoleucine and valine — the three amino acids most directly involved in muscle protein synthesis. Useful during fasted training or for clients in a calorie deficit who want to preserve muscle.</p>
+        <div class="product-eliza"><strong>Eliza recommends:</strong> During morning fasted training or long cardio sessions. Not necessary if you're eating sufficient protein.</div>
+        <a href="https://melsfit.ch/en/collections/all" target="_blank" rel="noopener" class="product-link">Find at Mels Fit →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d1">
+      <div class="product-emoji">🐟</div>
+      <div class="product-body">
+        <div class="product-tag">Essential</div>
+        <h3>Omega 3 Fish Oil</h3>
+        <p>One of the few supplements Eliza considers genuinely essential. Anti-inflammatory, supports cardiovascular health, brain function, joint recovery and fat metabolism. Most people are chronically deficient.</p>
+        <div class="product-eliza"><strong>Eliza takes:</strong> Daily, year-round. Look for high EPA/DHA content — not all fish oil supplements are equal.</div>
+        <a href="https://www.amazon.co.uk/s?k=omega+3+fish+oil+high+strength&tag=elizaskander-21" target="_blank" rel="noopener sponsored" class="product-link">Buy on Amazon →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d2">
+      <div class="product-emoji">☀️</div>
+      <div class="product-body">
+        <div class="product-tag">Essential</div>
+        <h3>Vitamin D3</h3>
+        <p>In Switzerland, especially autumn and winter, Vitamin D deficiency is extremely common. Affects immune function, bone health, mood and testosterone levels. Eliza considers this non-negotiable for Geneva residents.</p>
+        <div class="product-eliza"><strong>Eliza takes:</strong> October to April. 2000–4000 IU daily. Always pair with K2 for optimal calcium absorption.</div>
+        <a href="https://www.amazon.co.uk/s?k=vitamin+d3+k2+supplement&tag=elizaskander-21" target="_blank" rel="noopener sponsored" class="product-link">Buy on Amazon →</a>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-emoji">🍫</div>
+      <div class="product-body">
+        <div class="product-tag">Protein Snacks</div>
+        <h3>Quest Bars &amp; Protein Snacks</h3>
+        <p>When you need something quick, portable and high in protein — Quest bars are one of the best commercial options. High fibre, low sugar, and genuinely good macros. Better than most "health" snacks.</p>
+        <div class="product-eliza"><strong>Where to buy:</strong> Mels Fit Store, Geneva. Wide range of flavours in stock. Online at melsfit.ch.</div>
+        <a href="https://www.amazon.co.uk/s?k=quest+bars+protein&tag=elizaskander-21" target="_blank" rel="noopener sponsored" class="product-link">Buy on Amazon →</a>
+        <a href="https://melsfit.ch/en/collections/all" target="_blank" rel="noopener" class="product-link" style="margin-top:4px;">Find at Mels Fit →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d1">
+      <div class="product-emoji">🧂</div>
+      <div class="product-body">
+        <div class="product-tag">Electrolytes</div>
+        <h3>Magnesium Glycinate</h3>
+        <p>Most athletes are deficient. Magnesium supports muscle relaxation, sleep quality, reduces cramps and supports over 300 enzymatic processes. Glycinate form is the most bioavailable and easiest on the stomach.</p>
+        <div class="product-eliza"><strong>Eliza takes:</strong> Before bed. Noticeably improves sleep quality and reduces muscle soreness after hard training sessions.</div>
+        <a href="https://www.amazon.co.uk/s?k=magnesium+glycinate+supplement&tag=elizaskander-21" target="_blank" rel="noopener sponsored" class="product-link">Buy on Amazon →</a>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-d2">
+      <div class="product-emoji">🫖</div>
+      <div class="product-body">
+        <div class="product-tag">Natural Energy</div>
+        <h3>Green Tea &amp; Matcha</h3>
+        <p>Eliza's preferred pre-workout over commercial energy drinks. L-theanine in green tea provides calm, sustained focus without the crash. Matcha is higher in antioxidants than regular green tea.</p>
+        <div class="product-eliza"><strong>Eliza drinks:</strong> A cup of matcha 30–45 minutes before morning training. Zero calories, zero junk ingredients.</div>
+        <a href="recipes/healthy-breakfast.html" class="product-link">See breakfast recipes →</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MELS FIT BANNER -->
+<div class="melsfit-banner reveal">
+  <div>
+    <h3>Find everything at <em>Mels Fit Geneva</em></h3>
+    <p>Most of the products Eliza recommends are stocked at Mels Fit — Geneva's best sports nutrition and supplement store. Expert staff, great prices, 7% cashback loyalty programme.</p>
+    <div class="melsfit-details">
+      <div class="melsfit-detail"><span>Address</span>Rue de Lyon 10, 1201 Genève</div>
+      <div class="melsfit-detail"><span>Hours</span>Mon–Fri 10h–19h · Sat 10h–18h</div>
+      <div class="melsfit-detail"><span>Online</span>melsfit.ch · Free delivery over 100 CHF</div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-width:180px;">
+    <a href="https://melsfit.ch/en" target="_blank" rel="noopener" class="btn btn-primary">Visit melsfit.ch →</a>
+    <a href="https://melsfit.ch/en/collections/proteins" target="_blank" rel="noopener" class="btn btn-gold-outline">Shop proteins →</a>
+  </div>
+</div>
+
+<div style="margin:0 48px 24px;background:rgba(200,169,110,0.04);border:0.5px solid rgba(200,169,110,0.15);border-radius:var(--radius-sm);padding:16px 20px;display:flex;align-items:flex-start;gap:12px;">
+  <span style="font-size:16px;flex-shrink:0;">🔗</span>
+  <p style="font-size:12px;color:var(--muted);margin:0;line-height:1.65;"><strong style="color:var(--text);">Affiliate disclosure:</strong> Some links on this page are affiliate links. If you buy through them, Eliza earns a small commission at no extra cost to you. She only recommends products she actually uses. Amazon links use the elizaskander Associates programme.</p>
+</div>
+
+<div class="disclaimer">
+  <strong style="color:var(--muted);">Note:</strong> The products listed here are Eliza's personal recommendations based on her own use and professional experience. This is not paid advertising. Always consult a healthcare professional before starting any supplement programme, particularly if you are pregnant, breastfeeding or have a medical condition.
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Eliza Skander</div>
+  <ul class="footer-links">
+    <li><a href="workouts.html">Workouts</a></li>
+    <li><a href="recipes.html">Healthy Food &amp; Recipes</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Eliza Skander · Geneva</span>
+</footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
