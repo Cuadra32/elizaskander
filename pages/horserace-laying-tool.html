@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Flat Racing — Lay Betting Tool</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --surface: #181818;
+    --surface2: #222;
+    --border: #333;
+    --gold: #c8a96e;
+    --gold-dim: #a08450;
+    --text: #e8e8e8;
+    --muted: #999;
+    --red: #d94040;
+    --green: #3daa5c;
+    --amber: #d4a534;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  .top-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .top-bar h1 {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .top-bar h1 span { color: var(--gold); }
+  .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  /* --- Setup Panel --- */
+  .setup-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .setup-panel h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--gold);
+  }
+  .setup-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  input, select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus {
+    border-color: var(--gold);
+  }
+  input[type="password"] { width: 200px; }
+  input[type="text"] { width: 200px; }
+  input[type="date"] { width: 160px; }
+
+  button {
+    background: var(--gold);
+    color: #111;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+  }
+  button:hover { background: var(--gold-dim); }
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-secondary {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover {
+    background: var(--border);
+  }
+
+  /* --- Status --- */
+  .status {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    display: none;
+  }
+  .status.info {
+    background: #1a2332;
+    border: 1px solid #2a4060;
+    color: #7ab3e8;
+    display: block;
+  }
+  .status.error {
+    background: #2d1a1a;
+    border: 1px solid #5a2020;
+    color: #e87a7a;
+    display: block;
+  }
+  .status.success {
+    background: #1a2d1a;
+    border: 1px solid #205a20;
+    color: #7ae87a;
+    display: block;
+  }
+
+  /* --- Scoring Guide --- */
+  .scoring-guide {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .scoring-guide h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .scoring-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .scoring-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+  }
+  .scoring-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .scoring-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* --- Results --- */
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .results-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .results-header .meta {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* --- Race Section --- */
+  .race-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .race-header {
+    padding: 14px 20px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .race-header .race-title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .race-header .race-title span { color: var(--gold); }
+  .race-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .race-meta .tag {
+    background: var(--bg);
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+  }
+
+  /* --- Runner Table --- */
+  .runners-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .runners-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .runners-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #1e1e1e;
+    vertical-align: middle;
+  }
+  .runners-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .runners-table tbody tr:hover {
+    background: rgba(200, 169, 110, 0.04);
+  }
+
+  .horse-name {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .trainer-name {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .form-chars {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .form-good { color: var(--green); }
+  .form-mid { color: var(--amber); }
+  .form-bad { color: var(--red); }
+  .form-sep { color: #555; }
+
+  .odds-cell {
+    font-weight: 600;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .score-fill {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--red);
+    min-width: 4px;
+    transition: width 0.3s;
+  }
+  .score-value {
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 14px;
+    min-width: 28px;
+  }
+
+  .lay-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .lay-strong {
+    background: rgba(217, 64, 64, 0.15);
+    color: var(--red);
+    border: 1px solid rgba(217, 64, 64, 0.3);
+  }
+  .lay-moderate {
+    background: rgba(212, 165, 52, 0.15);
+    color: var(--amber);
+    border: 1px solid rgba(212, 165, 52, 0.3);
+  }
+  .lay-weak {
+    background: rgba(200, 169, 110, 0.1);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  .no-runners {
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* --- Summary Card --- */
+  .summary-card {
+    background: linear-gradient(135deg, #1a1508 0%, #0e0e0e 100%);
+    border: 1px solid var(--gold-dim);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .summary-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .summary-table th {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gold-dim);
+    border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+  }
+  .summary-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .summary-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- Loading --- */
+  .loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+  }
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* --- Table scroll --- */
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  /* --- Footer --- */
+  .page-footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: #555;
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .container { padding: 16px; }
+    .setup-row { flex-direction: column; }
+    input[type="password"], input[type="text"] { width: 100%; }
+    .scoring-grid { grid-template-columns: 1fr; }
+    .race-header { flex-direction: column; align-items: flex-start; }
+    .runners-table { font-size: 12px; }
+    .runners-table th, .runners-table td { padding: 8px 10px; }
+  }
+
+  /* --- Tooltip --- */
+  .tip {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted var(--muted);
+  }
+  .tip:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .hidden { display: none !important; }
+
+  .demo-banner {
+    background: rgba(200, 169, 110, 0.1);
+    border: 1px solid rgba(200, 169, 110, 0.3);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1><span>LAY</span>FINDER &mdash; UK Flat Racing</h1>
+  <div class="top-bar-right">
+    <span style="font-size:12px;color:var(--muted)">Flat only &bull; Odds &le; 8/1</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- API Setup -->
+  <div class="setup-panel" id="setupPanel">
+    <h2>API Connection</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+      Connect to <a href="https://www.theracingapi.com" target="_blank" style="color:var(--gold)">The Racing API</a> to fetch live racecards, trainer stats and odds.
+      Sign up for a Standard plan to get your credentials.
+    </p>
+    <div class="setup-row">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="apiUser" placeholder="API username" autocomplete="username">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="apiPass" placeholder="API password" autocomplete="current-password">
+      </div>
+      <div class="field">
+        <label>Date</label>
+        <input type="date" id="raceDate">
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button id="fetchBtn" onclick="fetchRaces()">Analyse Races</button>
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button class="btn-secondary" onclick="loadDemo()">Demo Mode</button>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <label style="font-size:12px;color:var(--muted);cursor:pointer;">
+        <input type="checkbox" id="saveCredentials" checked style="margin-right:4px;"> Remember credentials
+      </label>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div class="status" id="statusMsg"></div>
+
+  <!-- Scoring guide -->
+  <div class="scoring-guide">
+    <h3>Lay Scoring Method</h3>
+    <div class="scoring-grid">
+      <div class="scoring-card">
+        <h4>Trainer Score (0–40 pts)</h4>
+        <p>Based on the trainer's win strike rate. Lower win rates score higher.
+           A trainer with &lt;5% wins scores 40; a 20%+ trainer scores 0.
+           Trainers with fewer than 20 recent runners get a +5 unknown penalty.</p>
+      </div>
+      <div class="scoring-card">
+        <h4>Form Score (0–40 pts)</h4>
+        <p>Analyses the horse's last 6 runs. Finishes 6th+ score 5 pts each;
+           falls, pulled up, unseated (0/F/P/U/R) score 8 pts each.
+           Wins and places (1–3) score nothing. Fewer than 3 runs adds a +10 unknown penalty.</p>
+      </div>
+      <div class="scoring-card">
+        <h4>Odds Adjustment (0–20 pts)</h4>
+        <p>Shorter-priced horses with bad fundamentals represent bigger market errors.
+           A horse at evens (2.0) with poor form/trainer scores 20;
+           a horse at 8/1 (9.0) scores 0. The edge is in the discrepancy.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results area -->
+  <div id="resultsArea" class="hidden">
+    <!-- Summary injected here -->
+    <div id="summaryArea"></div>
+    <!-- Per-race detail injected here -->
+    <div id="racesArea"></div>
+  </div>
+
+  <!-- Loading -->
+  <div id="loadingArea" class="hidden">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p id="loadingText">Fetching today's flat racecards...</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  LayFinder &mdash; UK Flat Racing Lay Analysis Tool<br>
+  For informational purposes. Always gamble responsibly.
+</div>
+
+<script>
+(function() {
+  // --- Init ---
+  const today = new Date().toISOString().slice(0, 10);
+  document.getElementById('raceDate').value = today;
+
+  const savedUser = localStorage.getItem('lf_user');
+  const savedPass = localStorage.getItem('lf_pass');
+  if (savedUser) document.getElementById('apiUser').value = savedUser;
+  if (savedPass) document.getElementById('apiPass').value = savedPass;
+})();
+
+const API_BASE = 'https://api.theracingapi.com';
+
+function showStatus(msg, type) {
+  const el = document.getElementById('statusMsg');
+  el.textContent = msg;
+  el.className = 'status ' + type;
+}
+function clearStatus() {
+  document.getElementById('statusMsg').className = 'status';
+}
+
+function showLoading(text) {
+  document.getElementById('loadingText').textContent = text;
+  document.getElementById('loadingArea').classList.remove('hidden');
+  document.getElementById('resultsArea').classList.add('hidden');
+}
+function hideLoading() {
+  document.getElementById('loadingArea').classList.add('hidden');
+}
+
+// --- API helpers ---
+function makeAuthHeader(user, pass) {
+  return 'Basic ' + btoa(user + ':' + pass);
+}
+
+async function apiGet(path, params, user, pass) {
+  const url = new URL(API_BASE + path);
+  if (params) {
+    Object.entries(params).forEach(([k, v]) => {
+      if (Array.isArray(v)) {
+        v.forEach(val => url.searchParams.append(k, val));
+      } else {
+        url.searchParams.set(k, v);
+      }
+    });
+  }
+  const resp = await fetch(url.toString(), {
+    headers: { 'Authorization': makeAuthHeader(user, pass) }
+  });
+  if (!resp.ok) {
+    const body = await resp.text().catch(() => '');
+    throw new Error(`API error ${resp.status}: ${body || resp.statusText}`);
+  }
+  return resp.json();
+}
+
+// --- Form parsing ---
+function parseForm(formStr) {
+  if (!formStr || formStr.trim() === '-') return [];
+  const cleaned = formStr.replace(/\s/g, '');
+  const chars = [];
+  for (let i = 0; i < cleaned.length; i++) {
+    const c = cleaned[i].toUpperCase();
+    if (c === '/') {
+      chars.push({ char: '/', type: 'sep' });
+    } else if ('0123456789'.includes(c)) {
+      chars.push({ char: c, pos: c === '0' ? 10 : parseInt(c) });
+    } else if ('FPURSBC'.includes(c)) {
+      chars.push({ char: c, pos: 99 });
+    }
+  }
+  return chars;
+}
+
+function scoreForm(formStr) {
+  const runs = parseForm(formStr).filter(c => c.type !== 'sep');
+  const last6 = runs.slice(0, 6);
+
+  if (last6.length === 0) return 30;
+
+  let score = 0;
+  for (const run of last6) {
+    if (run.pos <= 3) {
+      score += 0;
+    } else if (run.pos <= 5) {
+      score += 2;
+    } else if (run.pos <= 9) {
+      score += 5;
+    } else if (run.pos === 10) {
+      score += 7;
+    } else {
+      score += 8;
+    }
+  }
+
+  if (last6.length < 3) score += 10;
+
+  return Math.min(score, 40);
+}
+
+function renderForm(formStr) {
+  const chars = parseForm(formStr);
+  if (chars.length === 0) return '<span style="color:var(--muted)">—</span>';
+
+  return chars.map(c => {
+    if (c.type === 'sep') return '<span class="form-sep">/</span>';
+    let cls = 'form-mid';
+    if (c.pos <= 3) cls = 'form-good';
+    else if (c.pos >= 7 || c.pos === 99) cls = 'form-bad';
+    return `<span class="${cls}">${c.char}</span>`;
+  }).join('');
+}
+
+// --- Trainer scoring ---
+function scoreTrainer(trainerStats) {
+  if (!trainerStats || trainerStats.runs === undefined) {
+    return 25;
+  }
+  const { runs, wins } = trainerStats;
+  if (runs < 5) return 35;
+  const winRate = (wins / runs) * 100;
+  let score = Math.round(40 - (winRate * 2));
+  if (runs < 20) score += 5;
+  return Math.max(0, Math.min(40, score));
+}
+
+// --- Odds adjustment ---
+function scoreOdds(decimalOdds) {
+  if (!decimalOdds || decimalOdds <= 1) return 10;
+  const score = 20 * (1 - (decimalOdds - 1) / 8);
+  return Math.max(0, Math.min(20, Math.round(score)));
+}
+
+function decimalToFractional(dec) {
+  if (!dec || dec <= 1) return 'EVS';
+  const num = dec - 1;
+  const fracs = [
+    [1, 5], [1, 4], [1, 3], [2, 5], [1, 2], [4, 7], [8, 13],
+    [4, 6], [8, 11], [4, 5], [5, 6], [10, 11], [1, 1],
+    [6, 5], [5, 4], [11, 8], [6, 4], [13, 8], [7, 4], [2, 1],
+    [9, 4], [5, 2], [11, 4], [3, 1], [7, 2], [4, 1],
+    [9, 2], [5, 1], [6, 1], [7, 1], [8, 1]
+  ];
+  let best = null;
+  let bestDiff = Infinity;
+  for (const [n, d] of fracs) {
+    const diff = Math.abs(n / d - num);
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      best = [n, d];
+    }
+  }
+  if (best) return `${best[0]}/${best[1]}`;
+  return dec.toFixed(1);
+}
+
+// --- Total lay score ---
+function calculateLayScore(formStr, trainerStats, decimalOdds) {
+  const fScore = scoreForm(formStr);
+  const tScore = scoreTrainer(trainerStats);
+  const oScore = scoreOdds(decimalOdds);
+  return {
+    total: fScore + tScore + oScore,
+    form: fScore,
+    trainer: tScore,
+    odds: oScore
+  };
+}
+
+function layRating(total) {
+  if (total >= 65) return { label: 'STRONG LAY', cls: 'lay-strong' };
+  if (total >= 45) return { label: 'MODERATE', cls: 'lay-moderate' };
+  return { label: 'WEAK', cls: 'lay-weak' };
+}
+
+// --- Extract best odds from runner ---
+function getBestOdds(runner) {
+  if (runner.odds && Array.isArray(runner.odds)) {
+    const numericOdds = runner.odds
+      .map(o => parseFloat(o.decimal || o.price || o))
+      .filter(o => !isNaN(o) && o > 1);
+    if (numericOdds.length > 0) return Math.min(...numericOdds);
+  }
+  if (runner.odds && typeof runner.odds === 'object' && !Array.isArray(runner.odds)) {
+    const vals = Object.values(runner.odds)
+      .map(o => typeof o === 'object' ? parseFloat(o.decimal || o.price || 0) : parseFloat(o))
+      .filter(o => !isNaN(o) && o > 1);
+    if (vals.length > 0) return Math.min(...vals);
+  }
+  if (runner.sp || runner.starting_price) {
+    const sp = parseFloat(runner.sp || runner.starting_price);
+    if (!isNaN(sp) && sp > 1) return sp;
+  }
+  if (runner.decimal_odds) {
+    const d = parseFloat(runner.decimal_odds);
+    if (!isNaN(d) && d > 1) return d;
+  }
+  if (runner.fractional_odds) {
+    const parts = runner.fractional_odds.split('/');
+    if (parts.length === 2) {
+      const dec = parseFloat(parts[0]) / parseFloat(parts[1]) + 1;
+      if (!isNaN(dec)) return dec;
+    }
+  }
+  return null;
+}
+
+// --- Extract trainer info ---
+function getTrainerName(runner) {
+  if (typeof runner.trainer === 'string') return runner.trainer;
+  if (runner.trainer && runner.trainer.name) return runner.trainer.name;
+  if (runner.trainer_name) return runner.trainer_name;
+  return 'Unknown';
+}
+
+function getTrainerId(runner) {
+  if (runner.trainer_id) return runner.trainer_id;
+  if (runner.trainer && runner.trainer.id) return runner.trainer.id;
+  return null;
+}
+
+function getHorseName(runner) {
+  if (typeof runner.horse === 'string') return runner.horse;
+  if (runner.horse && runner.horse.name) return runner.horse.name;
+  if (runner.horse_name) return runner.horse_name;
+  if (runner.name) return runner.name;
+  return 'Unknown';
+}
+
+function getForm(runner) {
+  return runner.form || runner.recent_form || runner.last_form || '';
+}
+
+// --- Main fetch ---
+async function fetchRaces() {
+  const user = document.getElementById('apiUser').value.trim();
+  const pass = document.getElementById('apiPass').value.trim();
+  const dateVal = document.getElementById('raceDate').value;
+
+  if (!user || !pass) {
+    showStatus('Enter your Racing API username and password, or click Demo Mode.', 'error');
+    return;
+  }
+
+  if (document.getElementById('saveCredentials').checked) {
+    localStorage.setItem('lf_user', user);
+    localStorage.setItem('lf_pass', pass);
+  }
+
+  clearStatus();
+  showLoading('Fetching flat racecards for ' + dateVal + '...');
+  document.getElementById('fetchBtn').disabled = true;
+
+  try {
+    const params = { 'day': 'today' };
+    if (dateVal !== new Date().toISOString().slice(0, 10)) {
+      delete params.day;
+      params.date = dateVal;
+    }
+    params['region[]'] = ['gb'];
+    params['type[]'] = ['flat'];
+
+    let data;
+    try {
+      data = await apiGet('/v1/racecards/standard', params, user, pass);
+    } catch (e) {
+      data = await apiGet('/v1/racecards/free', params, user, pass);
+    }
+
+    const racecards = data.racecards || data.races || data.meetings || data;
+    if (!racecards || (Array.isArray(racecards) && racecards.length === 0)) {
+      hideLoading();
+      showStatus('No flat races found for ' + dateVal + '. Check the date or try tomorrow.', 'info');
+      document.getElementById('fetchBtn').disabled = false;
+      return;
+    }
+
+    showLoading('Analysing trainer stats and form for ' + (Array.isArray(racecards) ? racecards.length : '?') + ' races...');
+
+    const trainerCache = {};
+    const raceArray = Array.isArray(racecards) ? racecards : [racecards];
+
+    for (const race of raceArray) {
+      const runners = race.runners || race.entries || [];
+      for (const runner of runners) {
+        const tid = getTrainerId(runner);
+        if (tid && !trainerCache[tid]) {
+          try {
+            const analysis = await apiGet(`/v1/trainers/${tid}/analysis/courses`, {
+              'type[]': ['flat'],
+              'region[]': ['gb'],
+              'start_date': getOneYearAgo()
+            }, user, pass);
+
+            let totalRuns = 0, totalWins = 0;
+            const courses = analysis.courses || analysis.data || [];
+            if (Array.isArray(courses)) {
+              for (const c of courses) {
+                totalRuns += (c.runs || 0);
+                totalWins += (c.wins || 0);
+              }
+            }
+            trainerCache[tid] = { runs: totalRuns, wins: totalWins };
+          } catch {
+            trainerCache[tid] = null;
+          }
+        }
+      }
+    }
+
+    processAndRender(raceArray, trainerCache, dateVal);
+
+  } catch (err) {
+    hideLoading();
+    if (err.message.includes('401')) {
+      showStatus('Authentication failed. Check your Racing API username and password.', 'error');
+    } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+      showStatus('Network error — the API may block browser requests (CORS). Try using Demo Mode, or run this via a CORS proxy.', 'error');
+    } else {
+      showStatus('Error: ' + err.message, 'error');
+    }
+  } finally {
+    document.getElementById('fetchBtn').disabled = false;
+  }
+}
+
+function getOneYearAgo() {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() - 1);
+  return d.toISOString().slice(0, 10);
+}
+
+// --- Process and render ---
+function processAndRender(races, trainerCache, dateLabel) {
+  hideLoading();
+
+  const allCandidates = [];
+
+  const racesHTML = races.map(race => {
+    const courseName = race.course || race.course_name || race.venue || 'Unknown';
+    const offTime = race.off_time || race.time || race.post_time || '';
+    const raceName = race.race_name || race.name || race.title || '';
+    const distance = race.distance || race.dist || '';
+    const raceClass = race.race_class || race.class || '';
+    const going = race.going || '';
+
+    const runners = (race.runners || race.entries || []);
+    const qualified = [];
+
+    for (const runner of runners) {
+      const odds = getBestOdds(runner);
+      if (odds === null) continue;
+      if (odds > 9.0) continue; // 8/1 = 9.0 decimal
+
+      const form = getForm(runner);
+      const tid = getTrainerId(runner);
+      const tStats = tid ? trainerCache[tid] : null;
+      const scores = calculateLayScore(form, tStats, odds);
+      const rating = layRating(scores.total);
+
+      qualified.push({
+        horse: getHorseName(runner),
+        trainer: getTrainerName(runner),
+        form: form,
+        odds: odds,
+        scores: scores,
+        rating: rating,
+        course: courseName,
+        time: offTime,
+        raceName: raceName,
+        trainerStats: tStats
+      });
+    }
+
+    qualified.sort((a, b) => b.scores.total - a.scores.total);
+    allCandidates.push(...qualified);
+
+    if (qualified.length === 0) {
+      return `
+        <div class="race-section">
+          <div class="race-header">
+            <div class="race-title"><span>${offTime}</span> ${courseName} — ${raceName}</div>
+            <div class="race-meta">
+              ${distance ? `<span class="tag">${distance}</span>` : ''}
+              ${raceClass ? `<span class="tag">Class ${raceClass}</span>` : ''}
+              ${going ? `<span class="tag">${going}</span>` : ''}
+            </div>
+          </div>
+          <div class="no-runners">No qualified runners (no flat runners at odds &le; 8/1)</div>
+        </div>
+      `;
+    }
+
+    const rowsHTML = qualified.map(r => {
+      const trainerWinRate = r.trainerStats
+        ? ((r.trainerStats.wins / Math.max(r.trainerStats.runs, 1)) * 100).toFixed(1) + '%'
+        : '—';
+      const trainerRuns = r.trainerStats ? `${r.trainerStats.wins}/${r.trainerStats.runs}` : '';
+      const barWidth = Math.round((r.scores.total / 100) * 100);
+
+      return `
+        <tr>
+          <td>
+            <div class="horse-name">${escHtml(r.horse)}</div>
+            <div class="trainer-name">${escHtml(r.trainer)}</div>
+          </td>
+          <td><span class="form-chars">${renderForm(r.form)}</span></td>
+          <td class="odds-cell">${decimalToFractional(r.odds)}</td>
+          <td>
+            <span class="tip" data-tip="W/R: ${trainerRuns}">${trainerWinRate}</span>
+          </td>
+          <td style="min-width:60px;">
+            <div class="score-bar">
+              <span class="score-value">${r.scores.total}</span>
+              <div style="flex:1;background:var(--border);border-radius:3px;height:6px;">
+                <div class="score-fill" style="width:${barWidth}%"></div>
+              </div>
+            </div>
+          </td>
+          <td><span class="lay-badge ${r.rating.cls}">${r.rating.label}</span></td>
+        </tr>
+      `;
+    }).join('');
+
+    return `
+      <div class="race-section">
+        <div class="race-header">
+          <div class="race-title"><span>${offTime}</span> ${courseName} — ${escHtml(raceName)}</div>
+          <div class="race-meta">
+            ${distance ? `<span class="tag">${distance}</span>` : ''}
+            ${raceClass ? `<span class="tag">Class ${raceClass}</span>` : ''}
+            ${going ? `<span class="tag">${going}</span>` : ''}
+            <span class="tag">${qualified.length} qualified</span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="runners-table">
+            <thead>
+              <tr>
+                <th>Horse / Trainer</th>
+                <th>Form</th>
+                <th>Odds</th>
+                <th>Trainer SR</th>
+                <th>Lay Score</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>${rowsHTML}</tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Build summary of top candidates
+  allCandidates.sort((a, b) => b.scores.total - a.scores.total);
+  const topPicks = allCandidates.filter(c => c.scores.total >= 45).slice(0, 10);
+
+  let summaryHTML = '';
+  if (topPicks.length > 0) {
+    const rows = topPicks.map((r, i) => `
+      <tr>
+        <td style="font-weight:600;color:var(--gold);">${i + 1}</td>
+        <td><strong>${escHtml(r.horse)}</strong></td>
+        <td style="color:var(--muted)">${escHtml(r.trainer)}</td>
+        <td>${r.time} ${escHtml(r.course)}</td>
+        <td class="odds-cell">${decimalToFractional(r.odds)}</td>
+        <td>
+          <span class="form-chars">${renderForm(r.form)}</span>
+        </td>
+        <td style="font-weight:700;">${r.scores.total}</td>
+        <td><span class="lay-badge ${r.rating.cls}">${r.rating.label}</span></td>
+      </tr>
+    `).join('');
+
+    summaryHTML = `
+      <div class="summary-card">
+        <h3>Top Lay Candidates — ${dateLabel}</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:12px;">
+          Horses at odds &le; 8/1 with the worst trainer performance and poorest form.
+          Higher score = stronger lay case.
+        </p>
+        <div class="table-wrap">
+          <table class="summary-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Horse</th>
+                <th>Trainer</th>
+                <th>Race</th>
+                <th>Odds</th>
+                <th>Form</th>
+                <th>Score</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  } else {
+    summaryHTML = `
+      <div class="summary-card">
+        <h3>No Strong Lay Candidates — ${dateLabel}</h3>
+        <p style="font-size:13px;color:var(--muted);">
+          No runners scored 45+ today. Check individual races below for weaker candidates.
+        </p>
+      </div>
+    `;
+  }
+
+  document.getElementById('summaryArea').innerHTML = summaryHTML;
+
+  const header = `
+    <div class="results-header">
+      <h2>Race-by-Race Analysis</h2>
+      <span class="meta">${races.length} flat races &bull; ${allCandidates.length} runners at &le; 8/1</span>
+    </div>
+  `;
+  document.getElementById('racesArea').innerHTML = header + racesHTML;
+  document.getElementById('resultsArea').classList.remove('hidden');
+
+  showStatus(`Analysis complete — ${allCandidates.length} qualified runners across ${races.length} flat races.`, 'success');
+}
+
+function escHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+// --- Demo mode ---
+function loadDemo() {
+  clearStatus();
+  showLoading('Loading demo data...');
+
+  const demoDate = new Date().toISOString().slice(0, 10);
+
+  const demoRaces = [
+    {
+      course: 'Newmarket',
+      off_time: '14:10',
+      race_name: 'British EBF Novice Stakes',
+      distance: '7f',
+      race_class: '4',
+      going: 'Good to Firm',
+      runners: [
+        { horse: 'Midnight Storm', trainer: 'K Burke', trainer_id: 't1', form: '060800', odds: [{ decimal: '4.5' }] },
+        { horse: 'Royal Decree', trainer: 'J Gosden', trainer_id: 't2', form: '112321', odds: [{ decimal: '2.5' }] },
+        { horse: 'Harbour Wind', trainer: 'T Clover', trainer_id: 't3', form: '7P0050', odds: [{ decimal: '6.0' }] },
+        { horse: 'Dawn Eagle', trainer: 'C Appleby', trainer_id: 't4', form: '231142', odds: [{ decimal: '3.0' }] },
+        { horse: 'Perfect Draft', trainer: 'R Beckett', trainer_id: 't5', form: '05', odds: [{ decimal: '7.0' }] },
+        { horse: 'Noble Quest', trainer: 'S Kirk', trainer_id: 't6', form: '908700', odds: [{ decimal: '5.0' }] },
+        { horse: 'Cosmic Ray', trainer: 'A Balding', trainer_id: 't7', form: '312', odds: [{ decimal: '12.0' }] },
+      ]
+    },
+    {
+      course: 'Ascot',
+      off_time: '15:05',
+      race_name: 'Buckingham Palace Handicap',
+      distance: '1m',
+      race_class: '3',
+      going: 'Good',
+      runners: [
+        { horse: 'Silent Reign', trainer: 'M Johnston', trainer_id: 't8', form: '880079', odds: [{ decimal: '3.5' }] },
+        { horse: 'Warrior King', trainer: 'A O\'Brien', trainer_id: 't9', form: '211312', odds: [{ decimal: '2.0' }] },
+        { horse: 'Painted Lady', trainer: 'D Loughnane', trainer_id: 't10', form: '000F06', odds: [{ decimal: '8.0' }] },
+        { horse: 'Blue Diamond', trainer: 'W Haggas', trainer_id: 't11', form: '413221', odds: [{ decimal: '3.0' }] },
+        { horse: 'Frosty Morning', trainer: 'T Ward', trainer_id: 't12', form: '700', odds: [{ decimal: '5.5' }] },
+        { horse: 'Tidal Force', trainer: 'R Hannon', trainer_id: 't13', form: '5432', odds: [{ decimal: '9.0' }] },
+      ]
+    },
+    {
+      course: 'Goodwood',
+      off_time: '15:40',
+      race_name: 'Coral Handicap Stakes',
+      distance: '1m 2f',
+      race_class: '2',
+      going: 'Good to Soft',
+      runners: [
+        { horse: 'Drifter', trainer: 'R Fahey', trainer_id: 't14', form: '098060', odds: [{ decimal: '4.0' }] },
+        { horse: 'High Society', trainer: 'J Gosden', trainer_id: 't2', form: '122111', odds: [{ decimal: '1.8' }] },
+        { horse: 'Muddy Boots', trainer: 'M Herrington', trainer_id: 't15', form: 'P00P70', odds: [{ decimal: '7.0' }] },
+        { horse: 'Spring Loaded', trainer: 'C Appleby', trainer_id: 't4', form: '213', odds: [{ decimal: '3.5' }] },
+        { horse: 'Fortune Bay', trainer: 'T Dascombe', trainer_id: 't16', form: '6U0895', odds: [{ decimal: '6.0' }] },
+        { horse: 'Last Orders', trainer: 'H Palmer', trainer_id: 't17', form: '43521', odds: [{ decimal: '5.0' }] },
+      ]
+    },
+    {
+      course: 'York',
+      off_time: '16:15',
+      race_name: 'Sky Bet Fillies Handicap',
+      distance: '6f',
+      race_class: '4',
+      going: 'Firm',
+      runners: [
+        { horse: 'Lady Phoenix', trainer: 'D O\'Meara', trainer_id: 't18', form: '5700P8', odds: [{ decimal: '5.0' }] },
+        { horse: 'Star Sapphire', trainer: 'K Ryan', trainer_id: 't19', form: '131212', odds: [{ decimal: '2.5' }] },
+        { horse: 'Velvet Rose', trainer: 'J Tuite', trainer_id: 't20', form: '00F000', odds: [{ decimal: '8.5' }] },
+        { horse: 'Arctic Belle', trainer: 'T Easterby', trainer_id: 't21', form: '843', odds: [{ decimal: '6.0' }] },
+        { horse: 'Dancing Fire', trainer: 'S Crisford', trainer_id: 't22', form: '321145', odds: [{ decimal: '4.0' }] },
+      ]
+    }
+  ];
+
+  const demoTrainerStats = {
+    't1': { runs: 85, wins: 4 },
+    't2': { runs: 200, wins: 42 },
+    't3': { runs: 30, wins: 1 },
+    't4': { runs: 180, wins: 45 },
+    't5': { runs: 65, wins: 5 },
+    't6': { runs: 45, wins: 2 },
+    't7': { runs: 150, wins: 25 },
+    't8': { runs: 120, wins: 8 },
+    't9': { runs: 250, wins: 60 },
+    't10': { runs: 55, wins: 3 },
+    't11': { runs: 190, wins: 40 },
+    't12': { runs: 18, wins: 0 },
+    't13': { runs: 160, wins: 20 },
+    't14': { runs: 180, wins: 12 },
+    't15': { runs: 22, wins: 0 },
+    't16': { runs: 60, wins: 3 },
+    't17': { runs: 90, wins: 11 },
+    't18': { runs: 140, wins: 10 },
+    't19': { runs: 130, wins: 22 },
+    't20': { runs: 25, wins: 1 },
+    't21': { runs: 95, wins: 8 },
+    't22': { runs: 110, wins: 18 },
+  };
+
+  setTimeout(() => {
+    processAndRender(demoRaces, demoTrainerStats, demoDate + ' (Demo)');
+    document.getElementById('summaryArea').insertAdjacentHTML('beforebegin',
+      '<div class="demo-banner">Demo mode — showing simulated data. Connect your Racing API credentials for live analysis.</div>'
+    );
+  }, 600);
+}
+</script>
+
+</body>
+</html>
