@@ -24,552 +24,145 @@
   }
   @media (prefers-color-scheme: light) {
     :root {
-      --ground: #F4F0E8;
-      --surface: #FFFFFF;
-      --raised: #EDE9E0;
-      --border: #D6D0C5;
-      --border-subtle: #E4DFD5;
-      --lay: #C94560;
-      --lay-soft: rgba(201, 69, 96, 0.07);
-      --lay-border: rgba(201, 69, 96, 0.22);
-      --text: #2A312C;
-      --text-strong: #111;
-      --muted: #7C7A70;
-      --dim: #B5B0A5;
-      --good: #2E8B50;
-      --warn: #B8901C;
+      --ground: #F4F0E8; --surface: #FFFFFF; --raised: #EDE9E0;
+      --border: #D6D0C5; --border-subtle: #E4DFD5;
+      --lay: #C94560; --lay-soft: rgba(201,69,96,0.07); --lay-border: rgba(201,69,96,0.22);
+      --text: #2A312C; --text-strong: #111; --muted: #7C7A70; --dim: #B5B0A5;
+      --good: #2E8B50; --warn: #B8901C;
     }
   }
   :root[data-theme="light"] {
-    --ground: #F4F0E8;
-    --surface: #FFFFFF;
-    --raised: #EDE9E0;
-    --border: #D6D0C5;
-    --border-subtle: #E4DFD5;
-    --lay: #C94560;
-    --lay-soft: rgba(201, 69, 96, 0.07);
-    --lay-border: rgba(201, 69, 96, 0.22);
-    --text: #2A312C;
-    --text-strong: #111;
-    --muted: #7C7A70;
-    --dim: #B5B0A5;
-    --good: #2E8B50;
-    --warn: #B8901C;
+    --ground: #F4F0E8; --surface: #FFFFFF; --raised: #EDE9E0;
+    --border: #D6D0C5; --border-subtle: #E4DFD5;
+    --lay: #C94560; --lay-soft: rgba(201,69,96,0.07); --lay-border: rgba(201,69,96,0.22);
+    --text: #2A312C; --text-strong: #111; --muted: #7C7A70; --dim: #B5B0A5;
+    --good: #2E8B50; --warn: #B8901C;
   }
   :root[data-theme="dark"] {
-    --ground: #0C1610;
-    --surface: #132019;
-    --raised: #1A2D24;
-    --border: #24382E;
-    --border-subtle: #1C3026;
-    --lay: #E05A72;
-    --lay-soft: rgba(224, 90, 114, 0.12);
-    --lay-border: rgba(224, 90, 114, 0.28);
-    --text: #D4DDD7;
-    --text-strong: #EDF2EE;
-    --muted: #6B8577;
-    --dim: #3E5A4C;
-    --good: #4CA870;
-    --warn: #D4A534;
+    --ground: #0C1610; --surface: #132019; --raised: #1A2D24;
+    --border: #24382E; --border-subtle: #1C3026;
+    --lay: #E05A72; --lay-soft: rgba(224,90,114,0.12); --lay-border: rgba(224,90,114,0.28);
+    --text: #D4DDD7; --text-strong: #EDF2EE; --muted: #6B8577; --dim: #3E5A4C;
+    --good: #4CA870; --warn: #D4A534;
   }
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--ground);
-    color: var(--text);
-    line-height: 1.55;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--ground);color:var(--text);line-height:1.55;min-height:100vh;-webkit-font-smoothing:antialiased}
 
-  /* ── Top bar ───────────────────────────────────── */
-  .topbar {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 24px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .brand {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 22px;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--text-strong);
-    letter-spacing: -0.01em;
-  }
-  .brand em {
-    font-style: italic;
-    color: var(--lay);
-  }
-  .topbar-meta {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.03em;
-  }
+  .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .brand{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-style:italic;font-weight:400;color:var(--text-strong);letter-spacing:-0.01em}
+  .brand em{font-style:italic;color:var(--lay)}
+  .topbar-meta{font-size:12px;color:var(--muted);letter-spacing:0.03em;display:flex;align-items:center;gap:12px}
+  .req-counter{font-family:var(--mono);font-size:11px;color:var(--muted);padding:3px 8px;background:var(--ground);border:1px solid var(--border);border-radius:3px}
 
-  /* ── Container ─────────────────────────────────── */
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 20px 24px 60px;
-  }
+  .wrap{max-width:1080px;margin:0 auto;padding:20px 24px 60px}
 
-  /* ── Setup ─────────────────────────────────────── */
-  .setup {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  .setup-heading {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-  .setup-row {
-    display: flex;
-    gap: 10px;
-    align-items: flex-end;
-    flex-wrap: wrap;
-  }
-  .field { display: flex; flex-direction: column; gap: 3px; }
-  .field label {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--dim);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  input, select {
-    background: var(--ground);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 7px 10px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  input:focus { border-color: var(--lay); }
-  input[type="password"], input[type="text"] { width: 180px; }
-  input[type="date"] { width: 148px; }
+  .setup{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;margin-bottom:20px}
+  .setup-heading{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px}
+  .setup-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+  .field{display:flex;flex-direction:column;gap:3px}
+  .field label{font-size:11px;font-weight:500;color:var(--dim);text-transform:uppercase;letter-spacing:0.06em}
+  input,select{background:var(--ground);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:4px;font-size:13px;font-family:inherit;outline:none;transition:border-color 0.15s}
+  input:focus{border-color:var(--lay)}
+  input[type="text"]{width:320px}
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 16px;
-    border: none;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: opacity 0.15s;
-    white-space: nowrap;
-  }
-  .btn:hover { opacity: 0.85; }
-  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-  .btn-primary {
-    background: var(--lay);
-    color: #fff;
-  }
-  .btn-ghost {
-    background: var(--raised);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:none;border-radius:4px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity 0.15s;white-space:nowrap}
+  .btn:hover{opacity:0.85}
+  .btn:disabled{opacity:0.4;cursor:not-allowed}
+  .btn-primary{background:var(--lay);color:#fff}
+  .btn-ghost{background:var(--raised);color:var(--text);border:1px solid var(--border)}
 
-  .setup-note {
-    margin-top: 10px;
-    font-size: 12px;
-    color: var(--dim);
-    line-height: 1.5;
-  }
-  .setup-note a {
-    color: var(--muted);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-  .setup-check {
-    font-size: 12px;
-    color: var(--muted);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    margin-top: 10px;
-  }
+  .setup-note{margin-top:10px;font-size:12px;color:var(--dim);line-height:1.5}
+  .setup-note a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+  .setup-check{font-size:12px;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin-top:10px}
 
-  /* ── Status messages ───────────────────────────── */
-  .msg {
-    padding: 10px 14px;
-    border-radius: 5px;
-    margin-bottom: 16px;
-    font-size: 13px;
-    display: none;
-    line-height: 1.5;
-  }
-  .msg.show { display: block; }
-  .msg-info { background: rgba(75,168,112,0.08); border: 1px solid rgba(75,168,112,0.2); color: var(--good); }
-  .msg-error { background: var(--lay-soft); border: 1px solid var(--lay-border); color: var(--lay); }
-  .msg-ok { background: rgba(75,168,112,0.08); border: 1px solid rgba(75,168,112,0.2); color: var(--good); }
+  .msg{padding:10px 14px;border-radius:5px;margin-bottom:16px;font-size:13px;display:none;line-height:1.5}
+  .msg.show{display:block}
+  .msg-info{background:rgba(75,168,112,0.08);border:1px solid rgba(75,168,112,0.2);color:var(--good)}
+  .msg-error{background:var(--lay-soft);border:1px solid var(--lay-border);color:var(--lay)}
+  .msg-ok{background:rgba(75,168,112,0.08);border:1px solid rgba(75,168,112,0.2);color:var(--good)}
 
-  /* ── Method card ───────────────────────────────── */
-  .method {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 24px;
-  }
-  .method-cell {
-    background: var(--surface);
-    padding: 14px 16px;
-  }
-  .method-cell h4 {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--lay);
-    margin-bottom: 6px;
-  }
-  .method-cell p {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
+  .method{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:24px}
+  .method-cell{background:var(--surface);padding:14px 16px}
+  .method-cell h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--lay);margin-bottom:6px}
+  .method-cell p{font-size:12px;color:var(--muted);line-height:1.55}
 
-  /* ── Demo banner ───────────────────────────────── */
-  .demo-flag {
-    background: var(--lay-soft);
-    border: 1px solid var(--lay-border);
-    border-radius: 5px;
-    padding: 10px 14px;
-    margin-bottom: 16px;
-    font-size: 12px;
-    color: var(--lay);
-    font-weight: 500;
-  }
+  .demo-flag{background:var(--lay-soft);border:1px solid var(--lay-border);border-radius:5px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--lay);font-weight:500}
 
-  /* ── Summary card ──────────────────────────────── */
-  .summary {
-    border: 1px solid var(--lay-border);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 24px;
-  }
-  .summary-head {
-    background: var(--lay-soft);
-    padding: 14px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 8px;
-    border-bottom: 1px solid var(--lay-border);
-  }
-  .summary-head h2 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--text-strong);
-  }
-  .summary-head .date-label {
-    font-size: 12px;
-    color: var(--muted);
-    font-family: var(--mono);
-  }
-  .summary-body { background: var(--surface); }
-  .summary-empty {
-    padding: 20px 18px;
-    font-size: 13px;
-    color: var(--muted);
-  }
+  .summary{border:1px solid var(--lay-border);border-radius:6px;overflow:hidden;margin-bottom:24px}
+  .summary-head{background:var(--lay-soft);padding:14px 18px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--lay-border)}
+  .summary-head h2{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:17px;font-weight:400;color:var(--text-strong)}
+  .summary-head .date-label{font-size:12px;color:var(--muted);font-family:var(--mono)}
+  .summary-body{background:var(--surface)}
+  .summary-empty{padding:20px 18px;font-size:13px;color:var(--muted)}
 
-  /* ── Tables (shared) ───────────────────────────── */
-  .tbl-wrap { overflow-x: auto; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    font-variant-numeric: tabular-nums;
-  }
-  th {
-    text-align: left;
-    padding: 8px 14px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--dim);
-    border-bottom: 1px solid var(--border);
-    white-space: nowrap;
-  }
-  td {
-    padding: 9px 14px;
-    border-bottom: 1px solid var(--border-subtle);
-    vertical-align: middle;
-  }
-  tbody tr:last-child td { border-bottom: none; }
+  .tbl-wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+  th{text-align:left;padding:8px 14px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim);border-bottom:1px solid var(--border);white-space:nowrap}
+  td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:middle}
+  tbody tr:last-child td{border-bottom:none}
 
-  /* ── Race section ──────────────────────────────── */
-  .race {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    margin-bottom: 14px;
-    overflow: hidden;
-  }
-  .race-head {
-    padding: 12px 16px;
-    background: var(--raised);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .race-head:hover { background: var(--border); }
-  .race-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-strong);
-  }
-  .race-title .time {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--lay);
-    margin-right: 6px;
-  }
-  .race-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .tag {
-    display: inline-block;
-    background: var(--ground);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 1px 7px;
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .race-body { display: none; }
-  .race.open .race-body { display: block; }
-  .race-empty {
-    padding: 16px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--dim);
-  }
-  .chevron {
-    display: inline-block;
-    width: 0; height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 5px solid var(--muted);
-    transition: transform 0.2s;
-  }
-  .race.open .chevron { transform: rotate(180deg); }
+  .race{background:var(--surface);border:1px solid var(--border);border-radius:6px;margin-bottom:14px;overflow:hidden}
+  .race-head{padding:12px 16px;background:var(--raised);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;cursor:pointer;user-select:none}
+  .race-head:hover{background:var(--border)}
+  .race-title{font-size:14px;font-weight:600;color:var(--text-strong)}
+  .race-title .time{font-family:var(--mono);font-size:13px;color:var(--lay);margin-right:6px}
+  .race-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .tag{display:inline-block;background:var(--ground);border:1px solid var(--border);border-radius:3px;padding:1px 7px;font-size:11px;color:var(--muted);white-space:nowrap}
+  .race-body{display:none}
+  .race.open .race-body{display:block}
+  .race-empty{padding:16px;text-align:center;font-size:12px;color:var(--dim)}
+  .chevron{display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--muted);transition:transform 0.2s}
+  .race.open .chevron{transform:rotate(180deg)}
 
-  /* ── Horse / form / score cells ────────────────── */
-  .horse-name {
-    font-weight: 600;
-    color: var(--text-strong);
-    font-size: 13px;
-  }
-  .trainer-label {
-    font-size: 11px;
-    color: var(--dim);
-    margin-top: 1px;
-  }
-  .form {
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: 1.5px;
-  }
-  .f-g { color: var(--good); }
-  .f-m { color: var(--warn); }
-  .f-b { color: var(--lay); }
-  .f-s { color: var(--dim); }
+  .horse-name{font-weight:600;color:var(--text-strong);font-size:13px}
+  .form{font-family:var(--mono);font-size:13px;letter-spacing:1.5px}
+  .f-g{color:var(--good)}.f-m{color:var(--warn)}.f-b{color:var(--lay)}.f-s{color:var(--dim)}
+  .odds{font-family:var(--mono);font-weight:600;font-size:13px}
+  .odds .dec{font-weight:400;font-size:11px;color:var(--dim);margin-left:4px}
+  .odds .bk{font-weight:400;font-size:10px;color:var(--dim);display:block;margin-top:1px}
 
-  .odds {
-    font-family: var(--mono);
-    font-weight: 600;
-    font-size: 13px;
-  }
-  .odds .dec {
-    font-weight: 400;
-    font-size: 11px;
-    color: var(--dim);
-    margin-left: 4px;
-  }
+  .score-cell{display:flex;align-items:center;gap:8px;min-width:90px}
+  .score-num{font-family:var(--mono);font-weight:700;font-size:15px;min-width:24px;text-align:right}
+  .score-track{flex:1;height:4px;background:var(--border);border-radius:2px;min-width:40px}
+  .score-fill{height:100%;border-radius:2px;background:var(--lay);transition:width 0.3s ease}
 
-  .sr {
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-  .sr-low { color: var(--lay); }
-  .sr-mid { color: var(--warn); }
-  .sr-high { color: var(--good); }
+  .badge{display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap}
+  .badge-strong{background:var(--lay-soft);color:var(--lay);border:1px solid var(--lay-border)}
+  .badge-moderate{background:rgba(212,165,52,0.1);color:var(--warn);border:1px solid rgba(212,165,52,0.2)}
+  .badge-weak{background:rgba(107,133,119,0.08);color:var(--dim);border:1px solid var(--border)}
 
-  .score-cell {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 90px;
-  }
-  .score-num {
-    font-family: var(--mono);
-    font-weight: 700;
-    font-size: 15px;
-    min-width: 24px;
-    text-align: right;
-  }
-  .score-track {
-    flex: 1;
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    min-width: 40px;
-  }
-  .score-fill {
-    height: 100%;
-    border-radius: 2px;
-    background: var(--lay);
-    transition: width 0.3s ease;
-  }
+  .results-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:6px}
+  .results-head h2{font-size:15px;font-weight:600;color:var(--text-strong)}
+  .results-head .meta{font-size:12px;color:var(--muted)}
 
-  .badge {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-  }
-  .badge-strong {
-    background: var(--lay-soft);
-    color: var(--lay);
-    border: 1px solid var(--lay-border);
-  }
-  .badge-moderate {
-    background: rgba(212,165,52,0.1);
-    color: var(--warn);
-    border: 1px solid rgba(212,165,52,0.2);
-  }
-  .badge-weak {
-    background: rgba(107,133,119,0.08);
-    color: var(--dim);
-    border: 1px solid var(--border);
-  }
+  .loading{text-align:center;padding:50px 20px;color:var(--muted);font-size:13px}
+  .spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--lay);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
-  /* ── Results header ────────────────────────────── */
-  .results-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .results-head h2 {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-strong);
-  }
-  .results-head .meta {
-    font-size: 12px;
-    color: var(--muted);
-  }
+  .has-tip{position:relative;cursor:help}
+  .has-tip::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--raised);color:var(--text);padding:5px 9px;border-radius:4px;font-size:11px;font-family:var(--mono);white-space:nowrap;z-index:10;pointer-events:none;opacity:0;transition:opacity 0.15s;border:1px solid var(--border)}
+  .has-tip:hover::after{opacity:1}
 
-  /* ── Loading ───────────────────────────────────── */
-  .loading {
-    text-align: center;
-    padding: 50px 20px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .spinner {
-    width: 24px; height: 24px;
-    border: 2px solid var(--border);
-    border-top-color: var(--lay);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    margin: 0 auto 12px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  .page-foot{text-align:center;padding:24px;font-size:11px;color:var(--dim);border-top:1px solid var(--border-subtle);margin-top:32px;letter-spacing:0.02em}
 
-  /* ── Score breakdown tooltip ────────────────────── */
-  .has-tip {
-    position: relative;
-    cursor: help;
-  }
-  .has-tip::after {
-    content: attr(data-tip);
-    position: absolute;
-    bottom: calc(100% + 6px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--raised);
-    color: var(--text);
-    padding: 5px 9px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-family: var(--mono);
-    white-space: nowrap;
-    z-index: 10;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.15s;
-    border: 1px solid var(--border);
-  }
-  .has-tip:hover::after { opacity: 1; }
+  .hidden{display:none !important}
 
-  /* ── Footer ────────────────────────────────────── */
-  .page-foot {
-    text-align: center;
-    padding: 24px;
-    font-size: 11px;
-    color: var(--dim);
-    border-top: 1px solid var(--border-subtle);
-    margin-top: 32px;
-    letter-spacing: 0.02em;
-  }
+  .inline-input{background:var(--ground);border:1px solid var(--border);color:var(--text);padding:4px 6px;border-radius:3px;font-size:12px;font-family:var(--mono);width:76px;outline:none;transition:border-color 0.15s}
+  .inline-input:focus{border-color:var(--lay)}
+  .inline-input::placeholder{color:var(--dim);font-size:11px}
+  .inline-input.filled{border-color:var(--good)}
 
-  .hidden { display: none !important; }
+  .form-hint{font-size:10px;color:var(--dim);margin-top:2px}
 
-  @media (max-width: 720px) {
-    .wrap { padding: 14px; }
-    .method { grid-template-columns: 1fr; }
-    .setup-row { flex-direction: column; align-items: stretch; }
-    input[type="password"], input[type="text"] { width: 100%; }
-    .race-head { flex-direction: column; align-items: flex-start; }
-    th, td { padding: 7px 10px; }
-    .topbar { padding: 12px 16px; }
+  @media(max-width:720px){
+    .wrap{padding:14px}
+    .method{grid-template-columns:1fr}
+    .setup-row{flex-direction:column;align-items:stretch}
+    input[type="text"]{width:100%}
+    .race-head{flex-direction:column;align-items:flex-start}
+    th,td{padding:7px 10px}
+    .topbar{padding:12px 16px}
   }
 </style>
 </head>
@@ -577,30 +170,24 @@
 
 <div class="topbar">
   <div class="brand"><em>Lay</em>Finder</div>
-  <div class="topbar-meta">UK Flat &middot; Odds &le; 8/1</div>
+  <div class="topbar-meta">
+    UK Flat &middot; Odds &le; 8/1
+    <span class="req-counter" id="reqCounter" title="API requests used this month">0 / 50</span>
+  </div>
 </div>
 
 <div class="wrap">
 
-  <!-- Setup -->
-  <div class="setup" id="setup">
-    <div class="setup-heading">API Connection</div>
+  <div class="setup">
+    <div class="setup-heading">RapidAPI Connection (Free Tier)</div>
     <div class="setup-row">
       <div class="field">
-        <label>Username</label>
-        <input type="text" id="apiUser" placeholder="API username" autocomplete="username">
-      </div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" id="apiPass" placeholder="API password" autocomplete="current-password">
-      </div>
-      <div class="field">
-        <label>Race date</label>
-        <input type="date" id="raceDate">
+        <label>RapidAPI Key</label>
+        <input type="text" id="apiKey" placeholder="Your x-rapidapi-key" autocomplete="off">
       </div>
       <div class="field">
         <label>&nbsp;</label>
-        <button class="btn btn-primary" id="fetchBtn" onclick="fetchRaces()">Analyse</button>
+        <button class="btn btn-primary" id="fetchBtn" onclick="fetchRaces()">Analyse Today</button>
       </div>
       <div class="field">
         <label>&nbsp;</label>
@@ -608,42 +195,39 @@
       </div>
     </div>
     <label class="setup-check">
-      <input type="checkbox" id="saveCreds" checked> Remember credentials
+      <input type="checkbox" id="saveCreds" checked> Remember key
     </label>
     <div class="setup-note">
-      Connects to <a href="https://www.theracingapi.com" target="_blank" rel="noopener">The Racing API</a> (Standard plan).
-      Enter your credentials above, or click <strong>Demo</strong> to explore with sample data.
+      Uses <a href="https://rapidapi.com/DataMenu/api/horse-racing-odds-api" target="_blank" rel="noopener">Horse Racing Odds API</a> (free: 50 req/month).
+      Provides live odds from 16+ bookmakers. Enter form and trainer win% manually from
+      <a href="https://www.racingpost.com/racecards" target="_blank" rel="noopener">Racing Post</a> (free) to complete the lay score.
     </div>
   </div>
 
-  <!-- Status -->
   <div class="msg" id="msg"></div>
 
-  <!-- Scoring method -->
   <div class="method">
     <div class="method-cell">
       <h4>Trainer (0–40)</h4>
-      <p>Trainer's flat win strike rate over the past 12 months. &lt;5% scores 40, &gt;20% scores 0. Fewer than 20 runners adds a +5 unknown penalty.</p>
+      <p>Enter trainer win% from Racing Post. &lt;5% scores 40, &gt;20% scores 0. Left blank scores 25 (unknown).</p>
     </div>
     <div class="method-cell">
       <h4>Form (0–40)</h4>
-      <p>Last 6 runs. 6th–9th: 5 pts each. 10th+/fell/PU: 7–8 pts. 1st–3rd: 0. Fewer than 3 runs adds +10.</p>
+      <p>Enter last 6 runs from Racing Post (e.g. 060800). 6th–9th: 5 pts. 10th+/fell/PU: 7–8 pts. Blank scores 30.</p>
     </div>
     <div class="method-cell">
       <h4>Odds (0–20)</h4>
-      <p>Shorter odds with bad fundamentals = bigger market error. Evens scores 20, 8/1 scores 0.</p>
+      <p>Auto-filled from API. Shorter odds + bad fundamentals = bigger market error. Evens = 20, 8/1 = 0.</p>
     </div>
   </div>
 
-  <!-- Loading -->
   <div id="loadingArea" class="hidden">
     <div class="loading">
       <div class="spinner"></div>
-      <span id="loadingText">Fetching flat racecards&hellip;</span>
+      <span id="loadingText">Fetching meetings&hellip;</span>
     </div>
   </div>
 
-  <!-- Results -->
   <div id="resultsArea" class="hidden">
     <div id="summaryArea"></div>
     <div id="racesArea"></div>
@@ -656,44 +240,68 @@
 </div>
 
 <script>
+var RAPID_HOST = 'horse-racing-odds-api.p.rapidapi.com';
+var RAPID_BASE = 'https://' + RAPID_HOST;
+
+var UK_COURSES = ['ascot','ayr','bath','beverley','brighton','carlisle','catterick','chelmsford','chelmsford city','chester','chepstow','doncaster','epsom','epsom downs','ffos las','goodwood','hamilton','haydock','haydock park','kempton','kempton park','leicester','lingfield','lingfield park','musselburgh','newbury','newcastle','newmarket','nottingham','pontefract','redcar','ripon','salisbury','sandown','sandown park','southwell','thirsk','wetherby','windsor','wolverhampton','yarmouth','york','aintree','bangor','bangor-on-dee','cartmel','cheltenham','exeter','fakenham','fontwell','fontwell park','hereford','hexham','huntingdon','kelso','ludlow','market rasen','newton abbot','perth','plumpton','sedgefield','stratford','taunton','towcester','uttoxeter','warwick','wincanton','worcester'];
+var JUMP_RE = /chase|chs|hurdle|hdl|nh flat|nhf|bumper|steeplechase|national hunt/i;
+
+var allRunnerData = [];
+
 (function init() {
-  document.getElementById('raceDate').value = new Date().toISOString().slice(0, 10);
-  var u = localStorage.getItem('lf_u'), p = localStorage.getItem('lf_p');
-  if (u) document.getElementById('apiUser').value = u;
-  if (p) document.getElementById('apiPass').value = p;
+  var k = localStorage.getItem('lf_rapid_key');
+  if (k) document.getElementById('apiKey').value = k;
+  updateReqCounter();
 })();
 
-var API = 'https://api.theracingapi.com';
-var MONO = "'SF Mono','Cascadia Mono','Fira Code',Consolas,monospace";
-
-function msg(text, type) {
-  var el = document.getElementById('msg');
-  el.textContent = text;
-  el.className = 'msg show msg-' + type;
+function trackReq() {
+  var m = new Date().toISOString().slice(0,7);
+  var k = 'lf_reqs_' + m;
+  localStorage.setItem(k, (parseInt(localStorage.getItem(k)||'0') + 1).toString());
+  updateReqCounter();
 }
+function getReqCount() {
+  return parseInt(localStorage.getItem('lf_reqs_' + new Date().toISOString().slice(0,7)) || '0');
+}
+function updateReqCounter() {
+  var el = document.getElementById('reqCounter');
+  if (el) el.textContent = getReqCount() + ' / 50';
+}
+
+function msg(t, type) { var el = document.getElementById('msg'); el.textContent = t; el.className = 'msg show msg-' + type; }
 function msgClear() { document.getElementById('msg').className = 'msg'; }
-
-function showLoad(t) {
-  document.getElementById('loadingText').textContent = t;
-  document.getElementById('loadingArea').classList.remove('hidden');
-  document.getElementById('resultsArea').classList.add('hidden');
-}
+function showLoad(t) { document.getElementById('loadingText').textContent = t; document.getElementById('loadingArea').classList.remove('hidden'); document.getElementById('resultsArea').classList.add('hidden'); }
 function hideLoad() { document.getElementById('loadingArea').classList.add('hidden'); }
+function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
 
-function authHeader(u, p) { return 'Basic ' + btoa(u + ':' + p); }
-
-async function apiGet(path, params, u, p) {
-  var url = new URL(API + path);
-  if (params) Object.entries(params).forEach(function(e) {
-    if (Array.isArray(e[1])) e[1].forEach(function(v) { url.searchParams.append(e[0], v); });
-    else url.searchParams.set(e[0], e[1]);
+async function rapidGet(path, key) {
+  var r = await fetch(RAPID_BASE + path, {
+    headers: { 'Content-Type': 'application/json', 'x-rapidapi-host': RAPID_HOST, 'x-rapidapi-key': key }
   });
-  var r = await fetch(url.toString(), { headers: { Authorization: authHeader(u, p) } });
-  if (!r.ok) throw new Error('API ' + r.status + ': ' + (await r.text().catch(function() { return r.statusText; })));
+  if (!r.ok) {
+    var body = await r.text().catch(function() { return r.statusText; });
+    throw new Error('API ' + r.status + ': ' + body);
+  }
+  trackReq();
   return r.json();
 }
 
-/* ── Form parsing ────────────────────────────────── */
+function isUKCourse(name) {
+  return UK_COURSES.indexOf((name || '').toLowerCase().trim()) >= 0;
+}
+function isJumpRace(raceNames) {
+  return JUMP_RE.test((raceNames || []).join(' '));
+}
+function extractRaceDesc(raceNames) {
+  var names = raceNames || [];
+  for (var i = 0; i < names.length; i++) {
+    var n = names[i];
+    if (/\d+[mf]/.test(n) || /hcap|handicap|stakes|maiden|novice|nursery|claiming|seller|classified/i.test(n)) return n;
+  }
+  return names[0] || '';
+}
+
+/* ── Form scoring ── */
 function parseForm(s) {
   if (!s || s.trim() === '-') return [];
   var out = [];
@@ -705,85 +313,50 @@ function parseForm(s) {
   }
   return out;
 }
-
 function scoreForm(s) {
-  var runs = parseForm(s).filter(function(x) { return x.t !== 'sep'; });
-  var last6 = runs.slice(0, 6);
-  if (!last6.length) return 30;
+  var runs = parseForm(s).filter(function(x) { return x.t !== 'sep'; }).slice(0, 6);
+  if (!runs.length) return 30;
   var sc = 0;
-  last6.forEach(function(r) {
-    if (r.p <= 3) sc += 0;
-    else if (r.p <= 5) sc += 2;
-    else if (r.p <= 9) sc += 5;
-    else if (r.p === 10) sc += 7;
-    else sc += 8;
+  runs.forEach(function(r) {
+    if (r.p <= 3) sc += 0; else if (r.p <= 5) sc += 2; else if (r.p <= 9) sc += 5; else if (r.p === 10) sc += 7; else sc += 8;
   });
-  if (last6.length < 3) sc += 10;
+  if (runs.length < 3) sc += 10;
   return Math.min(sc, 40);
 }
-
 function renderForm(s) {
   var ch = parseForm(s);
   if (!ch.length) return '<span style="color:var(--dim)">—</span>';
   return ch.map(function(c) {
     if (c.t === 'sep') return '<span class="f-s">/</span>';
-    var cls = 'f-m';
-    if (c.p <= 3) cls = 'f-g';
-    else if (c.p >= 7 || c.p === 99) cls = 'f-b';
+    var cls = c.p <= 3 ? 'f-g' : (c.p >= 7 || c.p === 99 ? 'f-b' : 'f-m');
     return '<span class="' + cls + '">' + c.c + '</span>';
   }).join('');
 }
 
-/* ── Trainer scoring ─────────────────────────────── */
-function scoreTrainer(st) {
-  if (!st || st.runs === undefined) return 25;
-  if (st.runs < 5) return 35;
-  var wr = (st.wins / st.runs) * 100;
-  var sc = Math.round(40 - wr * 2);
-  if (st.runs < 20) sc += 5;
-  return Math.max(0, Math.min(40, sc));
+/* ── Trainer scoring ── */
+function scoreTrainerPct(pct) {
+  if (pct === null || pct === undefined || pct === '') return 25;
+  var p = parseFloat(pct);
+  if (isNaN(p)) return 25;
+  return Math.max(0, Math.min(40, Math.round(40 - p * 2)));
 }
 
-/* ── Odds ────────────────────────────────────────── */
+/* ── Odds scoring ── */
 function scoreOdds(d) {
   if (!d || d <= 1) return 10;
   return Math.max(0, Math.min(20, Math.round(20 * (1 - (d - 1) / 8))));
 }
-
 function decToFrac(d) {
   if (!d || d <= 1) return 'EVS';
   var n = d - 1;
-  var tbl = [[1,5],[1,4],[1,3],[2,5],[1,2],[4,7],[8,13],[4,6],[8,11],[4,5],[5,6],[10,11],
-    [1,1],[6,5],[5,4],[11,8],[6,4],[13,8],[7,4],[2,1],[9,4],[5,2],[11,4],[3,1],[7,2],[4,1],[9,2],[5,1],[6,1],[7,1],[8,1]];
+  var tbl = [[1,5],[1,4],[1,3],[2,5],[1,2],[4,7],[8,13],[4,6],[8,11],[4,5],[5,6],[10,11],[1,1],[6,5],[5,4],[11,8],[6,4],[13,8],[7,4],[2,1],[9,4],[5,2],[11,4],[3,1],[7,2],[4,1],[9,2],[5,1],[6,1],[7,1],[8,1]];
   var best = null, bd = 99;
   tbl.forEach(function(f) { var diff = Math.abs(f[0]/f[1] - n); if (diff < bd) { bd = diff; best = f; } });
   return best ? best[0] + '/' + best[1] : d.toFixed(1);
 }
 
-/* ── Extract fields ──────────────────────────────── */
-function getOdds(r) {
-  if (r.odds && Array.isArray(r.odds)) {
-    var nums = r.odds.map(function(o) { return parseFloat(o.decimal || o.price || o); }).filter(function(o) { return !isNaN(o) && o > 1; });
-    if (nums.length) return Math.min.apply(null, nums);
-  }
-  if (r.odds && typeof r.odds === 'object' && !Array.isArray(r.odds)) {
-    var vs = Object.values(r.odds).map(function(o) { return typeof o === 'object' ? parseFloat(o.decimal || o.price || 0) : parseFloat(o); }).filter(function(o) { return !isNaN(o) && o > 1; });
-    if (vs.length) return Math.min.apply(null, vs);
-  }
-  var sp = parseFloat(r.sp || r.starting_price || r.decimal_odds);
-  if (!isNaN(sp) && sp > 1) return sp;
-  if (r.fractional_odds) { var p = r.fractional_odds.split('/'); if (p.length === 2) { var dd = +p[0]/+p[1]+1; if (!isNaN(dd)) return dd; } }
-  return null;
-}
-function trainerName(r) { return (typeof r.trainer === 'string' ? r.trainer : (r.trainer && r.trainer.name)) || r.trainer_name || 'Unknown'; }
-function trainerId(r) { return r.trainer_id || (r.trainer && r.trainer.id) || null; }
-function horseName(r) { return (typeof r.horse === 'string' ? r.horse : (r.horse && r.horse.name)) || r.horse_name || r.name || 'Unknown'; }
-function getForm(r) { return r.form || r.recent_form || r.last_form || ''; }
-function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
-
-/* ── Lay score ───────────────────────────────────── */
-function layScore(form, tStats, odds) {
-  var f = scoreForm(form), t = scoreTrainer(tStats), o = scoreOdds(odds);
+function layScore(formStr, trainerPct, odds) {
+  var f = scoreForm(formStr), t = scoreTrainerPct(trainerPct), o = scoreOdds(odds);
   return { total: f + t + o, f: f, t: t, o: o };
 }
 function layRating(total) {
@@ -792,198 +365,226 @@ function layRating(total) {
   return { label: 'WATCH', cls: 'badge-weak' };
 }
 
-/* ── Fetch ────────────────────────────────────────── */
+/* ── Main fetch ── */
 async function fetchRaces() {
-  var u = document.getElementById('apiUser').value.trim();
-  var p = document.getElementById('apiPass').value.trim();
-  var dt = document.getElementById('raceDate').value;
-  if (!u || !p) { msg('Enter your Racing API credentials, or click Demo.', 'error'); return; }
-  if (document.getElementById('saveCreds').checked) { localStorage.setItem('lf_u', u); localStorage.setItem('lf_p', p); }
-  msgClear(); showLoad('Fetching flat racecards for ' + dt + '…');
+  var key = document.getElementById('apiKey').value.trim();
+  if (!key) { msg('Enter your RapidAPI key.', 'error'); return; }
+  if (document.getElementById('saveCreds').checked) localStorage.setItem('lf_rapid_key', key);
+  msgClear();
+  showLoad('Fetching today\'s meetings (1 request)…');
   document.getElementById('fetchBtn').disabled = true;
+  allRunnerData = [];
 
   try {
-    var params = { 'region[]': ['gb'], 'type[]': ['flat'] };
-    if (dt === new Date().toISOString().slice(0, 10)) params.day = 'today';
-    else params.date = dt;
-
-    var data;
-    try { data = await apiGet('/v1/racecards/standard', params, u, p); }
-    catch (e) { data = await apiGet('/v1/racecards/free', params, u, p); }
-
-    var cards = data.racecards || data.races || data.meetings || data;
-    if (!cards || (Array.isArray(cards) && !cards.length)) { hideLoad(); msg('No flat races found for ' + dt + '.', 'info'); document.getElementById('fetchBtn').disabled = false; return; }
-
-    var arr = Array.isArray(cards) ? cards : [cards];
-    showLoad('Analysing trainer stats for ' + arr.length + ' races…');
-
-    var tc = {};
-    for (var ri = 0; ri < arr.length; ri++) {
-      var runners = arr[ri].runners || arr[ri].entries || [];
-      for (var rj = 0; rj < runners.length; rj++) {
-        var tid = trainerId(runners[rj]);
-        if (tid && !tc[tid]) {
-          try {
-            var a = await apiGet('/v1/trainers/' + tid + '/analysis/courses', { 'type[]': ['flat'], 'region[]': ['gb'], start_date: yearAgo() }, u, p);
-            var totR = 0, totW = 0, cs = a.courses || a.data || [];
-            if (Array.isArray(cs)) cs.forEach(function(c) { totR += (c.runs||0); totW += (c.wins||0); });
-            tc[tid] = { runs: totR, wins: totW };
-          } catch (e) { tc[tid] = null; }
-        }
-      }
+    var meetingsData = await rapidGet('/horses/meetings', key);
+    var meetings = [];
+    if (meetingsData && meetingsData.meetings) meetings = meetingsData.meetings;
+    else if (Array.isArray(meetingsData)) meetings = meetingsData;
+    else if (meetingsData && meetingsData.data) meetings = meetingsData.data;
+    else if (meetingsData && meetingsData.events) meetings = meetingsData.events;
+    else if (meetingsData && typeof meetingsData === 'object') {
+      var vals = Object.values(meetingsData);
+      for (var vi = 0; vi < vals.length; vi++) { if (Array.isArray(vals[vi])) { meetings = vals[vi]; break; } }
     }
-    render(arr, tc, dt);
+
+    if (!meetings.length) { hideLoad(); msg('No meetings returned from API. Racing may not be on today.', 'info'); return; }
+
+    var ukFlat = meetings.filter(function(m) {
+      var course = m.raceCourse || m.course || m.venue || '';
+      if (!isUKCourse(course)) return false;
+      var names = m.raceNames || m.race_names || [];
+      if (isJumpRace(names)) return false;
+      return true;
+    });
+
+    if (!ukFlat.length) {
+      hideLoad();
+      var totalCount = meetings.length;
+      var ukCount = meetings.filter(function(m) { return isUKCourse(m.raceCourse || m.course || m.venue || ''); }).length;
+      msg('Found ' + totalCount + ' meetings (' + ukCount + ' UK) but no UK flat races today. Jump-only cards may be running.', 'info');
+      return;
+    }
+
+    showLoad('Loading ' + ukFlat.length + ' UK flat races (' + ukFlat.length + ' requests)…');
+
+    var events = [];
+    for (var i = 0; i < ukFlat.length; i++) {
+      var eid = ukFlat[i].eventId || ukFlat[i].event_id || ukFlat[i].id;
+      if (!eid) continue;
+      try {
+        var ev = await rapidGet('/horses/meetings/event/' + encodeURIComponent(eid), key);
+        if (ev && ev.event) events.push(ev.event);
+        else if (ev) events.push(ev);
+      } catch (e) { /* skip failed */ }
+    }
+
+    if (!events.length) { hideLoad(); msg('Could not load race details.', 'error'); return; }
+
+    renderResults(events);
   } catch (err) {
     hideLoad();
-    if (err.message.indexOf('401') >= 0) msg('Authentication failed. Check your credentials.', 'error');
-    else if (err.message.indexOf('fetch') >= 0 || err.message.indexOf('Network') >= 0) msg('Network error — the API may block browser requests (CORS). Try Demo mode or a CORS proxy.', 'error');
+    if (err.message.indexOf('403') >= 0 || err.message.indexOf('401') >= 0) msg('Invalid API key. Check your RapidAPI key is correct.', 'error');
+    else if (err.message.indexOf('429') >= 0) msg('Rate limit exceeded. Free tier allows 50 requests/month.', 'error');
     else msg(err.message, 'error');
   } finally { document.getElementById('fetchBtn').disabled = false; }
 }
 
-function yearAgo() { var d = new Date(); d.setFullYear(d.getFullYear() - 1); return d.toISOString().slice(0, 10); }
-
-/* ── Render ───────────────────────────────────────── */
-function render(races, tc, dateLabel) {
+/* ── Render results ── */
+function renderResults(events) {
   hideLoad();
-  var all = [];
+  allRunnerData = [];
+  var raceIndex = 0;
 
-  var racesHTML = races.map(function(race) {
-    var course = race.course || race.course_name || race.venue || 'Unknown';
-    var time = race.off_time || race.time || race.post_time || '';
-    var name = race.race_name || race.name || race.title || '';
-    var dist = race.distance || race.dist || '';
-    var cls = race.race_class || race.class || '';
-    var going = race.going || '';
-    var runners = race.runners || race.entries || [];
-    var qual = [];
+  var racesHTML = events.map(function(ev) {
+    var course = ev.raceCourse || ev.course || 'Unknown';
+    var time = ev.raceTime || ev.time || '';
+    var desc = extractRaceDesc(ev.raceNames || []);
+    var horses = ev.horses || ev.runners || [];
 
-    runners.forEach(function(r) {
-      var odds = getOdds(r);
-      if (odds === null || odds > 9.0) return;
-      var form = getForm(r);
-      var tid = trainerId(r);
-      var ts = tid ? tc[tid] : null;
-      var sc = layScore(form, ts, odds);
-      var rt = layRating(sc.total);
-      qual.push({ horse: horseName(r), trainer: trainerName(r), form: form, odds: odds, sc: sc, rt: rt, course: course, time: time, raceName: name, ts: ts });
+    var qualified = horses.filter(function(h) {
+      var odds = h.bestWinOdds && h.bestWinOdds.decimal ? h.bestWinOdds.decimal : null;
+      return odds !== null && odds <= 9.0;
     });
 
-    qual.sort(function(a, b) { return b.sc.total - a.sc.total; });
-    all = all.concat(qual);
+    var tags = '<span class="tag">' + esc(desc) + '</span>';
+    tags += '<span class="tag">' + horses.length + ' runners</span>';
+    if (qualified.length) tags += '<span class="tag">' + qualified.length + ' at &le; 8/1</span>';
 
-    var tags = '';
-    if (dist) tags += '<span class="tag">' + esc(dist) + '</span>';
-    if (cls) tags += '<span class="tag">Class ' + esc(String(cls)) + '</span>';
-    if (going) tags += '<span class="tag">' + esc(going) + '</span>';
-    if (qual.length) tags += '<span class="tag">' + qual.length + ' qualified</span>';
-
-    if (!qual.length) {
-      return '<div class="race"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + ' — ' + esc(name) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="race-empty">No qualified runners at odds ≤ 8/1</div></div></div>';
+    if (!qualified.length) {
+      return '<div class="race"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="race-empty">No runners at odds &le; 8/1</div></div></div>';
     }
 
-    var rows = qual.map(function(q) {
-      var wr = q.ts ? ((q.ts.wins / Math.max(q.ts.runs, 1)) * 100).toFixed(1) + '%' : '—';
-      var wrN = q.ts ? (q.ts.wins / Math.max(q.ts.runs, 1)) * 100 : -1;
-      var srCls = wrN < 0 ? '' : (wrN < 8 ? 'sr-low' : (wrN < 16 ? 'sr-mid' : 'sr-high'));
-      var wrDetail = q.ts ? q.ts.wins + 'W / ' + q.ts.runs + 'R' : 'no data';
-      var pct = Math.round(q.sc.total);
+    qualified.sort(function(a, b) { return (a.bestWinOdds.decimal || 99) - (b.bestWinOdds.decimal || 99); });
 
-      return '<tr>'
-        + '<td><div class="horse-name">' + esc(q.horse) + '</div><div class="trainer-label">' + esc(q.trainer) + '</div></td>'
-        + '<td><span class="form">' + renderForm(q.form) + '</span></td>'
-        + '<td><span class="odds">' + decToFrac(q.odds) + '<span class="dec">' + q.odds.toFixed(2) + '</span></span></td>'
-        + '<td><span class="sr ' + srCls + ' has-tip" data-tip="' + wrDetail + '">' + wr + '</span></td>'
-        + '<td><div class="score-cell has-tip" data-tip="T:' + q.sc.t + ' F:' + q.sc.f + ' O:' + q.sc.o + '"><span class="score-num">' + pct + '</span><div class="score-track"><div class="score-fill" style="width:' + pct + '%"></div></div></div></td>'
-        + '<td><span class="badge ' + q.rt.cls + '">' + q.rt.label + '</span></td>'
+    var rows = qualified.map(function(h) {
+      var odds = h.bestWinOdds.decimal;
+      var frac = h.bestWinOdds.odds ? h.bestWinOdds.odds.fractional : decToFrac(odds);
+      var bk = h.bestWinOdds.bookmaker || '';
+      var name = h.horseName || h.name || 'Unknown';
+      var rid = 'r' + raceIndex + '_' + (h.horseId || h.horseKey || '').replace(/[^a-zA-Z0-9]/g, '');
+      var initScore = layScore('', null, odds);
+      var rating = layRating(initScore.total);
+
+      allRunnerData.push({ id: rid, horse: name, odds: odds, course: course, time: time, frac: frac, desc: desc });
+
+      return '<tr id="row_' + rid + '">'
+        + '<td><div class="horse-name">' + esc(name) + '</div></td>'
+        + '<td><input class="inline-input" id="form_' + rid + '" placeholder="e.g. 060800" oninput="recalc(\'' + rid + '\')" maxlength="12"><div class="form-hint">Racing Post form</div></td>'
+        + '<td><span class="odds">' + esc(frac) + '<span class="dec">' + odds.toFixed(2) + '</span><span class="bk">' + esc(bk) + '</span></span></td>'
+        + '<td><input class="inline-input" id="tsr_' + rid + '" placeholder="e.g. 5" oninput="recalc(\'' + rid + '\')" maxlength="4" style="width:52px"><div class="form-hint">Win %</div></td>'
+        + '<td><div class="score-cell has-tip" data-tip="T:' + initScore.t + ' F:' + initScore.f + ' O:' + initScore.o + '" id="score_' + rid + '"><span class="score-num">' + initScore.total + '</span><div class="score-track"><div class="score-fill" style="width:' + initScore.total + '%"></div></div></div></td>'
+        + '<td><span class="badge ' + rating.cls + '" id="badge_' + rid + '">' + rating.label + '</span></td>'
         + '</tr>';
     }).join('');
 
-    return '<div class="race open"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + ' — ' + esc(name) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="tbl-wrap"><table><thead><tr><th>Horse / Trainer</th><th>Form</th><th>Odds</th><th>Trainer SR</th><th>Lay Score</th><th>Rating</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></div>';
+    raceIndex++;
+    return '<div class="race open"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="tbl-wrap"><table><thead><tr><th>Horse</th><th>Form</th><th>Best Odds</th><th>Trainer SR</th><th>Lay Score</th><th>Rating</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></div>';
   }).join('');
 
-  // Summary
-  all.sort(function(a, b) { return b.sc.total - a.sc.total; });
-  var top = all.filter(function(c) { return c.sc.total >= 45; }).slice(0, 8);
-  var sumHTML;
-
-  if (top.length) {
-    var srows = top.map(function(q, i) {
-      var wr = q.ts ? ((q.ts.wins / Math.max(q.ts.runs, 1)) * 100).toFixed(1) + '%' : '—';
-      return '<tr>'
-        + '<td style="color:var(--lay);font-weight:700;width:30px">' + (i+1) + '</td>'
-        + '<td><span class="horse-name">' + esc(q.horse) + '</span></td>'
-        + '<td style="color:var(--muted);font-size:12px">' + esc(q.trainer) + '</td>'
-        + '<td style="font-size:12px">' + esc(q.time) + ' ' + esc(q.course) + '</td>'
-        + '<td><span class="odds">' + decToFrac(q.odds) + '</span></td>'
-        + '<td><span class="form">' + renderForm(q.form) + '</span></td>'
-        + '<td><span class="sr">' + wr + '</span></td>'
-        + '<td style="font-family:' + MONO + ';font-weight:700;font-size:15px">' + q.sc.total + '</td>'
-        + '<td><span class="badge ' + q.rt.cls + '">' + q.rt.label + '</span></td>'
-        + '</tr>';
-    }).join('');
-    sumHTML = '<div class="summary"><div class="summary-head"><h2>Top Lay Candidates</h2><span class="date-label">' + esc(dateLabel) + '</span></div><div class="summary-body"><div class="tbl-wrap"><table><thead><tr><th>#</th><th>Horse</th><th>Trainer</th><th>Race</th><th>Odds</th><th>Form</th><th>Trainer SR</th><th>Score</th><th>Rating</th></tr></thead><tbody>' + srows + '</tbody></table></div></div></div>';
-  } else {
-    sumHTML = '<div class="summary"><div class="summary-head"><h2>No Strong Lay Candidates</h2><span class="date-label">' + esc(dateLabel) + '</span></div><div class="summary-body"><div class="summary-empty">No runners scored 45+ today. Check individual races below.</div></div></div>';
-  }
-
-  document.getElementById('summaryArea').innerHTML = sumHTML;
-  document.getElementById('racesArea').innerHTML = '<div class="results-head"><h2>Race-by-Race Breakdown</h2><span class="meta">' + races.length + ' flat races · ' + all.length + ' runners at ≤ 8/1</span></div>' + racesHTML;
+  var totalQual = allRunnerData.length;
+  document.getElementById('summaryArea').innerHTML = '<div class="summary"><div class="summary-head"><h2>Runners at &le; 8/1</h2><span class="date-label">' + events.length + ' UK flat races</span></div><div class="summary-body"><div class="summary-empty">Enter form and trainer win% from <a href="https://www.racingpost.com/racecards" target="_blank" rel="noopener" style="color:var(--lay)">Racing Post</a> to calculate lay scores. Scores update live as you type.</div></div></div>';
+  document.getElementById('racesArea').innerHTML = '<div class="results-head"><h2>Race-by-Race</h2><span class="meta">' + events.length + ' races &middot; ' + totalQual + ' runners at &le; 8/1</span></div>' + racesHTML;
   document.getElementById('resultsArea').classList.remove('hidden');
-  msg('Analysis complete — ' + all.length + ' qualified runners across ' + races.length + ' flat races.', 'ok');
+  msg('Loaded ' + totalQual + ' qualified runners. Enter form + trainer data to score.', 'ok');
 }
 
-/* ── Demo ─────────────────────────────────────────── */
+/* ── Live recalculation ── */
+function recalc(rid) {
+  var formEl = document.getElementById('form_' + rid);
+  var tsrEl = document.getElementById('tsr_' + rid);
+  var runner = allRunnerData.find(function(r) { return r.id === rid; });
+  if (!runner) return;
+
+  var formVal = formEl ? formEl.value.trim() : '';
+  var tsrVal = tsrEl ? tsrEl.value.trim() : '';
+
+  if (formEl) formEl.classList.toggle('filled', formVal.length > 0);
+  if (tsrEl) tsrEl.classList.toggle('filled', tsrVal.length > 0);
+
+  var sc = layScore(formVal, tsrVal || null, runner.odds);
+  var rating = layRating(sc.total);
+
+  var scoreEl = document.getElementById('score_' + rid);
+  if (scoreEl) {
+    scoreEl.setAttribute('data-tip', 'T:' + sc.t + ' F:' + sc.f + ' O:' + sc.o);
+    scoreEl.innerHTML = '<span class="score-num">' + sc.total + '</span><div class="score-track"><div class="score-fill" style="width:' + sc.total + '%"></div></div>';
+  }
+  var badgeEl = document.getElementById('badge_' + rid);
+  if (badgeEl) { badgeEl.className = 'badge ' + rating.cls; badgeEl.textContent = rating.label; }
+
+  runner.lastScore = sc;
+  runner.lastRating = rating;
+  runner.form = formVal;
+  runner.tsr = tsrVal;
+  rebuildSummary();
+}
+
+function rebuildSummary() {
+  var scored = allRunnerData.filter(function(r) { return r.lastScore && r.lastScore.total >= 45 && (r.form || r.tsr); });
+  scored.sort(function(a, b) { return b.lastScore.total - a.lastScore.total; });
+  var top = scored.slice(0, 8);
+
+  var el = document.getElementById('summaryArea');
+  if (!top.length) {
+    el.innerHTML = '<div class="summary"><div class="summary-head"><h2>Runners at &le; 8/1</h2><span class="date-label">' + allRunnerData.length + ' qualified</span></div><div class="summary-body"><div class="summary-empty">Enter form and trainer win% to calculate lay scores. Strong lays (45+) will appear here.</div></div></div>';
+    return;
+  }
+
+  var rows = top.map(function(r, i) {
+    return '<tr>'
+      + '<td style="color:var(--lay);font-weight:700;width:30px">' + (i+1) + '</td>'
+      + '<td><span class="horse-name">' + esc(r.horse) + '</span></td>'
+      + '<td style="font-size:12px">' + esc(r.time) + ' ' + esc(r.course) + '</td>'
+      + '<td><span class="odds">' + esc(r.frac) + '</span></td>'
+      + '<td><span class="form">' + renderForm(r.form || '') + '</span></td>'
+      + '<td style="font-family:var(--mono);font-size:12px">' + (r.tsr || '—') + '%</td>'
+      + '<td style="font-family:var(--mono);font-weight:700;font-size:15px">' + r.lastScore.total + '</td>'
+      + '<td><span class="badge ' + r.lastRating.cls + '">' + r.lastRating.label + '</span></td>'
+      + '</tr>';
+  }).join('');
+
+  el.innerHTML = '<div class="summary"><div class="summary-head"><h2>Top Lay Candidates</h2><span class="date-label">' + scored.length + ' scored 45+</span></div><div class="summary-body"><div class="tbl-wrap"><table><thead><tr><th>#</th><th>Horse</th><th>Race</th><th>Odds</th><th>Form</th><th>Trainer</th><th>Score</th><th>Rating</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></div>';
+}
+
+/* ── Demo ── */
 function loadDemo() {
-  msgClear(); showLoad('Loading demo data…');
-  var dt = document.getElementById('raceDate').value;
-  var races = [
-    { course:'Newmarket', off_time:'14:10', race_name:'British EBF Novice Stakes', distance:'7f', race_class:'4', going:'Good to Firm',
-      runners: [
-        { horse:'Midnight Storm', trainer:'K Burke', trainer_id:'t1', form:'060800', odds:[{decimal:'4.5'}] },
-        { horse:'Royal Decree', trainer:'J Gosden', trainer_id:'t2', form:'112321', odds:[{decimal:'2.5'}] },
-        { horse:'Harbour Wind', trainer:'T Clover', trainer_id:'t3', form:'7P0050', odds:[{decimal:'6.0'}] },
-        { horse:'Dawn Eagle', trainer:'C Appleby', trainer_id:'t4', form:'231142', odds:[{decimal:'3.0'}] },
-        { horse:'Perfect Draft', trainer:'R Beckett', trainer_id:'t5', form:'05', odds:[{decimal:'7.0'}] },
-        { horse:'Noble Quest', trainer:'S Kirk', trainer_id:'t6', form:'908700', odds:[{decimal:'5.0'}] },
-        { horse:'Cosmic Ray', trainer:'A Balding', trainer_id:'t7', form:'312', odds:[{decimal:'12.0'}] }
-      ]
-    },
-    { course:'Ascot', off_time:'15:05', race_name:'Buckingham Palace Handicap', distance:'1m', race_class:'3', going:'Good',
-      runners: [
-        { horse:'Silent Reign', trainer:'M Johnston', trainer_id:'t8', form:'880079', odds:[{decimal:'3.5'}] },
-        { horse:'Warrior King', trainer:'A O\'Brien', trainer_id:'t9', form:'211312', odds:[{decimal:'2.0'}] },
-        { horse:'Painted Lady', trainer:'D Loughnane', trainer_id:'t10', form:'000F06', odds:[{decimal:'8.0'}] },
-        { horse:'Blue Diamond', trainer:'W Haggas', trainer_id:'t11', form:'413221', odds:[{decimal:'3.0'}] },
-        { horse:'Frosty Morning', trainer:'T Ward', trainer_id:'t12', form:'700', odds:[{decimal:'5.5'}] },
-        { horse:'Tidal Force', trainer:'R Hannon', trainer_id:'t13', form:'5432', odds:[{decimal:'9.0'}] }
-      ]
-    },
-    { course:'Goodwood', off_time:'15:40', race_name:'Coral Handicap Stakes', distance:'1m 2f', race_class:'2', going:'Good to Soft',
-      runners: [
-        { horse:'Drifter', trainer:'R Fahey', trainer_id:'t14', form:'098060', odds:[{decimal:'4.0'}] },
-        { horse:'High Society', trainer:'J Gosden', trainer_id:'t2', form:'122111', odds:[{decimal:'1.8'}] },
-        { horse:'Muddy Boots', trainer:'M Herrington', trainer_id:'t15', form:'P00P70', odds:[{decimal:'7.0'}] },
-        { horse:'Spring Loaded', trainer:'C Appleby', trainer_id:'t4', form:'213', odds:[{decimal:'3.5'}] },
-        { horse:'Fortune Bay', trainer:'T Dascombe', trainer_id:'t16', form:'6U0895', odds:[{decimal:'6.0'}] },
-        { horse:'Last Orders', trainer:'H Palmer', trainer_id:'t17', form:'43521', odds:[{decimal:'5.0'}] }
-      ]
-    },
-    { course:'York', off_time:'16:15', race_name:'Sky Bet Fillies Handicap', distance:'6f', race_class:'4', going:'Firm',
-      runners: [
-        { horse:'Lady Phoenix', trainer:'D O\'Meara', trainer_id:'t18', form:'5700P8', odds:[{decimal:'5.0'}] },
-        { horse:'Star Sapphire', trainer:'K Ryan', trainer_id:'t19', form:'131212', odds:[{decimal:'2.5'}] },
-        { horse:'Velvet Rose', trainer:'J Tuite', trainer_id:'t20', form:'00F000', odds:[{decimal:'8.5'}] },
-        { horse:'Arctic Belle', trainer:'T Easterby', trainer_id:'t21', form:'843', odds:[{decimal:'6.0'}] },
-        { horse:'Dancing Fire', trainer:'S Crisford', trainer_id:'t22', form:'321145', odds:[{decimal:'4.0'}] }
-      ]
-    }
+  msgClear(); showLoad('Loading demo…');
+  allRunnerData = [];
+
+  var events = [
+    { raceCourse:'Newmarket', raceTime:'14:10', raceNames:['7f Nov Stks'], horses:[
+      { horseId:'midnight-storm', horseName:'Midnight Storm', bestWinOdds:{ bookmaker:'BET365', decimal:4.5, odds:{ fractional:'7/2' }}},
+      { horseId:'royal-decree', horseName:'Royal Decree', bestWinOdds:{ bookmaker:'SKYBET', decimal:2.5, odds:{ fractional:'6/4' }}},
+      { horseId:'harbour-wind', horseName:'Harbour Wind', bestWinOdds:{ bookmaker:'WILLIAM_HILL', decimal:6.0, odds:{ fractional:'5/1' }}},
+      { horseId:'dawn-eagle', horseName:'Dawn Eagle', bestWinOdds:{ bookmaker:'BETFAIR', decimal:3.0, odds:{ fractional:'2/1' }}},
+      { horseId:'noble-quest', horseName:'Noble Quest', bestWinOdds:{ bookmaker:'PADDY_POWER', decimal:5.0, odds:{ fractional:'4/1' }}},
+      { horseId:'cosmic-ray', horseName:'Cosmic Ray', bestWinOdds:{ bookmaker:'BET365', decimal:12.0, odds:{ fractional:'11/1' }}}
+    ]},
+    { raceCourse:'Ascot', raceTime:'15:05', raceNames:['1m Hcap'], horses:[
+      { horseId:'silent-reign', horseName:'Silent Reign', bestWinOdds:{ bookmaker:'MATCHBOOK', decimal:3.5, odds:{ fractional:'5/2' }}},
+      { horseId:'warrior-king', horseName:'Warrior King', bestWinOdds:{ bookmaker:'BETFAIR_EXCHANGE', decimal:2.0, odds:{ fractional:'1/1' }}},
+      { horseId:'painted-lady', horseName:'Painted Lady', bestWinOdds:{ bookmaker:'BWIN', decimal:8.0, odds:{ fractional:'7/1' }}},
+      { horseId:'blue-diamond', horseName:'Blue Diamond', bestWinOdds:{ bookmaker:'BET365', decimal:3.0, odds:{ fractional:'2/1' }}},
+      { horseId:'frosty-morning', horseName:'Frosty Morning', bestWinOdds:{ bookmaker:'SKYBET', decimal:5.5, odds:{ fractional:'9/2' }}}
+    ]},
+    { raceCourse:'Goodwood', raceTime:'15:40', raceNames:['1m2f Hcap Stks'], horses:[
+      { horseId:'drifter', horseName:'Drifter', bestWinOdds:{ bookmaker:'PADDY_POWER', decimal:4.0, odds:{ fractional:'3/1' }}},
+      { horseId:'high-society', horseName:'High Society', bestWinOdds:{ bookmaker:'BETFAIR', decimal:1.8, odds:{ fractional:'4/5' }}},
+      { horseId:'muddy-boots', horseName:'Muddy Boots', bestWinOdds:{ bookmaker:'WILLIAM_HILL', decimal:7.0, odds:{ fractional:'6/1' }}},
+      { horseId:'fortune-bay', horseName:'Fortune Bay', bestWinOdds:{ bookmaker:'BET365', decimal:6.0, odds:{ fractional:'5/1' }}},
+      { horseId:'last-orders', horseName:'Last Orders', bestWinOdds:{ bookmaker:'MATCHBOOK', decimal:5.0, odds:{ fractional:'4/1' }}}
+    ]},
+    { raceCourse:'York', raceTime:'16:15', raceNames:['6f Fillies Hcap'], horses:[
+      { horseId:'lady-phoenix', horseName:'Lady Phoenix', bestWinOdds:{ bookmaker:'SKYBET', decimal:5.0, odds:{ fractional:'4/1' }}},
+      { horseId:'star-sapphire', horseName:'Star Sapphire', bestWinOdds:{ bookmaker:'BETFAIR_EXCHANGE', decimal:2.5, odds:{ fractional:'6/4' }}},
+      { horseId:'velvet-rose', horseName:'Velvet Rose', bestWinOdds:{ bookmaker:'BWIN', decimal:8.5, odds:{ fractional:'15/2' }}},
+      { horseId:'dancing-fire', horseName:'Dancing Fire', bestWinOdds:{ bookmaker:'BET365', decimal:4.0, odds:{ fractional:'3/1' }}}
+    ]}
   ];
-  var ts = { t1:{runs:85,wins:4}, t2:{runs:200,wins:42}, t3:{runs:30,wins:1}, t4:{runs:180,wins:45}, t5:{runs:65,wins:5}, t6:{runs:45,wins:2}, t7:{runs:150,wins:25}, t8:{runs:120,wins:8}, t9:{runs:250,wins:60}, t10:{runs:55,wins:3}, t11:{runs:190,wins:40}, t12:{runs:18,wins:0}, t13:{runs:160,wins:20}, t14:{runs:180,wins:12}, t15:{runs:22,wins:0}, t16:{runs:60,wins:3}, t17:{runs:90,wins:11}, t18:{runs:140,wins:10}, t19:{runs:130,wins:22}, t20:{runs:25,wins:1}, t21:{runs:95,wins:8}, t22:{runs:110,wins:18} };
 
   setTimeout(function() {
-    render(races, ts, dt + ' (Demo)');
-    document.getElementById('summaryArea').insertAdjacentHTML('beforebegin', '<div class="demo-flag">Demo mode — showing simulated data. Connect your Racing API credentials for live analysis.</div>');
+    renderResults(events);
+    document.getElementById('summaryArea').insertAdjacentHTML('beforebegin', '<div class="demo-flag">Demo mode — showing sample races. Connect your RapidAPI key for live odds. Try entering form data: type <strong>060800</strong> in a form field and <strong>3</strong> in a trainer field to see scoring in action.</div>');
   }, 500);
 }
 </script>
