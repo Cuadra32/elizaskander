@@ -53,42 +53,53 @@
   .brand{font-family:Georgia,'Times New Roman',serif;font-size:22px;font-style:italic;font-weight:400;color:var(--text-strong);letter-spacing:-0.01em}
   .brand em{font-style:italic;color:var(--lay)}
   .topbar-meta{font-size:12px;color:var(--muted);letter-spacing:0.03em;display:flex;align-items:center;gap:12px}
-  .req-counter{font-family:var(--mono);font-size:11px;color:var(--muted);padding:3px 8px;background:var(--ground);border:1px solid var(--border);border-radius:3px}
 
   .wrap{max-width:1080px;margin:0 auto;padding:20px 24px 60px}
 
-  .setup{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;margin-bottom:20px}
-  .setup-heading{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:14px}
-  .setup-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
-  .field{display:flex;flex-direction:column;gap:3px}
-  .field label{font-size:11px;font-weight:500;color:var(--dim);text-transform:uppercase;letter-spacing:0.06em}
-  input,select{background:var(--ground);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:4px;font-size:13px;font-family:inherit;outline:none;transition:border-color 0.15s}
-  input:focus{border-color:var(--lay)}
-  input[type="text"]{width:320px}
+  /* ── Paste area ─────────────────────────────── */
+  .paste-section{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;margin-bottom:20px}
+  .paste-heading{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:6px}
+  .paste-sub{font-size:13px;color:var(--dim);margin-bottom:14px;line-height:1.5}
+  .paste-sub a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+  .paste-box{width:100%;min-height:140px;max-height:320px;background:var(--ground);border:2px dashed var(--border);color:var(--text);padding:14px;border-radius:5px;font-size:13px;font-family:var(--mono);line-height:1.5;resize:vertical;outline:none;transition:border-color 0.2s}
+  .paste-box:focus{border-color:var(--lay);border-style:solid}
+  .paste-box::placeholder{color:var(--dim);font-family:inherit;font-size:12px}
+  .paste-box.drag-over{border-color:var(--lay);background:var(--lay-soft)}
+  .paste-actions{display:flex;gap:10px;margin-top:12px;align-items:center;flex-wrap:wrap}
 
   .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border:none;border-radius:4px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity 0.15s;white-space:nowrap}
   .btn:hover{opacity:0.85}
   .btn:disabled{opacity:0.4;cursor:not-allowed}
   .btn-primary{background:var(--lay);color:#fff}
   .btn-ghost{background:var(--raised);color:var(--text);border:1px solid var(--border)}
+  .btn-sm{padding:5px 10px;font-size:12px}
 
-  .setup-note{margin-top:10px;font-size:12px;color:var(--dim);line-height:1.5}
-  .setup-note a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
-  .setup-check{font-size:12px;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:4px;margin-top:10px}
+  .parse-status{font-size:12px;color:var(--muted);margin-left:auto}
 
-  .msg{padding:10px 14px;border-radius:5px;margin-bottom:16px;font-size:13px;display:none;line-height:1.5}
-  .msg.show{display:block}
-  .msg-info{background:rgba(75,168,112,0.08);border:1px solid rgba(75,168,112,0.2);color:var(--good)}
-  .msg-error{background:var(--lay-soft);border:1px solid var(--lay-border);color:var(--lay)}
-  .msg-ok{background:rgba(75,168,112,0.08);border:1px solid rgba(75,168,112,0.2);color:var(--good)}
+  /* ── How-to steps ──────────────────────────── */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:20px}
+  .step{background:var(--surface);padding:14px 16px}
+  .step-num{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--lay);margin-bottom:4px}
+  .step p{font-size:12px;color:var(--muted);line-height:1.55}
+  .step strong{color:var(--text);font-weight:600}
 
+  /* ── Method cards ──────────────────────────── */
   .method{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:24px}
   .method-cell{background:var(--surface);padding:14px 16px}
   .method-cell h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--lay);margin-bottom:6px}
   .method-cell p{font-size:12px;color:var(--muted);line-height:1.55}
 
+  /* ── Messages ──────────────────────────────── */
+  .msg{padding:10px 14px;border-radius:5px;margin-bottom:16px;font-size:13px;display:none;line-height:1.5}
+  .msg.show{display:block}
+  .msg-info{background:rgba(75,168,112,0.08);border:1px solid rgba(75,168,112,0.2);color:var(--good)}
+  .msg-error{background:var(--lay-soft);border:1px solid var(--lay-border);color:var(--lay)}
+  .msg-ok{background:rgba(75,168,112,0.08);border:1px solid rgba(75,168,112,0.2);color:var(--good)}
+  .msg-warn{background:rgba(212,165,52,0.08);border:1px solid rgba(212,165,52,0.2);color:var(--warn)}
+
   .demo-flag{background:var(--lay-soft);border:1px solid var(--lay-border);border-radius:5px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--lay);font-weight:500}
 
+  /* ── Summary ───────────────────────────────── */
   .summary{border:1px solid var(--lay-border);border-radius:6px;overflow:hidden;margin-bottom:24px}
   .summary-head{background:var(--lay-soft);padding:14px 18px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--lay-border)}
   .summary-head h2{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:17px;font-weight:400;color:var(--text-strong)}
@@ -96,12 +107,14 @@
   .summary-body{background:var(--surface)}
   .summary-empty{padding:20px 18px;font-size:13px;color:var(--muted)}
 
+  /* ── Tables ────────────────────────────────── */
   .tbl-wrap{overflow-x:auto}
   table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
   th{text-align:left;padding:8px 14px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim);border-bottom:1px solid var(--border);white-space:nowrap}
   td{padding:9px 14px;border-bottom:1px solid var(--border-subtle);vertical-align:middle}
   tbody tr:last-child td{border-bottom:none}
 
+  /* ── Race cards ────────────────────────────── */
   .race{background:var(--surface);border:1px solid var(--border);border-radius:6px;margin-bottom:14px;overflow:hidden}
   .race-head{padding:12px 16px;background:var(--raised);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;cursor:pointer;user-select:none}
   .race-head:hover{background:var(--border)}
@@ -115,12 +128,12 @@
   .chevron{display:inline-block;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--muted);transition:transform 0.2s}
   .race.open .chevron{transform:rotate(180deg)}
 
+  /* ── Horse data ────────────────────────────── */
   .horse-name{font-weight:600;color:var(--text-strong);font-size:13px}
   .form{font-family:var(--mono);font-size:13px;letter-spacing:1.5px}
   .f-g{color:var(--good)}.f-m{color:var(--warn)}.f-b{color:var(--lay)}.f-s{color:var(--dim)}
   .odds{font-family:var(--mono);font-weight:600;font-size:13px}
   .odds .dec{font-weight:400;font-size:11px;color:var(--dim);margin-left:4px}
-  .odds .bk{font-weight:400;font-size:10px;color:var(--dim);display:block;margin-top:1px}
 
   .score-cell{display:flex;align-items:center;gap:8px;min-width:90px}
   .score-num{font-family:var(--mono);font-weight:700;font-size:15px;min-width:24px;text-align:right}
@@ -136,30 +149,24 @@
   .results-head h2{font-size:15px;font-weight:600;color:var(--text-strong)}
   .results-head .meta{font-size:12px;color:var(--muted)}
 
-  .loading{text-align:center;padding:50px 20px;color:var(--muted);font-size:13px}
-  .spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--lay);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px}
-  @keyframes spin{to{transform:rotate(360deg)}}
-
   .has-tip{position:relative;cursor:help}
   .has-tip::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--raised);color:var(--text);padding:5px 9px;border-radius:4px;font-size:11px;font-family:var(--mono);white-space:nowrap;z-index:10;pointer-events:none;opacity:0;transition:opacity 0.15s;border:1px solid var(--border)}
   .has-tip:hover::after{opacity:1}
+
+  .inline-input{background:var(--ground);border:1px solid var(--border);color:var(--text);padding:4px 6px;border-radius:3px;font-size:12px;font-family:var(--mono);width:80px;outline:none;transition:border-color 0.15s}
+  .inline-input:focus{border-color:var(--lay)}
+  .inline-input::placeholder{color:var(--dim);font-size:11px}
+  .inline-input.filled{border-color:var(--good)}
+  .form-hint{font-size:10px;color:var(--dim);margin-top:2px}
 
   .page-foot{text-align:center;padding:24px;font-size:11px;color:var(--dim);border-top:1px solid var(--border-subtle);margin-top:32px;letter-spacing:0.02em}
 
   .hidden{display:none !important}
 
-  .inline-input{background:var(--ground);border:1px solid var(--border);color:var(--text);padding:4px 6px;border-radius:3px;font-size:12px;font-family:var(--mono);width:76px;outline:none;transition:border-color 0.15s}
-  .inline-input:focus{border-color:var(--lay)}
-  .inline-input::placeholder{color:var(--dim);font-size:11px}
-  .inline-input.filled{border-color:var(--good)}
-
-  .form-hint{font-size:10px;color:var(--dim);margin-top:2px}
-
   @media(max-width:720px){
     .wrap{padding:14px}
-    .method{grid-template-columns:1fr}
-    .setup-row{flex-direction:column;align-items:stretch}
-    input[type="text"]{width:100%}
+    .steps,.method{grid-template-columns:1fr}
+    .paste-box{min-height:100px}
     .race-head{flex-direction:column;align-items:flex-start}
     th,td{padding:7px 10px}
     .topbar{padding:12px 16px}
@@ -170,61 +177,59 @@
 
 <div class="topbar">
   <div class="brand"><em>Lay</em>Finder</div>
-  <div class="topbar-meta">
-    UK Flat &middot; Odds &le; 8/1
-    <span class="req-counter" id="reqCounter" title="API requests used this month">0 / 50</span>
-  </div>
+  <div class="topbar-meta">UK Flat &middot; Odds &le; 8/1 &middot; No API needed</div>
 </div>
 
 <div class="wrap">
 
-  <div class="setup">
-    <div class="setup-heading">RapidAPI Connection (Free Tier)</div>
-    <div class="setup-row">
-      <div class="field">
-        <label>RapidAPI Key</label>
-        <input type="text" id="apiKey" placeholder="Your x-rapidapi-key" autocomplete="off">
-      </div>
-      <div class="field">
-        <label>&nbsp;</label>
-        <button class="btn btn-primary" id="fetchBtn" onclick="fetchRaces()">Analyse Today</button>
-      </div>
-      <div class="field">
-        <label>&nbsp;</label>
-        <button class="btn btn-ghost" onclick="loadDemo()">Demo</button>
-      </div>
+  <!-- Steps -->
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <p>Open a race on <strong><a href="https://www.racingpost.com/racecards" target="_blank" rel="noopener" style="color:var(--text)">Racing Post</a></strong> (free). Pick a UK flat race.</p>
     </div>
-    <label class="setup-check">
-      <input type="checkbox" id="saveCreds" checked> Remember key
-    </label>
-    <div class="setup-note">
-      Uses <a href="https://rapidapi.com/DataMenu/api/horse-racing-odds-api" target="_blank" rel="noopener">Horse Racing Odds API</a> (free: 50 req/month).
-      Provides live odds from 16+ bookmakers. Enter form and trainer win% manually from
-      <a href="https://www.racingpost.com/racecards" target="_blank" rel="noopener">Racing Post</a> (free) to complete the lay score.
+    <div class="step">
+      <div class="step-num">2</div>
+      <p><strong>Select all runners</strong> on the racecard (Ctrl+A or highlight the runners section), then <strong>copy</strong> (Ctrl+C).</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <p><strong>Paste below</strong> (Ctrl+V). The tool parses names, form, odds, and trainer stats automatically.</p>
+    </div>
+  </div>
+
+  <!-- Paste area -->
+  <div class="paste-section">
+    <div class="paste-heading">Paste Racecard</div>
+    <div class="paste-sub">
+      Paste from <a href="https://www.racingpost.com/racecards" target="_blank" rel="noopener">Racing Post</a>,
+      <a href="https://www.sportinglife.com/racing/racecards" target="_blank" rel="noopener">Sporting Life</a>,
+      or any UK racecard. Also works with newspaper text.
+    </div>
+    <textarea class="paste-box" id="pasteBox" placeholder="Paste racecard text here…&#10;&#10;The parser looks for horse names, form figures (e.g. 312-45), fractional odds (e.g. 3/1), and trainer strike rates (e.g. 14%). Everything is editable after parsing."></textarea>
+    <div class="paste-actions">
+      <button class="btn btn-primary" onclick="parseAndRender()">Parse &amp; Score</button>
+      <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+      <button class="btn btn-ghost" onclick="loadDemo()">Demo</button>
+      <span class="parse-status" id="parseStatus"></span>
     </div>
   </div>
 
   <div class="msg" id="msg"></div>
 
+  <!-- Scoring method -->
   <div class="method">
     <div class="method-cell">
       <h4>Trainer (0–40)</h4>
-      <p>Enter trainer win% from Racing Post. &lt;5% scores 40, &gt;20% scores 0. Left blank scores 25 (unknown).</p>
+      <p>Parsed from racecard or type manually. &lt;5% scores 40, &gt;20% scores 0. Unknown defaults to 25.</p>
     </div>
     <div class="method-cell">
       <h4>Form (0–40)</h4>
-      <p>Enter last 6 runs from Racing Post (e.g. 060800). 6th–9th: 5 pts. 10th+/fell/PU: 7–8 pts. Blank scores 30.</p>
+      <p>Auto-detected from pasted text (e.g. 060800). 6th–9th: 5 pts. 10th+/fell/PU: 7–8 pts. Missing scores 30.</p>
     </div>
     <div class="method-cell">
       <h4>Odds (0–20)</h4>
-      <p>Auto-filled from API. Shorter odds + bad fundamentals = bigger market error. Evens = 20, 8/1 = 0.</p>
-    </div>
-  </div>
-
-  <div id="loadingArea" class="hidden">
-    <div class="loading">
-      <div class="spinner"></div>
-      <span id="loadingText">Fetching meetings&hellip;</span>
+      <p>Parsed from racecard. Shorter odds + bad fundamentals = bigger market error. Evens = 20, 8/1 = 0.</p>
     </div>
   </div>
 
@@ -236,115 +241,73 @@
 </div>
 
 <div class="page-foot">
-  LayFinder &mdash; Flat racing lay analysis &middot; Always gamble responsibly
+  LayFinder &mdash; Flat racing lay analysis &middot; No API required &middot; Always gamble responsibly
 </div>
 
 <script>
-var RAPID_HOST = 'horse-racing-odds-api.p.rapidapi.com';
-var RAPID_BASE = 'https://' + RAPID_HOST;
-
+/* ── Constants ───────────────────────────────── */
 var UK_COURSES = ['ascot','ayr','bath','beverley','brighton','carlisle','catterick','chelmsford','chelmsford city','chester','chepstow','doncaster','epsom','epsom downs','ffos las','goodwood','hamilton','haydock','haydock park','kempton','kempton park','leicester','lingfield','lingfield park','musselburgh','newbury','newcastle','newmarket','nottingham','pontefract','redcar','ripon','salisbury','sandown','sandown park','southwell','thirsk','wetherby','windsor','wolverhampton','yarmouth','york','aintree','bangor','bangor-on-dee','cartmel','cheltenham','exeter','fakenham','fontwell','fontwell park','hereford','hexham','huntingdon','kelso','ludlow','market rasen','newton abbot','perth','plumpton','sedgefield','stratford','taunton','towcester','uttoxeter','warwick','wincanton','worcester'];
-var JUMP_RE = /chase|chs|hurdle|hdl|nh flat|nhf|bumper|steeplechase|national hunt/i;
-
+var JUMP_RE = /chase|chs|hurdle|hdl|nh\s?flat|nhf|bumper|steeplechase|national hunt/i;
+var COUNTRY_RE = /\((IRE|GB|FR|USA|GER|ITY|SAF|AUS|NZ|CAN|UAE|JPN|SPA|BRZ|ARG|CZE|DEN|HUN|NOR|SWE|TUR)\)/gi;
 var allRunnerData = [];
 
-(function init() {
-  var k = localStorage.getItem('lf_rapid_key');
-  if (k) document.getElementById('apiKey').value = k;
-  updateReqCounter();
-})();
-
-function trackReq() {
-  var m = new Date().toISOString().slice(0,7);
-  var k = 'lf_reqs_' + m;
-  localStorage.setItem(k, (parseInt(localStorage.getItem(k)||'0') + 1).toString());
-  updateReqCounter();
-}
-function getReqCount() {
-  return parseInt(localStorage.getItem('lf_reqs_' + new Date().toISOString().slice(0,7)) || '0');
-}
-function updateReqCounter() {
-  var el = document.getElementById('reqCounter');
-  if (el) el.textContent = getReqCount() + ' / 50';
-}
-
+function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
 function msg(t, type) { var el = document.getElementById('msg'); el.textContent = t; el.className = 'msg show msg-' + type; }
 function msgClear() { document.getElementById('msg').className = 'msg'; }
-function showLoad(t) { document.getElementById('loadingText').textContent = t; document.getElementById('loadingArea').classList.remove('hidden'); document.getElementById('resultsArea').classList.add('hidden'); }
-function hideLoad() { document.getElementById('loadingArea').classList.add('hidden'); }
-function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
 
-async function rapidGet(path, key) {
-  var r = await fetch(RAPID_BASE + path, {
-    headers: { 'Content-Type': 'application/json', 'x-rapidapi-host': RAPID_HOST, 'x-rapidapi-key': key }
-  });
-  if (!r.ok) {
-    var body = await r.text().catch(function() { return r.statusText; });
-    throw new Error('API ' + r.status + ': ' + body);
-  }
-  trackReq();
-  return r.json();
-}
-
-function isUKCourse(name) {
-  return UK_COURSES.indexOf((name || '').toLowerCase().trim()) >= 0;
-}
-function isJumpRace(raceNames) {
-  return JUMP_RE.test((raceNames || []).join(' '));
-}
-function extractRaceDesc(raceNames) {
-  var names = raceNames || [];
-  for (var i = 0; i < names.length; i++) {
-    var n = names[i];
-    if (/\d+[mf]/.test(n) || /hcap|handicap|stakes|maiden|novice|nursery|claiming|seller|classified/i.test(n)) return n;
-  }
-  return names[0] || '';
-}
-
-/* ── Form scoring ── */
-function parseForm(s) {
-  if (!s || s.trim() === '-') return [];
+/* ── Form parsing & scoring ──────────────────── */
+function parseFormChars(s) {
+  if (!s || s.trim() === '-' || s.trim() === '') return [];
   var out = [];
   for (var i = 0; i < s.length; i++) {
     var c = s[i].toUpperCase();
-    if (c === '/') out.push({ c: '/', t: 'sep' });
+    if (c === '/' || c === '-') out.push({ c: c, t: 'sep' });
     else if ('0123456789'.indexOf(c) >= 0) out.push({ c: c, p: c === '0' ? 10 : +c });
     else if ('FPURSBC'.indexOf(c) >= 0) out.push({ c: c, p: 99 });
   }
   return out;
 }
 function scoreForm(s) {
-  var runs = parseForm(s).filter(function(x) { return x.t !== 'sep'; }).slice(0, 6);
+  var runs = parseFormChars(s).filter(function(x) { return x.t !== 'sep'; }).slice(0, 6);
   if (!runs.length) return 30;
   var sc = 0;
   runs.forEach(function(r) {
-    if (r.p <= 3) sc += 0; else if (r.p <= 5) sc += 2; else if (r.p <= 9) sc += 5; else if (r.p === 10) sc += 7; else sc += 8;
+    if (r.p <= 3) sc += 0;
+    else if (r.p <= 5) sc += 2;
+    else if (r.p <= 9) sc += 5;
+    else if (r.p === 10) sc += 7;
+    else sc += 8;
   });
   if (runs.length < 3) sc += 10;
   return Math.min(sc, 40);
 }
-function renderForm(s) {
-  var ch = parseForm(s);
+function renderFormHTML(s) {
+  var ch = parseFormChars(s);
   if (!ch.length) return '<span style="color:var(--dim)">—</span>';
   return ch.map(function(c) {
-    if (c.t === 'sep') return '<span class="f-s">/</span>';
+    if (c.t === 'sep') return '<span class="f-s">' + c.c + '</span>';
     var cls = c.p <= 3 ? 'f-g' : (c.p >= 7 || c.p === 99 ? 'f-b' : 'f-m');
     return '<span class="' + cls + '">' + c.c + '</span>';
   }).join('');
 }
-
-/* ── Trainer scoring ── */
 function scoreTrainerPct(pct) {
   if (pct === null || pct === undefined || pct === '') return 25;
   var p = parseFloat(pct);
   if (isNaN(p)) return 25;
   return Math.max(0, Math.min(40, Math.round(40 - p * 2)));
 }
-
-/* ── Odds scoring ── */
 function scoreOdds(d) {
   if (!d || d <= 1) return 10;
   return Math.max(0, Math.min(20, Math.round(20 * (1 - (d - 1) / 8))));
+}
+function layScore(formStr, trainerPct, odds) {
+  var f = scoreForm(formStr), t = scoreTrainerPct(trainerPct), o = scoreOdds(odds);
+  return { total: f + t + o, f: f, t: t, o: o };
+}
+function layRating(total) {
+  if (total >= 65) return { label: 'STRONG LAY', cls: 'badge-strong' };
+  if (total >= 45) return { label: 'LAY', cls: 'badge-moderate' };
+  return { label: 'WATCH', cls: 'badge-weak' };
 }
 function decToFrac(d) {
   if (!d || d <= 1) return 'EVS';
@@ -355,140 +318,319 @@ function decToFrac(d) {
   return best ? best[0] + '/' + best[1] : d.toFixed(1);
 }
 
-function layScore(formStr, trainerPct, odds) {
-  var f = scoreForm(formStr), t = scoreTrainerPct(trainerPct), o = scoreOdds(odds);
-  return { total: f + t + o, f: f, t: t, o: o };
-}
-function layRating(total) {
-  if (total >= 65) return { label: 'STRONG LAY', cls: 'badge-strong' };
-  if (total >= 45) return { label: 'LAY', cls: 'badge-moderate' };
-  return { label: 'WATCH', cls: 'badge-weak' };
+/* ── Parser ──────────────────────────────────── */
+
+/* Is this string a form figure? */
+function isFormStr(s) {
+  s = s.trim();
+  if (s.length < 2 || s.length > 15) return false;
+  var cleaned = s.replace(/[\/-]/g, '');
+  if (!/^[0-9FPURSCBOfpurscbo]+$/.test(cleaned)) return false;
+  if (cleaned.length < 2) return false;
+  /* Exclude weight: stones-pounds like 9-2, 10-0 */
+  if (/^\d{1,2}-\d{1,2}$/.test(s)) {
+    var p = s.split('-');
+    if (+p[0] >= 7 && +p[0] <= 12 && +p[1] <= 13) return false;
+  }
+  return true;
 }
 
-/* ── Main fetch ── */
-async function fetchRaces() {
-  var key = document.getElementById('apiKey').value.trim();
-  if (!key) { msg('Enter your RapidAPI key.', 'error'); return; }
-  if (document.getElementById('saveCreds').checked) localStorage.setItem('lf_rapid_key', key);
-  msgClear();
-  showLoad('Fetching today\'s meetings (1 request)…');
-  document.getElementById('fetchBtn').disabled = true;
-  allRunnerData = [];
+/* Is this a fractional odds string? */
+function isOddsStr(s) {
+  s = s.trim();
+  var m = s.match(/^(\d{1,3})\/(\d{1,3})$/);
+  if (!m) return false;
+  var dec = (+m[1] / +m[2]) + 1;
+  return dec >= 1.1 && dec <= 101;
+}
 
-  try {
-    var meetingsData = await rapidGet('/horses/meetings', key);
-    var meetings = [];
-    if (meetingsData && meetingsData.meetings) meetings = meetingsData.meetings;
-    else if (Array.isArray(meetingsData)) meetings = meetingsData;
-    else if (meetingsData && meetingsData.data) meetings = meetingsData.data;
-    else if (meetingsData && meetingsData.events) meetings = meetingsData.events;
-    else if (meetingsData && typeof meetingsData === 'object') {
-      var vals = Object.values(meetingsData);
-      for (var vi = 0; vi < vals.length; vi++) { if (Array.isArray(vals[vi])) { meetings = vals[vi]; break; } }
+function fracToDec(s) {
+  if (/^evs?$/i.test(s.trim())) return 2.0;
+  var m = s.match(/(\d+)\/(\d+)/);
+  if (!m) return null;
+  return (+m[1] / +m[2]) + 1;
+}
+
+/* Extract race header from first lines */
+function extractRaceInfo(lines) {
+  var info = { course: '', time: '', desc: '' };
+  var searchText = lines.slice(0, Math.min(lines.length, 15)).join(' ').toLowerCase();
+
+  for (var i = 0; i < UK_COURSES.length; i++) {
+    if (searchText.indexOf(UK_COURSES[i]) >= 0) {
+      info.course = UK_COURSES[i].replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+      break;
     }
+  }
+  for (var i = 0; i < Math.min(lines.length, 15); i++) {
+    var tm = lines[i].match(/\b(\d{1,2})[:.]\s?(\d{2})\b/);
+    if (tm) { info.time = tm[1] + ':' + tm[2]; break; }
+  }
+  for (var i = 0; i < Math.min(lines.length, 15); i++) {
+    if (/\d+[mf]/.test(lines[i]) || /handicap|hcap|stakes|maiden|novice|nursery|classified|claiming|seller|listed|group/i.test(lines[i])) {
+      info.desc = lines[i]; break;
+    }
+  }
+  return info;
+}
 
-    if (!meetings.length) { hideLoad(); msg('No meetings returned from API. Racing may not be on today.', 'info'); return; }
+/* Split pasted text into blocks, one per runner */
+function splitIntoBlocks(lines) {
+  var blocks = [], current = [];
 
-    var ukFlat = meetings.filter(function(m) {
-      var course = m.raceCourse || m.course || m.venue || '';
-      if (!isUKCourse(course)) return false;
-      var names = m.raceNames || m.race_names || [];
-      if (isJumpRace(names)) return false;
-      return true;
+  /* Strategy 1: cloth number at line start */
+  for (var i = 0; i < lines.length; i++) {
+    var cm = lines[i].match(/^(\d{1,2})(?:\s|\(|$)/);
+    if (cm && +cm[1] >= 1 && +cm[1] <= 40) {
+      if (current.length > 1) blocks.push(current);
+      current = [lines[i]];
+    } else {
+      current.push(lines[i]);
+    }
+  }
+  if (current.length > 1) blocks.push(current);
+  if (blocks.length >= 2) return blocks;
+
+  /* Strategy 2: form strings as boundaries */
+  blocks = []; current = [];
+  var sawForm = false;
+  for (var i = 0; i < lines.length; i++) {
+    var words = lines[i].split(/\s+/);
+    var hasForm = words.some(function(w) { return isFormStr(w); });
+    if (hasForm && sawForm && current.length > 0) {
+      blocks.push(current);
+      current = [];
+    }
+    current.push(lines[i]);
+    if (hasForm) sawForm = true;
+  }
+  if (current.length > 0) blocks.push(current);
+  if (blocks.length >= 2) return blocks;
+
+  /* Strategy 3: odds as boundaries */
+  blocks = []; current = [];
+  var sawOdds = false;
+  for (var i = 0; i < lines.length; i++) {
+    var words = lines[i].split(/\s+/);
+    var hasOdds = words.some(function(w) { return isOddsStr(w); });
+    if (hasOdds && sawOdds && current.length > 0) {
+      blocks.push(current);
+      current = [];
+    }
+    current.push(lines[i]);
+    if (hasOdds) sawOdds = true;
+  }
+  if (current.length > 0) blocks.push(current);
+  if (blocks.length >= 2) return blocks;
+
+  /* Strategy 4: blank-line separated groups in original text */
+  return [lines]; /* return everything as one block — manual mode */
+}
+
+/* Parse one runner block */
+function parseRunnerBlock(lines) {
+  var full = lines.join(' ');
+  var h = { name: '', form: '', odds: '', oddsDecimal: null, trainerPct: null, trainer: '' };
+
+  /* ── Odds ── */
+  var oddsRe = /\b(\d{1,3})\/(\d{1,3})\b/g, m, oddsAll = [];
+  while ((m = oddsRe.exec(full)) !== null) {
+    var dec = (+m[1] / +m[2]) + 1;
+    if (dec >= 1.1 && dec <= 101) oddsAll.push({ s: m[0], d: dec });
+  }
+  if (oddsAll.length) { var last = oddsAll[oddsAll.length - 1]; h.odds = last.s; h.oddsDecimal = last.d; }
+  if (!h.odds && /\bEvs?\b|\bEvens?\b/i.test(full)) { h.odds = 'Evs'; h.oddsDecimal = 2.0; }
+
+  /* ── Trainer % ── */
+  var pctAll = full.match(/(\d{1,3})%/g);
+  if (pctAll) h.trainerPct = parseInt(pctAll[0]);
+
+  /* ── Form ── */
+  var formCands = [];
+  for (var i = 0; i < lines.length; i++) {
+    lines[i].split(/\s+/).forEach(function(w) {
+      if (isFormStr(w) && w !== h.odds) {
+        formCands.push({ s: w, len: w.replace(/[\/-]/g, '').length });
+      }
+    });
+  }
+  if (formCands.length) {
+    formCands.sort(function(a, b) { return b.len - a.len; });
+    h.form = formCands[0].s;
+  }
+
+  /* ── Trainer name ── */
+  var trMatch = full.match(/(?:^|[\s,])(?:T|Trainer)[:\s]+([A-Z][A-Za-z\s'.\-]+?)(?:\s+\d|\s*\(|$)/i);
+  if (trMatch) h.trainer = trMatch[1].trim();
+
+  /* ── Horse name ── */
+  /* Take the first substantial title-case phrase, skip common labels */
+  var skipWords = /^(Trainer|Jockey|Form|Age|Weight|Draw|Odds|Betting|Runner|Non|Reserve|Flat|Class|Distance|Going|Official|Rating|OR|RPR|TS|CD|BF|SP|NR|Win|Place|Forecast|Tricast|Each|Way|Show|Hide|Runners|Results|Tips|Racecard|Cards|Selection|Verdict|Comment|Spotlight)$/i;
+  var nameFound = '';
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i];
+    /* strip cloth number + draw from start */
+    var cleaned = line.replace(/^\d{1,2}\s*(\(\d{1,2}\))?\s*/, '');
+    /* strip form, odds, weight from the line */
+    cleaned = cleaned.replace(/\b[0-9FPURSCBOfpurscbo][0-9FPURSCBOfpurscbo\/-]{2,11}\b/g, '');
+    cleaned = cleaned.replace(/\b\d{1,3}\/\d{1,3}\b/g, '');
+    cleaned = cleaned.replace(/\b(?:[7-9]|1[0-2])-\d{1,2}\b/g, '');
+    cleaned = cleaned.replace(/\b\d{1,3}%\b/g, '');
+    cleaned = cleaned.replace(COUNTRY_RE, '').trim();
+    /* Also strip known trainer prefix */
+    cleaned = cleaned.replace(/^(?:T|Trainer|J|Jockey)[:\s]+/i, '').trim();
+    /* Remove very short remnants */
+    if (cleaned.length < 3) continue;
+
+    /* Look for a name-like string */
+    var nm = cleaned.match(/([A-Z][A-Za-z'']+(?:[\s\-][A-Z][A-Za-z'']+)*)/);
+    if (nm && nm[0].length >= 3) {
+      var words = nm[0].split(/[\s\-]+/);
+      var allSkip = words.every(function(w) { return skipWords.test(w); });
+      if (!allSkip && !nameFound) { nameFound = nm[0]; break; }
+    }
+  }
+  h.name = nameFound;
+
+  /* If no structured name, try full first line after cloth */
+  if (!h.name && lines.length > 0) {
+    var first = lines[0].replace(/^\d{1,2}\s*(\(\d+\))?\s*/, '').trim();
+    first = first.replace(COUNTRY_RE, '').replace(/\b\d{1,3}\/\d{1,3}\b/g, '').trim();
+    if (first.length > 2) h.name = first.split(/\s{2,}/)[0].trim();
+  }
+
+  return h;
+}
+
+/* Main parse entry point */
+function parseRacecard(text) {
+  var raw = text.split(/\n/).map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 1; });
+  if (raw.length < 2) return { horses: [], raceInfo: {}, warning: 'Not enough text to parse.' };
+
+  /* Remove obvious noise */
+  raw = raw.filter(function(l) {
+    if (/^(Menu|Home|Login|Register|Sign|Search|Filter|Sort|Cookie|Accept|Bet Now|Add to|My Bets|Cash Out|Live|Streaming)$/i.test(l)) return false;
+    if (/^https?:\/\//i.test(l)) return false;
+    return true;
+  });
+
+  var raceInfo = extractRaceInfo(raw);
+
+  /* Check for jump race */
+  var fullText = raw.join(' ');
+  var isJump = JUMP_RE.test(fullText);
+  if (isJump) return { horses: [], raceInfo: raceInfo, warning: 'Jump race detected — LayFinder only analyses flat races.' };
+
+  /* Split into runner blocks */
+  var blocks = splitIntoBlocks(raw);
+
+  /* Parse each block */
+  var horses = [];
+  for (var b = 0; b < blocks.length; b++) {
+    var h = parseRunnerBlock(blocks[b]);
+    if (h && (h.name || h.form || h.odds)) horses.push(h);
+  }
+
+  return { horses: horses, raceInfo: raceInfo };
+}
+
+/* ── Render parsed results ───────────────────── */
+function renderParsed(result) {
+  allRunnerData = [];
+  var horses = result.horses;
+  var ri = result.raceInfo || {};
+  var course = ri.course || 'Unknown Course';
+  var time = ri.time || '';
+  var desc = ri.desc || '';
+
+  if (result.warning) {
+    msg(result.warning, 'warn');
+    return;
+  }
+  if (!horses.length) {
+    msg('Could not parse any runners from the pasted text. Try selecting more of the racecard, or use the Demo to see the expected format.', 'error');
+    return;
+  }
+
+  /* Filter to odds ≤ 8/1 (≤ 9.0 decimal) */
+  var qualified = horses.filter(function(h) {
+    return h.oddsDecimal !== null && h.oddsDecimal <= 9.0;
+  });
+  var unpriced = horses.filter(function(h) { return h.oddsDecimal === null; });
+
+  /* Sort qualified by odds (shortest first) */
+  qualified.sort(function(a, b) { return (a.oddsDecimal || 99) - (b.oddsDecimal || 99); });
+
+  var tags = '';
+  if (desc) tags += '<span class="tag">' + esc(desc.substring(0, 60)) + '</span>';
+  tags += '<span class="tag">' + horses.length + ' parsed</span>';
+  tags += '<span class="tag">' + qualified.length + ' at &le; 8/1</span>';
+  if (unpriced.length) tags += '<span class="tag">' + unpriced.length + ' no odds</span>';
+
+  /* Build table rows */
+  var rows = qualified.map(function(h, idx) {
+    var rid = 'r0_' + idx;
+    var sc = layScore(h.form, h.trainerPct, h.oddsDecimal);
+    var rating = layRating(sc.total);
+    var frac = h.odds || decToFrac(h.oddsDecimal);
+    var dec = h.oddsDecimal ? h.oddsDecimal.toFixed(2) : '';
+
+    allRunnerData.push({
+      id: rid, horse: h.name || 'Horse ' + (idx + 1), odds: h.oddsDecimal, frac: frac,
+      form: h.form, tsr: h.trainerPct !== null ? '' + h.trainerPct : '',
+      course: course, time: time, desc: desc, lastScore: sc, lastRating: rating
     });
 
-    if (!ukFlat.length) {
-      hideLoad();
-      var totalCount = meetings.length;
-      var ukCount = meetings.filter(function(m) { return isUKCourse(m.raceCourse || m.course || m.venue || ''); }).length;
-      msg('Found ' + totalCount + ' meetings (' + ukCount + ' UK) but no UK flat races today. Jump-only cards may be running.', 'info');
-      return;
-    }
-
-    showLoad('Loading ' + ukFlat.length + ' UK flat races (' + ukFlat.length + ' requests)…');
-
-    var events = [];
-    for (var i = 0; i < ukFlat.length; i++) {
-      var eid = ukFlat[i].eventId || ukFlat[i].event_id || ukFlat[i].id;
-      if (!eid) continue;
-      try {
-        var ev = await rapidGet('/horses/meetings/event/' + encodeURIComponent(eid), key);
-        if (ev && ev.event) events.push(ev.event);
-        else if (ev) events.push(ev);
-      } catch (e) { /* skip failed */ }
-    }
-
-    if (!events.length) { hideLoad(); msg('Could not load race details.', 'error'); return; }
-
-    renderResults(events);
-  } catch (err) {
-    hideLoad();
-    if (err.message.indexOf('403') >= 0 || err.message.indexOf('401') >= 0) msg('Invalid API key. Check your RapidAPI key is correct.', 'error');
-    else if (err.message.indexOf('429') >= 0) msg('Rate limit exceeded. Free tier allows 50 requests/month.', 'error');
-    else msg(err.message, 'error');
-  } finally { document.getElementById('fetchBtn').disabled = false; }
-}
-
-/* ── Render results ── */
-function renderResults(events) {
-  hideLoad();
-  allRunnerData = [];
-  var raceIndex = 0;
-
-  var racesHTML = events.map(function(ev) {
-    var course = ev.raceCourse || ev.course || 'Unknown';
-    var time = ev.raceTime || ev.time || '';
-    var desc = extractRaceDesc(ev.raceNames || []);
-    var horses = ev.horses || ev.runners || [];
-
-    var qualified = horses.filter(function(h) {
-      var odds = h.bestWinOdds && h.bestWinOdds.decimal ? h.bestWinOdds.decimal : null;
-      return odds !== null && odds <= 9.0;
-    });
-
-    var tags = '<span class="tag">' + esc(desc) + '</span>';
-    tags += '<span class="tag">' + horses.length + ' runners</span>';
-    if (qualified.length) tags += '<span class="tag">' + qualified.length + ' at &le; 8/1</span>';
-
-    if (!qualified.length) {
-      return '<div class="race"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="race-empty">No runners at odds &le; 8/1</div></div></div>';
-    }
-
-    qualified.sort(function(a, b) { return (a.bestWinOdds.decimal || 99) - (b.bestWinOdds.decimal || 99); });
-
-    var rows = qualified.map(function(h) {
-      var odds = h.bestWinOdds.decimal;
-      var frac = h.bestWinOdds.odds ? h.bestWinOdds.odds.fractional : decToFrac(odds);
-      var bk = h.bestWinOdds.bookmaker || '';
-      var name = h.horseName || h.name || 'Unknown';
-      var rid = 'r' + raceIndex + '_' + (h.horseId || h.horseKey || '').replace(/[^a-zA-Z0-9]/g, '');
-      var initScore = layScore('', null, odds);
-      var rating = layRating(initScore.total);
-
-      allRunnerData.push({ id: rid, horse: name, odds: odds, course: course, time: time, frac: frac, desc: desc });
-
-      return '<tr id="row_' + rid + '">'
-        + '<td><div class="horse-name">' + esc(name) + '</div></td>'
-        + '<td><input class="inline-input" id="form_' + rid + '" placeholder="e.g. 060800" oninput="recalc(\'' + rid + '\')" maxlength="12"><div class="form-hint">Racing Post form</div></td>'
-        + '<td><span class="odds">' + esc(frac) + '<span class="dec">' + odds.toFixed(2) + '</span><span class="bk">' + esc(bk) + '</span></span></td>'
-        + '<td><input class="inline-input" id="tsr_' + rid + '" placeholder="e.g. 5" oninput="recalc(\'' + rid + '\')" maxlength="4" style="width:52px"><div class="form-hint">Win %</div></td>'
-        + '<td><div class="score-cell has-tip" data-tip="T:' + initScore.t + ' F:' + initScore.f + ' O:' + initScore.o + '" id="score_' + rid + '"><span class="score-num">' + initScore.total + '</span><div class="score-track"><div class="score-fill" style="width:' + initScore.total + '%"></div></div></div></td>'
-        + '<td><span class="badge ' + rating.cls + '" id="badge_' + rid + '">' + rating.label + '</span></td>'
-        + '</tr>';
-    }).join('');
-
-    raceIndex++;
-    return '<div class="race open"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="tbl-wrap"><table><thead><tr><th>Horse</th><th>Form</th><th>Best Odds</th><th>Trainer SR</th><th>Lay Score</th><th>Rating</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></div>';
+    return '<tr id="row_' + rid + '">'
+      + '<td><div class="horse-name">' + esc(h.name || 'Horse ' + (idx + 1)) + '</div>'
+      + (h.trainer ? '<div class="form-hint">' + esc(h.trainer) + '</div>' : '') + '</td>'
+      + '<td><input class="inline-input' + (h.form ? ' filled' : '') + '" id="form_' + rid + '" value="' + esc(h.form) + '" placeholder="e.g. 060800" oninput="recalc(\'' + rid + '\')" maxlength="14"><div class="form-hint">Edit form</div></td>'
+      + '<td><span class="odds">' + esc(frac) + '<span class="dec">' + dec + '</span></span></td>'
+      + '<td><input class="inline-input' + (h.trainerPct !== null ? ' filled' : '') + '" id="tsr_' + rid + '" value="' + (h.trainerPct !== null ? h.trainerPct : '') + '" placeholder="e.g. 5" oninput="recalc(\'' + rid + '\')" maxlength="4" style="width:52px"><div class="form-hint">Win %</div></td>'
+      + '<td><div class="score-cell has-tip" data-tip="T:' + sc.t + ' F:' + sc.f + ' O:' + sc.o + '" id="score_' + rid + '"><span class="score-num">' + sc.total + '</span><div class="score-track"><div class="score-fill" style="width:' + sc.total + '%"></div></div></div></td>'
+      + '<td><span class="badge ' + rating.cls + '" id="badge_' + rid + '">' + rating.label + '</span></td>'
+      + '</tr>';
   }).join('');
 
-  var totalQual = allRunnerData.length;
-  document.getElementById('summaryArea').innerHTML = '<div class="summary"><div class="summary-head"><h2>Runners at &le; 8/1</h2><span class="date-label">' + events.length + ' UK flat races</span></div><div class="summary-body"><div class="summary-empty">Enter form and trainer win% from <a href="https://www.racingpost.com/racecards" target="_blank" rel="noopener" style="color:var(--lay)">Racing Post</a> to calculate lay scores. Scores update live as you type.</div></div></div>';
-  document.getElementById('racesArea').innerHTML = '<div class="results-head"><h2>Race-by-Race</h2><span class="meta">' + events.length + ' races &middot; ' + totalQual + ' runners at &le; 8/1</span></div>' + racesHTML;
+  /* Build unpriced rows (no odds, editable) */
+  var unpricedRows = '';
+  if (unpriced.length) {
+    unpricedRows = unpriced.map(function(h, idx) {
+      var rid = 'u0_' + idx;
+      return '<tr id="row_' + rid + '" style="opacity:0.5">'
+        + '<td><div class="horse-name">' + esc(h.name || 'Horse') + '</div></td>'
+        + '<td><input class="inline-input' + (h.form ? ' filled' : '') + '" value="' + esc(h.form) + '" disabled maxlength="14"></td>'
+        + '<td style="color:var(--dim)">No odds parsed</td>'
+        + '<td><span style="color:var(--dim)">—</span></td>'
+        + '<td colspan="2" style="color:var(--dim);font-size:12px">Enter odds &le; 8/1 to score</td>'
+        + '</tr>';
+    }).join('');
+  }
+
+  /* Render */
+  document.getElementById('racesArea').innerHTML =
+    '<div class="results-head"><h2>Parsed Race</h2><span class="meta">' + esc(time) + ' ' + esc(course) + '</span></div>'
+    + '<div class="race open">'
+    + '<div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')">'
+    + '<div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + '</div>'
+    + '<div class="race-tags">' + tags + '<span class="chevron"></span></div></div>'
+    + '<div class="race-body"><div class="tbl-wrap"><table><thead><tr><th>Horse</th><th>Form</th><th>Best Odds</th><th>Trainer SR</th><th>Lay Score</th><th>Rating</th></tr></thead><tbody>'
+    + rows + unpricedRows
+    + '</tbody></table></div></div></div>';
+
   document.getElementById('resultsArea').classList.remove('hidden');
-  msg('Loaded ' + totalQual + ' qualified runners. Enter form + trainer data to score.', 'ok');
+  rebuildSummary();
+
+  var parsedCount = horses.length;
+  var formCount = horses.filter(function(h) { return h.form; }).length;
+  var oddsCount = horses.filter(function(h) { return h.oddsDecimal; }).length;
+  var pctCount = horses.filter(function(h) { return h.trainerPct !== null; }).length;
+
+  msg('Parsed ' + parsedCount + ' runners — ' + formCount + ' form, ' + oddsCount + ' odds, ' + pctCount + ' trainer%. ' + qualified.length + ' qualified at ≤ 8/1. Edit any field to adjust scores.', 'ok');
+  document.getElementById('parseStatus').textContent = parsedCount + ' runners found';
 }
 
-/* ── Live recalculation ── */
+/* ── Live recalculation ──────────────────────── */
 function recalc(rid) {
   var formEl = document.getElementById('form_' + rid);
   var tsrEl = document.getElementById('tsr_' + rid);
@@ -520,13 +662,13 @@ function recalc(rid) {
 }
 
 function rebuildSummary() {
-  var scored = allRunnerData.filter(function(r) { return r.lastScore && r.lastScore.total >= 45 && (r.form || r.tsr); });
+  var scored = allRunnerData.filter(function(r) { return r.lastScore && r.lastScore.total >= 45; });
   scored.sort(function(a, b) { return b.lastScore.total - a.lastScore.total; });
   var top = scored.slice(0, 8);
-
   var el = document.getElementById('summaryArea');
+
   if (!top.length) {
-    el.innerHTML = '<div class="summary"><div class="summary-head"><h2>Runners at &le; 8/1</h2><span class="date-label">' + allRunnerData.length + ' qualified</span></div><div class="summary-body"><div class="summary-empty">Enter form and trainer win% to calculate lay scores. Strong lays (45+) will appear here.</div></div></div>';
+    el.innerHTML = '<div class="summary"><div class="summary-head"><h2>Lay Candidates</h2><span class="date-label">' + allRunnerData.length + ' runners</span></div><div class="summary-body"><div class="summary-empty">No runners scoring 45+ yet. Edit form and trainer data to improve accuracy.</div></div></div>';
     return;
   }
 
@@ -536,7 +678,7 @@ function rebuildSummary() {
       + '<td><span class="horse-name">' + esc(r.horse) + '</span></td>'
       + '<td style="font-size:12px">' + esc(r.time) + ' ' + esc(r.course) + '</td>'
       + '<td><span class="odds">' + esc(r.frac) + '</span></td>'
-      + '<td><span class="form">' + renderForm(r.form || '') + '</span></td>'
+      + '<td><span class="form">' + renderFormHTML(r.form || '') + '</span></td>'
       + '<td style="font-family:var(--mono);font-size:12px">' + (r.tsr || '—') + '%</td>'
       + '<td style="font-family:var(--mono);font-weight:700;font-size:15px">' + r.lastScore.total + '</td>'
       + '<td><span class="badge ' + r.lastRating.cls + '">' + r.lastRating.label + '</span></td>'
@@ -546,46 +688,315 @@ function rebuildSummary() {
   el.innerHTML = '<div class="summary"><div class="summary-head"><h2>Top Lay Candidates</h2><span class="date-label">' + scored.length + ' scored 45+</span></div><div class="summary-body"><div class="tbl-wrap"><table><thead><tr><th>#</th><th>Horse</th><th>Race</th><th>Odds</th><th>Form</th><th>Trainer</th><th>Score</th><th>Rating</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></div>';
 }
 
-/* ── Demo ── */
+/* ── UI actions ──────────────────────────────── */
+function parseAndRender() {
+  var text = document.getElementById('pasteBox').value;
+  if (!text.trim()) { msg('Paste a racecard first.', 'error'); return; }
+  msgClear();
+  var result = parseRacecard(text);
+  renderParsed(result);
+}
+
+function clearAll() {
+  document.getElementById('pasteBox').value = '';
+  document.getElementById('resultsArea').classList.add('hidden');
+  document.getElementById('parseStatus').textContent = '';
+  allRunnerData = [];
+  msgClear();
+}
+
+/* Auto-parse on paste */
+document.getElementById('pasteBox').addEventListener('paste', function(e) {
+  var self = this;
+  /* Let the paste complete, then parse */
+  setTimeout(function() {
+    if (self.value.trim().length > 20) parseAndRender();
+  }, 100);
+});
+
+/* ── Demo ────────────────────────────────────── */
 function loadDemo() {
-  msgClear(); showLoad('Loading demo…');
+  /* Simulate a Racing Post racecard paste */
+  var demoText = [
+    '14:10 Newmarket',
+    'Weatherbys Novice Stakes (Class 4) (2yo) 7f',
+    '',
+    '1 (3) Midnight Storm (IRE)',
+    '21-3',
+    'T: J Gosden (3-21, 14%)',
+    'J: R Moore',
+    '4 9-2',
+    '7/2',
+    '',
+    '2 (5) Royal Decree (GB)',
+    '42-15',
+    'T: A Balding (5-32, 16%)',
+    'J: D Probert',
+    '4 8-12',
+    '6/4',
+    '',
+    '3 (1) Harbour Wind',
+    '600-80',
+    'T: M Bell (1-18, 6%)',
+    'J: C Lee',
+    '3 9-0',
+    '5/1',
+    '',
+    '4 (7) Dawn Eagle (IRE)',
+    '43-2',
+    'T: C Appleby (8-45, 18%)',
+    'J: W Buick',
+    '3 9-0',
+    '2/1',
+    '',
+    '5 (2) Noble Quest',
+    '00-608',
+    'T: R Beckett (1-22, 5%)',
+    'J: H Doyle',
+    '3 9-0',
+    '4/1',
+    '',
+    '6 (4) Cosmic Ray',
+    '0-0P',
+    'T: E Dunlop (0-12, 0%)',
+    'J: T Marquand',
+    '3 9-0',
+    '11/1',
+    '',
+    '',
+    '15:05 Ascot',
+    'Buckingham Palace Handicap (Class 2) 1m',
+    '',
+    '1 (8) Silent Reign (IRE)',
+    '312-14',
+    'T: W Haggas (6-31, 19%)',
+    'J: T Marquand',
+    '5 9-7',
+    '5/2',
+    '',
+    '2 (3) Warrior King (GB)',
+    '111-21',
+    'T: J Gosden (8-40, 20%)',
+    'J: R Moore',
+    '4 9-10',
+    'Evs',
+    '',
+    '3 (12) Painted Lady',
+    '0-06090',
+    'T: D Simcock (0-14, 0%)',
+    'J: S De Sousa',
+    '6 8-6',
+    '7/1',
+    '',
+    '4 (6) Blue Diamond (FR)',
+    '4-3215',
+    'T: R Varian (5-28, 18%)',
+    'J: A Atzeni',
+    '5 9-2',
+    '2/1',
+    '',
+    '5 (1) Frosty Morning',
+    '55-006',
+    'T: H Palmer (1-20, 5%)',
+    'J: J Watson',
+    '4 8-10',
+    '9/2',
+    '',
+    '',
+    '15:40 Goodwood',
+    'Kincsem Handicap Stakes (Class 3) 1m2f',
+    '',
+    '1 (4) Drifter',
+    '0-60804',
+    'T: A Carson (1-19, 5%)',
+    'J: B Curtis',
+    '5 9-1',
+    '3/1',
+    '',
+    '2 (1) High Society (IRE)',
+    '1-1231',
+    'T: A O\'Brien (12-55, 22%)',
+    'J: R Moore',
+    '4 9-7',
+    '4/5',
+    '',
+    '3 (6) Muddy Boots',
+    '000-06',
+    'T: J Fanshawe (0-11, 0%)',
+    'J: D Tudhope',
+    '6 8-8',
+    '6/1',
+    '',
+    '4 (3) Fortune Bay (GB)',
+    '5-0070',
+    'T: M Channon (1-24, 4%)',
+    'J: C Bishop',
+    '5 8-10',
+    '5/1',
+    '',
+    '5 (5) Last Orders',
+    '8-4053',
+    'T: C Hills (3-22, 14%)',
+    'J: J Crowley',
+    '5 9-3',
+    '4/1',
+    '',
+    '',
+    '16:15 York',
+    'Knavesmire Fillies Handicap (Class 3) 6f',
+    '',
+    '1 (2) Lady Phoenix (IRE)',
+    '60-058',
+    'T: K Ryan (1-18, 6%)',
+    'J: T Eaves',
+    '4 9-0',
+    '4/1',
+    '',
+    '2 (5) Star Sapphire (GB)',
+    '1-2132',
+    'T: R Varian (6-30, 20%)',
+    'J: A Atzeni',
+    '3 9-4',
+    '6/4',
+    '',
+    '3 (1) Velvet Rose',
+    '0-P0600',
+    'T: T Dascombe (0-16, 0%)',
+    'J: R Kingscote',
+    '5 8-7',
+    '15/2',
+    '',
+    '4 (3) Dancing Fire',
+    '4-3512',
+    'T: W Haggas (7-33, 21%)',
+    'J: T Marquand',
+    '3 9-2',
+    '3/1'
+  ].join('\n');
+
+  document.getElementById('pasteBox').value = demoText;
+  msgClear();
+
+  var result = parseRacecard(demoText);
+  /* Demo has multiple races — parse all of them */
+  renderMultiRace(demoText);
+
+  document.getElementById('resultsArea').insertAdjacentHTML('beforebegin',
+    '<div class="demo-flag" id="demoFlag">Demo mode — showing sample racecards. Try pasting real Racing Post data to analyse live races.</div>');
+}
+
+/* Parse text that may contain multiple races */
+function renderMultiRace(text) {
+  var lines = text.split(/\n/).map(function(l) { return l.trim(); });
   allRunnerData = [];
 
-  var events = [
-    { raceCourse:'Newmarket', raceTime:'14:10', raceNames:['7f Nov Stks'], horses:[
-      { horseId:'midnight-storm', horseName:'Midnight Storm', bestWinOdds:{ bookmaker:'BET365', decimal:4.5, odds:{ fractional:'7/2' }}},
-      { horseId:'royal-decree', horseName:'Royal Decree', bestWinOdds:{ bookmaker:'SKYBET', decimal:2.5, odds:{ fractional:'6/4' }}},
-      { horseId:'harbour-wind', horseName:'Harbour Wind', bestWinOdds:{ bookmaker:'WILLIAM_HILL', decimal:6.0, odds:{ fractional:'5/1' }}},
-      { horseId:'dawn-eagle', horseName:'Dawn Eagle', bestWinOdds:{ bookmaker:'BETFAIR', decimal:3.0, odds:{ fractional:'2/1' }}},
-      { horseId:'noble-quest', horseName:'Noble Quest', bestWinOdds:{ bookmaker:'PADDY_POWER', decimal:5.0, odds:{ fractional:'4/1' }}},
-      { horseId:'cosmic-ray', horseName:'Cosmic Ray', bestWinOdds:{ bookmaker:'BET365', decimal:12.0, odds:{ fractional:'11/1' }}}
-    ]},
-    { raceCourse:'Ascot', raceTime:'15:05', raceNames:['1m Hcap'], horses:[
-      { horseId:'silent-reign', horseName:'Silent Reign', bestWinOdds:{ bookmaker:'MATCHBOOK', decimal:3.5, odds:{ fractional:'5/2' }}},
-      { horseId:'warrior-king', horseName:'Warrior King', bestWinOdds:{ bookmaker:'BETFAIR_EXCHANGE', decimal:2.0, odds:{ fractional:'1/1' }}},
-      { horseId:'painted-lady', horseName:'Painted Lady', bestWinOdds:{ bookmaker:'BWIN', decimal:8.0, odds:{ fractional:'7/1' }}},
-      { horseId:'blue-diamond', horseName:'Blue Diamond', bestWinOdds:{ bookmaker:'BET365', decimal:3.0, odds:{ fractional:'2/1' }}},
-      { horseId:'frosty-morning', horseName:'Frosty Morning', bestWinOdds:{ bookmaker:'SKYBET', decimal:5.5, odds:{ fractional:'9/2' }}}
-    ]},
-    { raceCourse:'Goodwood', raceTime:'15:40', raceNames:['1m2f Hcap Stks'], horses:[
-      { horseId:'drifter', horseName:'Drifter', bestWinOdds:{ bookmaker:'PADDY_POWER', decimal:4.0, odds:{ fractional:'3/1' }}},
-      { horseId:'high-society', horseName:'High Society', bestWinOdds:{ bookmaker:'BETFAIR', decimal:1.8, odds:{ fractional:'4/5' }}},
-      { horseId:'muddy-boots', horseName:'Muddy Boots', bestWinOdds:{ bookmaker:'WILLIAM_HILL', decimal:7.0, odds:{ fractional:'6/1' }}},
-      { horseId:'fortune-bay', horseName:'Fortune Bay', bestWinOdds:{ bookmaker:'BET365', decimal:6.0, odds:{ fractional:'5/1' }}},
-      { horseId:'last-orders', horseName:'Last Orders', bestWinOdds:{ bookmaker:'MATCHBOOK', decimal:5.0, odds:{ fractional:'4/1' }}}
-    ]},
-    { raceCourse:'York', raceTime:'16:15', raceNames:['6f Fillies Hcap'], horses:[
-      { horseId:'lady-phoenix', horseName:'Lady Phoenix', bestWinOdds:{ bookmaker:'SKYBET', decimal:5.0, odds:{ fractional:'4/1' }}},
-      { horseId:'star-sapphire', horseName:'Star Sapphire', bestWinOdds:{ bookmaker:'BETFAIR_EXCHANGE', decimal:2.5, odds:{ fractional:'6/4' }}},
-      { horseId:'velvet-rose', horseName:'Velvet Rose', bestWinOdds:{ bookmaker:'BWIN', decimal:8.5, odds:{ fractional:'15/2' }}},
-      { horseId:'dancing-fire', horseName:'Dancing Fire', bestWinOdds:{ bookmaker:'BET365', decimal:4.0, odds:{ fractional:'3/1' }}}
-    ]}
-  ];
+  /* Split by race headers (time + course) */
+  var raceChunks = [];
+  var current = [];
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i];
+    /* Detect race header: line with time pattern AND a course name */
+    var hasTime = /\b\d{1,2}[:.]\d{2}\b/.test(line);
+    var hasCourse = false;
+    var ll = line.toLowerCase();
+    for (var c = 0; c < UK_COURSES.length; c++) {
+      if (ll.indexOf(UK_COURSES[c]) >= 0) { hasCourse = true; break; }
+    }
+    if (hasTime && hasCourse && current.length > 3) {
+      raceChunks.push(current);
+      current = [line];
+    } else {
+      current.push(line);
+    }
+  }
+  if (current.length > 2) raceChunks.push(current);
 
-  setTimeout(function() {
-    renderResults(events);
-    document.getElementById('summaryArea').insertAdjacentHTML('beforebegin', '<div class="demo-flag">Demo mode — showing sample races. Connect your RapidAPI key for live odds. Try entering form data: type <strong>060800</strong> in a form field and <strong>3</strong> in a trainer field to see scoring in action.</div>');
-  }, 500);
+  if (raceChunks.length < 2) {
+    /* Single race — use normal parser */
+    var result = parseRacecard(text);
+    renderParsed(result);
+    return;
+  }
+
+  /* Multiple races */
+  var racesHTML = '';
+  var raceIndex = 0;
+  var totalQual = 0;
+
+  raceChunks.forEach(function(chunk) {
+    var chunkText = chunk.join('\n');
+    var result = parseRacecard(chunkText);
+    if (result.warning || !result.horses.length) return;
+
+    var ri = result.raceInfo || {};
+    var course = ri.course || 'Unknown';
+    var time = ri.time || '';
+    var desc = ri.desc || '';
+
+    var qualified = result.horses.filter(function(h) {
+      return h.oddsDecimal !== null && h.oddsDecimal <= 9.0;
+    });
+    qualified.sort(function(a, b) { return (a.oddsDecimal || 99) - (b.oddsDecimal || 99); });
+
+    var tags = '';
+    if (desc) tags += '<span class="tag">' + esc(desc.substring(0, 60)) + '</span>';
+    tags += '<span class="tag">' + result.horses.length + ' runners</span>';
+    tags += '<span class="tag">' + qualified.length + ' at &le; 8/1</span>';
+
+    if (!qualified.length) {
+      racesHTML += '<div class="race"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="race-empty">No runners at odds &le; 8/1</div></div></div>';
+      raceIndex++;
+      return;
+    }
+
+    var rows = qualified.map(function(h, idx) {
+      var rid = 'r' + raceIndex + '_' + idx;
+      var sc = layScore(h.form, h.trainerPct, h.oddsDecimal);
+      var rating = layRating(sc.total);
+      var frac = h.odds || decToFrac(h.oddsDecimal);
+
+      allRunnerData.push({
+        id: rid, horse: h.name || 'Horse ' + (idx+1), odds: h.oddsDecimal, frac: frac,
+        form: h.form, tsr: h.trainerPct !== null ? '' + h.trainerPct : '',
+        course: course, time: time, desc: desc, lastScore: sc, lastRating: rating
+      });
+      totalQual++;
+
+      return '<tr id="row_' + rid + '">'
+        + '<td><div class="horse-name">' + esc(h.name || 'Horse ' + (idx+1)) + '</div>'
+        + (h.trainer ? '<div class="form-hint">' + esc(h.trainer) + '</div>' : '') + '</td>'
+        + '<td><input class="inline-input' + (h.form ? ' filled' : '') + '" id="form_' + rid + '" value="' + esc(h.form) + '" placeholder="e.g. 060800" oninput="recalc(\'' + rid + '\')" maxlength="14"><div class="form-hint">Edit form</div></td>'
+        + '<td><span class="odds">' + esc(frac) + '<span class="dec">' + (h.oddsDecimal ? h.oddsDecimal.toFixed(2) : '') + '</span></span></td>'
+        + '<td><input class="inline-input' + (h.trainerPct !== null ? ' filled' : '') + '" id="tsr_' + rid + '" value="' + (h.trainerPct !== null ? h.trainerPct : '') + '" placeholder="e.g. 5" oninput="recalc(\'' + rid + '\')" maxlength="4" style="width:52px"><div class="form-hint">Win %</div></td>'
+        + '<td><div class="score-cell has-tip" data-tip="T:' + sc.t + ' F:' + sc.f + ' O:' + sc.o + '" id="score_' + rid + '"><span class="score-num">' + sc.total + '</span><div class="score-track"><div class="score-fill" style="width:' + sc.total + '%"></div></div></div></td>'
+        + '<td><span class="badge ' + rating.cls + '" id="badge_' + rid + '">' + rating.label + '</span></td>'
+        + '</tr>';
+    }).join('');
+
+    racesHTML += '<div class="race open"><div class="race-head" onclick="this.parentElement.classList.toggle(\'open\')"><div class="race-title"><span class="time">' + esc(time) + '</span>' + esc(course) + '</div><div class="race-tags">' + tags + '<span class="chevron"></span></div></div><div class="race-body"><div class="tbl-wrap"><table><thead><tr><th>Horse</th><th>Form</th><th>Best Odds</th><th>Trainer SR</th><th>Lay Score</th><th>Rating</th></tr></thead><tbody>' + rows + '</tbody></table></div></div></div>';
+
+    raceIndex++;
+  });
+
+  document.getElementById('racesArea').innerHTML =
+    '<div class="results-head"><h2>Race-by-Race</h2><span class="meta">' + raceChunks.length + ' races &middot; ' + totalQual + ' runners at &le; 8/1</span></div>' + racesHTML;
+
+  document.getElementById('resultsArea').classList.remove('hidden');
+  rebuildSummary();
+
+  msg('Parsed ' + raceChunks.length + ' races with ' + totalQual + ' qualified runners (≤ 8/1). All form and trainer data pre-filled. Edit any field to adjust scores.', 'ok');
+  document.getElementById('parseStatus').textContent = raceChunks.length + ' races, ' + totalQual + ' runners';
+}
+
+/* Override parseAndRender for multi-race support */
+function parseAndRender() {
+  var text = document.getElementById('pasteBox').value;
+  if (!text.trim()) { msg('Paste a racecard first.', 'error'); return; }
+  msgClear();
+  /* Remove old demo flag if present */
+  var df = document.getElementById('demoFlag');
+  if (df) df.remove();
+  renderMultiRace(text);
 }
 </script>
 
