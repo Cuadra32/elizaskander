@@ -217,7 +217,7 @@
     <div class="fetch-note">
       Fetches racecard data directly from
       <a href="https://www.racingpost.com/racecards" target="_blank" rel="noopener">racingpost.com</a>
-      via a server-side proxy (requires Netlify hosting).
+      via a server-side proxy (requires Vercel hosting).
       Paste fallback works everywhere.
     </div>
   </div>
@@ -256,7 +256,7 @@
 /* ══════════════════════════════════════════════
    CONSTANTS
    ══════════════════════════════════════════════ */
-var PROXY = '/.netlify/functions/racing-proxy?url=';
+var PROXY = '/api/racing-proxy?url=';
 var RP_BASE = 'https://www.racingpost.com';
 var UK_COURSES = ['ascot','ayr','bath','beverley','brighton','carlisle','catterick','chelmsford','chelmsford city','chester','chepstow','doncaster','epsom','epsom downs','ffos las','goodwood','hamilton','haydock','haydock park','kempton','kempton park','leicester','lingfield','lingfield park','musselburgh','newbury','newcastle','newmarket','nottingham','pontefract','redcar','ripon','salisbury','sandown','sandown park','southwell','thirsk','wetherby','windsor','wolverhampton','yarmouth','york'];
 var JUMP_COURSES = ['aintree','bangor','bangor-on-dee','cartmel','cheltenham','exeter','fakenham','fontwell','fontwell park','hereford','hexham','huntingdon','kelso','ludlow','market rasen','newton abbot','perth','plumpton','sedgefield','stratford','taunton','towcester','uttoxeter','warwick','wincanton','worcester'];
@@ -335,7 +335,7 @@ function decToFrac(d){
    FETCH & PARSE FROM RACING POST
    ══════════════════════════════════════════════ */
 
-/* Fetch HTML via Netlify proxy */
+/* Fetch HTML via Vercel proxy */
 async function proxyFetch(rpUrl){
   var r = await fetch(PROXY + encodeURIComponent(rpUrl));
   if(!r.ok){
@@ -702,7 +702,7 @@ async function loadToday(){
   }catch(err){
     hideLoad();
     if(err.message.indexOf('Failed to fetch')>=0||err.message.indexOf('NetworkError')>=0){
-      msg('Cannot reach the proxy function. This feature requires Netlify hosting. Use the paste method instead, or deploy to Netlify.','error');
+      msg('Cannot reach the proxy function. This feature requires Vercel hosting. Use the paste method instead, or deploy to Vercel.','error');
     }else{
       msg('Error: '+err.message+'. Try pasting racecard text instead.','error');
     }
@@ -733,7 +733,7 @@ async function loadUrl(){
   }catch(err){
     hideLoad();
     if(err.message.indexOf('Failed to fetch')>=0){
-      msg('Cannot reach the proxy. Deploy to Netlify for auto-fetch, or paste racecard text.','error');
+      msg('Cannot reach the proxy. Deploy to Vercel for auto-fetch, or paste racecard text.','error');
     }else{
       msg('Error: '+err.message,'error');
     }
@@ -947,7 +947,7 @@ function loadDemo(){
 
   renderHorses(demoResults);
   document.getElementById('resultsArea').insertAdjacentHTML('beforebegin',
-    '<div class="demo-flag" id="demoFlag">Demo mode — sample data. Click <strong>Load Today\'s UK Flat Races</strong> for live data from Racing Post (requires Netlify hosting).</div>');
+    '<div class="demo-flag" id="demoFlag">Demo mode — sample data. Click <strong>Load Today\'s UK Flat Races</strong> for live data from Racing Post (requires Vercel hosting).</div>');
 }
 </script>
 
